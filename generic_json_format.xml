@@ -1,0 +1,68 @@
+<PropertyList>
+ <generic>
+  <output>
+   <line_separator>newline</line_separator>
+   <var_separator>newline</var_separator>
+	<chunk>
+    <name>breaks</name>
+	<type>float</type>
+	<format>{\n"breaks" : %f ,</format>
+    <node>/controls/flight/speedbrake</node>
+	</chunk>
+	<chunk>
+    <name>throttle</name>
+	<type>float</type>
+	<format>"throttle" : %f ,</format>
+    <node>/controls/engines/engine/throttle</node>
+	</chunk>
+	<chunk>
+    <name>heading</name>
+	<type>float</type>
+	<format>"heading" : %f ,</format>
+    <node>/instrumentation/heading-indicator/offset-deg</node>
+	</chunk>
+	<chunk>
+    <name>airspeed</name>
+	<type>float</type>
+	<format>"airspeed" : %f ,</format>
+    <node>/instrumentation/airspeedd-indicator/indicated-speed-kt</node>
+	</chunk>
+	<chunk>
+    <name>roll</name>
+	<type>float</type>
+	<format>"roll" : %f ,</format>
+    <node>/instrumentation/attitude-indicator/indicated-roll-deg</node>
+	</chunk>
+	<chunk>
+    <name>pitch</name>
+	<type>float</type>
+	<format>"pitch" : %f ,</format>
+    <node>/instrumentation/attitude-indicator/internal-pitch-deg</node>
+	</chunk>
+	<chunk>
+    <name>rudder</name>
+	<type>float</type>
+	<format>"rudder" : %f ,</format>
+    <node>/instrumentation/attitude-indicator/indicated-pitch-deg</node>
+	</chunk>
+	<chunk>
+    <name>aileron</name>
+	<type>float</type>
+	<format>"aileron" : %f ,</format>
+    <node>/controls/flight/aileron</node>
+	</chunk>
+	<chunk>
+    <name>elevator</name>
+	<type>float</type>
+	<format>"elevator" : %f ,</format>
+    <node>/controls/flight/elevator</node>
+	</chunk>
+	<chunk>
+    <name>alt</name>
+	<type>float</type>
+	<format>"alt" : %f \n}</format>
+    <node>/instrumentation/altimeter/indicated-altitude-ft</node>
+	</chunk>
+  </output>
+ </generic>
+</PropertyList>
