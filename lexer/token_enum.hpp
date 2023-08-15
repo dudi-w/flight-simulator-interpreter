@@ -26,6 +26,5 @@ enum class TokenType{
     Bind
 };
 
-
 } // namespace lexer
 } // namespace fgi
