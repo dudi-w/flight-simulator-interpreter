@@ -9,8 +9,8 @@ namespace lexer {
 
 class Token {
 public:
-    Token(Token const& other) = delete;
-    Token& operator=(Token const& other) = delete;
+    Token(Token const& other) = default;
+    Token& operator=(Token const& other) = default;
     explicit Token(
         TokenType type,
         std::string str,
