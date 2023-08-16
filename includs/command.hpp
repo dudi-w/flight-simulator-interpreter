@@ -8,7 +8,7 @@ class Command
 public:
     virtual ~Command() = default;
 
-    virtual void exeute() = 0;
+    virtual void execute() = 0;
 };
 
 } // namespace fp
