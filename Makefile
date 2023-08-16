@@ -1,4 +1,4 @@
-CXX = g++
+dev#nahum#variableCXX = g++
 CC = $(CXX)
 
 CXXFLAGS = -std=c++17 -Wall -pedantic
