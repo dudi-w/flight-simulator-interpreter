@@ -2,14 +2,26 @@
 
 namespace fg { // namespace flight gear
 
-std::unordered_map<std::string, std::shared_ptr<IVariable>> VariableMap::get_map() const
+void VariableMap::insert(std::string const& variable_name, std::shared_ptr<IVariable> variable)
 {
-    return m_map;
+    m_map.insert({variable_name, variable});
 }
 
-void VariableMap::insert(std::string const& str, std::shared_ptr<IVariable> variable)
+IVariable& VariableMap::at(std::string const& variable_name) const
 {
-    m_map[str] = variable;
+    try
+    {
+        return *(m_map.at(variable_name));
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';//TODO my exception
+    }
+}
+
+IVariable& VariableMap::operator[](std::string const& variable_name) const
+{
+    return at(variable_name);
 }
 
 } //namespace
