@@ -17,8 +17,8 @@ public:
     virtual void execute() override;
 
 private:
-    std::string m_port;
-    std::string m_ups;
+    int m_port;
+    int m_ups;
 };
 
 }// namespace flight plan
