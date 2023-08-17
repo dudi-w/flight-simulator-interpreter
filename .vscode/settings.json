@@ -1,6 +1,9 @@
 {
     "files.associations": {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e5f1a7e (expression)
         "cctype": "cpp",
         "clocale": "cpp",
         "cmath": "cpp",
@@ -12,12 +15,16 @@
         "ctime": "cpp",
         "cwchar": "cpp",
         "cwctype": "cpp",
+<<<<<<< HEAD
 =======
 >>>>>>> 724d71b (variable files)
+=======
+>>>>>>> e5f1a7e (expression)
         "array": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
         "*.tcc": "cpp",
+<<<<<<< HEAD
 <<<<<<< HEAD
         "compare": "cpp",
         "complex": "cpp",
@@ -39,31 +46,36 @@
         "cctype": "cpp",
         "clocale": "cpp",
         "cmath": "cpp",
+=======
+>>>>>>> e5f1a7e (expression)
         "compare": "cpp",
+        "complex": "cpp",
         "concepts": "cpp",
         "cstdint": "cpp",
-        "cstdio": "cpp",
-        "cstdlib": "cpp",
-        "cwchar": "cpp",
-        "cwctype": "cpp",
-        "unordered_map": "cpp",
-        "exception": "cpp",
-        "initializer_list": "cpp",
-        "iosfwd": "cpp",
-        "limits": "cpp",
-        "memory": "cpp",
-        "new": "cpp",
-        "numbers": "cpp",
-        "ostream": "cpp",
-        "stdexcept": "cpp",
-        "streambuf": "cpp",
+        "deque": "cpp",
         "string": "cpp",
+<<<<<<< HEAD
 >>>>>>> 724d71b (variable files)
+=======
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "exception": "cpp",
+        "algorithm": "cpp",
+        "functional": "cpp",
+        "iterator": "cpp",
+        "memory": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+>>>>>>> e5f1a7e (expression)
         "string_view": "cpp",
         "system_error": "cpp",
         "tuple": "cpp",
         "type_traits": "cpp",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e5f1a7e (expression)
         "utility": "cpp",
         "initializer_list": "cpp",
         "iomanip": "cpp",
@@ -80,9 +92,12 @@
         "cfenv": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp"
+<<<<<<< HEAD
 =======
         "typeinfo": "cpp",
         "utility": "cpp"
 >>>>>>> 724d71b (variable files)
+=======
+>>>>>>> e5f1a7e (expression)
     }
 }
