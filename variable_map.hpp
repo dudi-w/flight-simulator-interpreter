@@ -18,8 +18,8 @@ public:
     ~VariableMap() = default;
 
     void insert(std::string const& variable_name, std::shared_ptr<IVariable> variable);
-    std::shared_ptr<IVariable> at(std::string const& variable_name) const;
-    std::shared_ptr<IVariable> oprator[](std::string const& variable_name) const;
+    IVariable& at(std::string const& variable_name) const;
+    IVariable& operator[](std::string const& variable_name) const;
 
 private:
     std::unordered_map<std::string, std::shared_ptr<IVariable>> m_map;
