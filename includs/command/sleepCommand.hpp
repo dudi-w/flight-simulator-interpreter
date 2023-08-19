@@ -17,7 +17,7 @@ public:
     virtual void execute() override;
 
 private:
-    int m_ms;
+    uint m_ms;
 };
 
 }// namespace flight plan

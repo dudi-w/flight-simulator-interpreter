@@ -17,8 +17,8 @@ public:
     virtual void execute() override;
 
 private:
-    std::string m_host;
-    std::string m_port;
+    uint m_host;
+    uint m_port;
 
 };
 
