@@ -5,12 +5,14 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+
+#include "I_lexer.hpp"
 #include "token.hpp"
 
 namespace fgi {
 namespace lexer {
 
-class Lexer {
+class Lexer : public Ilexer {
 public:
     Lexer(Lexer const& other) = delete;
     Lexer& operator=(Lexer const& other) = delete;
@@ -18,7 +20,7 @@ public:
 
     std::vector<Token> tokenize(std::string const& code);
 
-private: //state
+private: // internal state
     struct State{
         explicit State(std::string const& code);
         std::string::const_iterator m_it;
