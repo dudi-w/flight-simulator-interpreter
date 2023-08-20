@@ -3,6 +3,8 @@
 
 #include "lexer.hpp"
 #include "token.hpp"
+#include "lexer_exceptions.hpp"
+
 
 using namespace fgi;
 using namespace lexer;
@@ -21,7 +23,7 @@ std::vector<Token> Lexer::tokenize(std::string const &code)
         } else if (*state.m_it == '"') {
             stringHeandler(state);
         } else {
-            throw; // TODO: put hare relevant exception.
+            throw LexerError(state.m_row, state.m_it - state.m_begin_of_row);
         }
     }
     return state.m_ret;
@@ -32,7 +34,7 @@ void Lexer::numberHeandler(State &state)
     static const std::regex r(R"(^\d+(\.\d+)?)");
     std::smatch sm;
     if(!regex_search(state.m_it, state.m_end, sm, r)){
-        throw; // TODO: put hare relevant exception.
+        throw LexerError(state.m_row, state.m_it - state.m_begin_of_row, "That doesn't look like a valid number");
     }
     state.m_it = sm[0].second;  
     state.m_ret.emplace_back(
@@ -64,7 +66,7 @@ void Lexer::wordHeandler(State &state)
     static const std::regex r(R"(^[a-zA-Z_]+\w*)");
     std::smatch sm;
     if(!regex_search(state.m_it, state.m_end, sm, r)){
-        throw; // TODO: put hare relevant exception.
+        throw LexerError(state.m_row, state.m_it - state.m_begin_of_row);
     }
     state.m_it = sm[0].second;  
     std::string str_token = sm[0].str();
@@ -90,7 +92,7 @@ void Lexer::operatorrHeandler(State &state)
     if(auto match = known_symbols.find(str_token); match != known_symbols.end()){
         type = match->second;
     } else {
-        throw; // TODO: put hare relevant exception.
+        throw LexerError(state.m_row, state.m_it - state.m_begin_of_row);
     }
     state.m_ret.emplace_back(
         type,
@@ -105,7 +107,7 @@ void Lexer::stringHeandler(State &state) {
     static const std::regex r(R"(^\".*\")");
     std::smatch sm;
     if(!regex_search(state.m_it, state.m_end, sm, r)){
-        throw; //TODO: put hare relevant exception.
+        throw LexerError(state.m_row, state.m_it - state.m_begin_of_row, "That doesn't look like a valid string");
     }
 
     state.m_ret.emplace_back(
