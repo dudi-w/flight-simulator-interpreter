@@ -2,9 +2,11 @@
 #define BIND_COMMAND_HPP
 
 #include <string>
-#include "includs/command.hpp"
 
-namespace fp { //flight plan
+#include "command.hpp"
+
+namespace fp{ //flight plan
+namespace com{ // commands
 
 class BindCommand : public Command
 {
@@ -19,9 +21,9 @@ public:
 private:
     std::string m_variableName;
     std::string m_path;
-
 };
 
+}// namespace commands
 }// namespace flight plan
 
 #endif

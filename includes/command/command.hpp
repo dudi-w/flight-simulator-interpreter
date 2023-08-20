@@ -1,7 +1,9 @@
 #ifndef COMMAND_HPP
 #define COMMAND_HPP
 
-namespace fp{
+namespace fp{ //flight plan
+namespace com{ // commands
+
     
 class Command
 {
@@ -11,6 +13,7 @@ public:
     virtual void execute() = 0;
 };
 
-} // namespace fp
+}// namespace commands
+}// namespace flight plan
 
 #endif

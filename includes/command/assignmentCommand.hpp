@@ -2,16 +2,20 @@
 #define ASSIGNMENT_COMMAND_HPP
 
 #include <string>
+#include <memory>
 
-#include "includs/command.hpp"
-#include "includs/expression.hpp"
+#include "command.hpp"
+#include "includes/expression.hpp"
 
-namespace fp { //flight plan
+namespace fp{ //flight plan
+namespace com{ // commands
 
 class AssigmentCommand : public Command
 {
 public:
     explicit AssigmentCommand(std::string const& variableName ,fp::Expression const& exp);
+    explicit AssigmentCommand(std::string const& variableName ,std::shared_ptr<fp::Expression> exp);
+    explicit AssigmentCommand(std::string const& variableName ,fp::Expression && exp);
     AssigmentCommand(AssigmentCommand const& other) = default;
     AssigmentCommand& operator=(AssigmentCommand const& other) = default;
     ~AssigmentCommand() = default;
@@ -20,11 +24,10 @@ public:
 
 private:
     std::string m_variableName;
-    fp::Expression const& m_exp;
-    
-
+    std::shared_ptr<fp::Expression> m_exp;
 };
 
+}// namespace commands
 }// namespace flight plan
 
 #endif

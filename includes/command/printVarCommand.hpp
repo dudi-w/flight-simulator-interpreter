@@ -3,9 +3,10 @@
 
 #include <string>
 
-#include "includs/command.hpp"
+#include "command.hpp"
 
-namespace fp { //flight plan
+namespace fp{ //flight plan
+namespace com{ // commands
 
 class PrintVarCommand : public Command
 {
@@ -21,6 +22,7 @@ private:
     std::string m_variableName;
 };
 
+}// namespace commands
 }// namespace flight plan
 
 #endif

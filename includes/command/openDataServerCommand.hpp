@@ -2,9 +2,11 @@
 #define OPEN_SERVER_HPP
 
 #include <string>
-#include "includs/command.hpp"
+
+#include "command.hpp"
 
 namespace fp { //flight plan
+namespace com{ // commands
 
 class OpenServerCommand : public Command
 {
@@ -21,6 +23,7 @@ private:
     uint m_ups;
 };
 
+}// namespace commands
 }// namespace flight plan
 
 #endif

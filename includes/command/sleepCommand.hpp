@@ -2,9 +2,10 @@
 #define SLEEP_COMMAND_HPP
 
 #include <string>
-#include "includs/command.hpp"
+#include "command.hpp"
 
-namespace fp { //flight plan
+namespace fp{ //flight plan
+namespace com{ // commands
 
 class SleepCommand : public Command
 {
@@ -20,6 +21,7 @@ private:
     uint m_ms;
 };
 
+}// namespace commands
 }// namespace flight plan
 
 #endif

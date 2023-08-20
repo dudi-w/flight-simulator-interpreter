@@ -3,15 +3,18 @@
 
 #include <memory>
 
-#include "includs/expression.hpp"
-#include "includs/command.hpp"
+#include "../expression.hpp"
+#include "command.hpp"
 
-namespace fp { //flight plan
+namespace fp{ //flight plan
+namespace com{ // commands
 
 class WhileCommand : public Command
 {
 public:
-    explicit WhileCommand(fp::Expression const& exp, fp::Command const& comm);
+    explicit WhileCommand(fp::Expression const& exp, Command const& comm);
+    explicit WhileCommand(fp::Expression && exp, Command && comm);
+    explicit WhileCommand(std::unique_ptr<fp::Expression> exp, std::unique_ptr<Command> comm);
     WhileCommand(WhileCommand const& other) = default;
     WhileCommand& operator=(WhileCommand const& other) = default;
     ~WhileCommand() = default;
@@ -20,9 +23,10 @@ public:
 
 private:
     std::unique_ptr<fp::Expression> m_exp;
-    std::unique_ptr<fp::Command> m_comm;
+    std::unique_ptr<Command> m_comm;
 };
 
+}// namespace commands
 }// namespace flight plan
 
 #endif

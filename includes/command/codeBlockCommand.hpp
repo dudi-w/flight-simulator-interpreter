@@ -2,14 +2,21 @@
 #define CODE_BLOCK_COMMAND_HPP
 
 #include <vector>
-#include "includs/command.hpp"
+#include <memory>
 
-namespace fp { //flight plan
+#include "command.hpp"
+
+
+namespace fp{ //flight plan
+
+using Commands = std::vector<std::unique_ptr<fp::com::Command>>;
+
+namespace com{ // commands
 
 class CodeBlockCommand : public Command
 {
 public:
-    explicit CodeBlockCommand(std::vector<fp::Command> const& commands);
+    explicit CodeBlockCommand(fp::Commands const& commands);
     CodeBlockCommand(CodeBlockCommand const& other) = default;
     CodeBlockCommand& operator=(CodeBlockCommand const& other) = default;
     ~CodeBlockCommand() = default;
@@ -17,9 +24,10 @@ public:
     virtual void execute() override;
 
 private:
-    std::vector<fp::Command> m_commands;
+    fp::Commands m_commands;
 };
 
+}// namespace commands
 }// namespace flight plan
 
 #endif
