@@ -6,7 +6,7 @@
    <chunk>
     <name>warp</name>
 	<type>float</type>
-	<format>{"/sim/time/warp" : %f ,</format>
+	<format>{\n "/sim/time/warp" : %f ,</format>
     <node>/sim/time/warp</node>
 	</chunk>
 	<chunk>
