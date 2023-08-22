@@ -2,6 +2,7 @@
 #define CONNECT_COMMAND_HPP
 
 #include <string>
+
 #include "command.hpp"
 
 namespace fp{ //flight plan
