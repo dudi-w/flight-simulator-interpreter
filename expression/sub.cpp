@@ -1,7 +1,11 @@
 #include "sub.hpp"
 
+<<<<<<< HEAD
 namespace fp { // namespace flight plan
 namespace exp { // namespace exp
+=======
+namespace fg { // namespace flight gear
+>>>>>>> 07320af (only expression files)
 
 Sub::Sub(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
 : m_first(first)
@@ -15,5 +19,9 @@ float Sub::get_value() const
     return first_value - second_value;
 }
 
+<<<<<<< HEAD
 } //namespace exp
 } //namespace fp
+=======
+} //namespace
+>>>>>>> 07320af (only expression files)
