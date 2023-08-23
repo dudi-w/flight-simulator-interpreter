@@ -11,9 +11,18 @@ std::unique_ptr<Command> Parser::parse(std::vector<lexer::Token> const &tokens) 
     return parse(it, tokens.cend());
 }
 
-std::unique_ptr<Command> Parser::parse(TokensItr &, TokensItr)
+std::unique_ptr<Command> Parser::parse(TokensItr& it, TokensItr end)
 {
-    return std::unique_ptr<Command>();
+    std::vector<std::unique_ptr<Command>> commands;
+    while (it != end)
+    {
+        if(auto b_it = m_buildersMap.find(it->type()); b_it != m_buildersMap.end()){
+            commands.emplace_back( b_it->second(it, end) );
+        } else {
+            throw; //TODO: put hare relevant exception.
+        }
+    }
+    return std::make_unique<com::CodeBlockCommand>(commands);
 }
 
 std::unique_ptr<Command> Parser::codeBlock_builder(TokensItr &it, TokensItr end)
