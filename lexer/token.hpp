@@ -4,7 +4,7 @@
 #include <string>
 #include "token_enum.hpp"
 
-namespace fgi {
+namespace fp {
 namespace lexer {
 
 class Token {
@@ -31,5 +31,5 @@ private:
 };
 
 } // namespace lexer
-} // namespace fgi
+} // namespace fp
 #endif

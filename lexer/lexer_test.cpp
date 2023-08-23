@@ -12,7 +12,7 @@ int main()
     ss << fs.rdbuf();
     c = ss.str();
 
-    fgi::lexer::Lexer lexer;
+    fp::lexer::Lexer lexer;
     auto v = lexer.tokenize(c);
     for(auto const& t: v){
         std::cout 

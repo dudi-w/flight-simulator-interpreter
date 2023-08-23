@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <string>
 
-namespace fgi {
+namespace fp {
 namespace lexer {
 
 class LexerError : public std::runtime_error {
@@ -31,18 +31,18 @@ inline LexerError::LexerError(size_t row, size_t column, std::string msg)
 ,m_column(column)
 {}
 
-inline size_t fgi::lexer::LexerError::row()
+inline size_t fp::lexer::LexerError::row()
 {
     return m_row;
 }
 
-inline size_t fgi::lexer::LexerError::column()
+inline size_t fp::lexer::LexerError::column()
 {
     return m_column;
 }
 
 
 } // namespace lexer
-} // namespace fgi
+} // namespace fp
 
 #endif
