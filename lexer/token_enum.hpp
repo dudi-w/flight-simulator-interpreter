@@ -1,4 +1,4 @@
-namespace fgi {
+namespace fp {
 namespace lexer {
 
 enum class TokenType{
@@ -27,4 +27,4 @@ enum class TokenType{
 };
 
 } // namespace lexer
-} // namespace fgi
+} // namespace fp

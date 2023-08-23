@@ -6,7 +6,7 @@
 
 #include "token.hpp"
 
-namespace fgi {
+namespace fp {
 namespace lexer {
 
 class Ilexer {
@@ -16,6 +16,6 @@ public:
 };
 
 } // namespace lexer
-} // namespace fgi
+} // namespace fp
 
 #endif
