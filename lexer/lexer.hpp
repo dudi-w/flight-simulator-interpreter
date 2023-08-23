@@ -9,7 +9,7 @@
 #include "I_lexer.hpp"
 #include "token.hpp"
 
-namespace fgi {
+namespace fp {
 namespace lexer {
 
 class Lexer : public Ilexer {
@@ -77,5 +77,5 @@ private: //static data
 };
 
 } // namespace lexer
-} // namespace fgi
+} // namespace fp
 #endif

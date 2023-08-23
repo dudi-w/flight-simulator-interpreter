@@ -6,7 +6,7 @@
 #include "lexer_exceptions.hpp"
 
 
-using namespace fgi;
+using namespace fp;
 using namespace lexer;
 
 std::vector<Token> Lexer::tokenize(std::string const &code) 
