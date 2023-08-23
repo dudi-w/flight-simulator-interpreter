@@ -6,7 +6,7 @@
 
 int main()
 {
-    auto fs = std::ifstream("flight_instructions.txt");
+    auto fs = std::ifstream("../flight_instructions.txt");
     std::stringstream ss;
     std::string c;
     ss << fs.rdbuf();
