@@ -2,13 +2,14 @@
 #define EXPRESSION_PARSER
 
 #include <vector>
+#include <memory>
 
 #include "./Lexer/token.hpp"
+#include "expression.hpp"
 
 
 
-namespace fgi
-{
+namespace fgi {
     namespace Parser
     {
 
@@ -19,12 +20,12 @@ namespace fgi
             ExpressionParser(ExpressionParser const& other) = default;
             ExpressionParser& operator=(ExpressionParser const& other) = default;
 
-            float parse();
+            std::shard_ptr<IExpression> parse();
         
         private:
-            float parseAddSub();
-            float parseMulDiv();
-            float parseNumber();
+            std::shared_ptr<IExpression> parseAddSub() const;
+            std::shared_ptr<IExpression> parseMulDiv();
+            std::shared_ptr<IExpression> parseNumber();
         
         private:
             std::vector<lexer::Token>::const_iterator m_startToken;
