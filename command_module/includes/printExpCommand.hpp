@@ -13,7 +13,7 @@ namespace com{ // commands
 class PrintExpCommand : public Command
 {
 public:
-    explicit PrintExpCommand(std::shared_ptr<fp::Expression> exp);
+    explicit PrintExpCommand(std::unique_ptr<fp::Expression> expr);
     PrintExpCommand(PrintExpCommand const& other) = default;
     PrintExpCommand& operator=(PrintExpCommand const& other) = default;
     ~PrintExpCommand() = default;
@@ -21,7 +21,7 @@ public:
     virtual void execute() override;
 
 private:
-    std::shared_ptr<fp::Expression> m_exp;
+    std::unique_ptr<fp::Expression> m_expr;
 };
 
 }// namespace commands

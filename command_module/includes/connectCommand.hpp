@@ -21,7 +21,6 @@ public:
 private:
     uint m_host;
     uint m_port;
-
 };
 
 }// namespace commands

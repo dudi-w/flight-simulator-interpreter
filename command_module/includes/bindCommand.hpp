@@ -12,6 +12,7 @@ class BindCommand : public Command
 {
 public:
     explicit BindCommand(std::string const& variableName ,std::string const& path);
+    explicit BindCommand(std::string && variableName ,std::string && path);
     BindCommand(BindCommand const& other) = default;
     BindCommand& operator=(BindCommand const& other) = default;
     ~BindCommand() = default;
@@ -19,8 +20,8 @@ public:
     virtual void execute() override;
 
 private:
-    std::string m_variableName;
-    std::string m_path;
+    const std::string m_variableName;
+    const std::string m_path;
 };
 
 }// namespace commands

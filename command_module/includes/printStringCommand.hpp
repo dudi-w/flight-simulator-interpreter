@@ -12,6 +12,7 @@ class PrintStringCommand : public Command
 {
 public:
     explicit PrintStringCommand(std::string const& message);
+    explicit PrintStringCommand(std::string && message);
     PrintStringCommand(PrintStringCommand const& other) = default;
     PrintStringCommand& operator=(PrintStringCommand const& other) = default;
     ~PrintStringCommand() = default;
@@ -19,7 +20,7 @@ public:
     virtual void execute() override;
 
 private:
-    std::string m_message;
+    const std::string m_message;
 };
 
 }// namespace commands

@@ -12,9 +12,8 @@ namespace com{ // commands
 class WhileCommand : public Command
 {
 public:
-    explicit WhileCommand(fp::Expression const& exp, Command const& comm);
-    explicit WhileCommand(fp::Expression && exp, Command && comm);
-    explicit WhileCommand(std::unique_ptr<fp::Expression> exp, std::unique_ptr<Command> comm);
+    explicit WhileCommand(std::unique_ptr<fp::Expression> exp, std::unique_ptr<Command> command);
+    explicit WhileCommand(std::unique_ptr<fp::Expression> && exp, std::unique_ptr<Command> && command);
     WhileCommand(WhileCommand const& other) = default;
     WhileCommand& operator=(WhileCommand const& other) = default;
     ~WhileCommand() = default;
@@ -23,7 +22,7 @@ public:
 
 private:
     std::unique_ptr<fp::Expression> m_exp;
-    std::unique_ptr<Command> m_comm;
+    std::unique_ptr<Command> m_command;
 };
 
 }// namespace commands
