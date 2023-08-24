@@ -2,6 +2,7 @@
     "files.associations": {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e5f1a7e (expression)
         "cctype": "cpp",
@@ -20,25 +21,34 @@
 >>>>>>> 724d71b (variable files)
 =======
 >>>>>>> e5f1a7e (expression)
+=======
+>>>>>>> 3fd3201 (variable files)
         "array": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
         "*.tcc": "cpp",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cmath": "cpp",
+>>>>>>> 3fd3201 (variable files)
         "compare": "cpp",
-        "complex": "cpp",
         "concepts": "cpp",
         "cstdint": "cpp",
-        "deque": "cpp",
-        "string": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
         "unordered_map": "cpp",
-        "vector": "cpp",
         "exception": "cpp",
-        "algorithm": "cpp",
-        "functional": "cpp",
-        "iterator": "cpp",
+        "initializer_list": "cpp",
+        "iosfwd": "cpp",
+        "limits": "cpp",
         "memory": "cpp",
+<<<<<<< HEAD
         "memory_resource": "cpp",
         "numeric": "cpp",
         "random": "cpp",
@@ -68,10 +78,19 @@
         "numeric": "cpp",
         "random": "cpp",
 >>>>>>> e5f1a7e (expression)
+=======
+        "new": "cpp",
+        "numbers": "cpp",
+        "ostream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "string": "cpp",
+>>>>>>> 3fd3201 (variable files)
         "string_view": "cpp",
         "system_error": "cpp",
         "tuple": "cpp",
         "type_traits": "cpp",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -99,5 +118,9 @@
 >>>>>>> 724d71b (variable files)
 =======
 >>>>>>> e5f1a7e (expression)
+=======
+        "typeinfo": "cpp",
+        "utility": "cpp"
+>>>>>>> 3fd3201 (variable files)
     }
 }
