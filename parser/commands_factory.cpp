@@ -30,6 +30,9 @@ std::pair<ComPtr, TokensItr> CommandsFactory::create(TokensItr it, TokensItr end
         } else {
             throw ParserError(it->row(), it->column(), "unexpected token \"" + it->str() + "\".");
         }
+        nesting_level += (it->type() == lexer::TokenType::LeftCurlyBracket);
+        nesting_level -= (it->type() == lexer::TokenType::RightCurlyBracket);
+        ++it;
     }
 }
 
