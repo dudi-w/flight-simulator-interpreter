@@ -1,6 +1,6 @@
 #include "literal.hpp"
 
-namespace fg { // namespace flight gear
+namespace fgi { // namespace flight gear
 
 Literal::Literal(std::string const& num)
 {
