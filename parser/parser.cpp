@@ -1,5 +1,6 @@
 #include <memory>
 #include <string>
+#include <cmath>
 
 #include "../includs/command.hpp"
 #include "../command_module/includes/codeBlockCommand.hpp"
@@ -17,11 +18,20 @@ std::unique_ptr<Command> Parser::parse(std::vector<lexer::Token> const& tokens)
 std::unique_ptr<Command> Parser::parse(TokensItr it, TokensItr end)
 {
     std::vector<std::unique_ptr<Command>> commands;
-    while (it != end)
-    {
-        auto [comm, next_it] = CommandsFactory::create(it, end);
-        it = next_it;
-        commands.emplace_back( std::move(comm) );
+    if(it < end){
+        ssize_t estimated_vector_size = std::ceil(((end-1)->row() - it->row())*0.7);
+        commands.reserve(estimated_vector_size);
+
+        while (it != end)
+        {
+            auto [comm, next_it] = CommandsFactory::create(it, end);
+            it = next_it;
+            commands.emplace_back( std::move(comm) );
+        }
+
+        if(commands.capacity()*2 > commands.size()*3){
+            commands.shrink_to_fit();
+        }
     }
-    return std::make_unique<com::CodeBlockCommand>(commands);
+    return std::make_unique<com::CodeBlockCommand>(std::move(commands));
 }
