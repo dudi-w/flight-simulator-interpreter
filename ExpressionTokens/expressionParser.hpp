@@ -24,8 +24,8 @@ namespace fgi {
         
         private:
             std::shared_ptr<IExpression> parseAddSub() const;
-            std::shared_ptr<IExpression> parseMulDiv();
-            std::shared_ptr<IExpression> parseNumber();
+            std::shared_ptr<IExpression> parseMulDiv() const;
+            std::shared_ptr<IExpression> parseNumber() const;
         
         private:
             std::vector<lexer::Token>::const_iterator m_startToken;
