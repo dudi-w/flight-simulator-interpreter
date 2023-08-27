@@ -18,7 +18,7 @@ std::shared_ptr<IExpression> ExpressionParser::parse()
     return parseAddSub();
 }
 
-std::shared_ptr<IExpression> ExpressionParser::parseAddSub()
+std::shared_ptr<IExpression> ExpressionParser::parseAddSub() const
 {
     std::shared_ptr<IExpression> result;
     std::shared_ptr<IExpression> left = parseMulDiv();
@@ -61,7 +61,7 @@ std::shared_ptr<IExpression> ExpressionParser::parseAddSub()
     return result;
 }
 
-std::shared_ptr<IExpression> ExpressionParser::parseMulDiv()
+std::shared_ptr<IExpression> ExpressionParser::parseMulDiv() const
 {
     std::shared_ptr<IExpression> result;
     std::shared_ptr<IExpression> left = parseNumber();
@@ -81,17 +81,20 @@ std::shared_ptr<IExpression> ExpressionParser::parseMulDiv()
     return result;
 }
 
-std::shared_ptr<IExpression> ExpressionParser::parseNumber()
+std::shared_ptr<IExpression> ExpressionParser::parseNumber() const
 {
     std::shared_ptr<IExpression> result;
     if (m_startToken == m_endToken) {
         throw std::runtime_error("Unexpected end of input.");
     }
-    // TODO
-    // if (m_startToken->m_type == lexer::TokenType::Sub) {
-    //     ++m_startToken;
-    //     return -parseNumber();
-    // }
+    
+    if (m_startToken->m_type == lexer::TokenType::Sub) {
+        ++m_startToken;
+        std::shared_ptr<Literal> left = std::make_shared<Literal>("0");
+        std::shared_ptr<Literal> right = std::make_shared<Literal>(m_startToken->m_str);
+        result = std::make_shared<Sub>(left, right);
+        return result;
+    }
 
     if (m_startToken->m_type == lexer::TokenType::LeftBracket && m_startToken->m_row == m_row) {
         ++m_parenLevel;
