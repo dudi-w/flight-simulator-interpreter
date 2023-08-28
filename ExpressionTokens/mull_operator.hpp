@@ -5,7 +5,7 @@
 
 #include "expression.hpp"
 
-namespace fgi { // namespace flight gear
+namespace fp { // namespace flight plain
 
 class Mul : public IExpression
 {
@@ -22,6 +22,6 @@ private:
     std::shared_ptr<IExpression> m_second;
 };
 
-} //namespace
+} //namespace fp
 
 #endif
