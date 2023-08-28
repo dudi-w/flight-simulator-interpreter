@@ -3,7 +3,6 @@
 #include <arpa/inet.h>
 #include <iostream>
 #include <string>
-#include <nlohmann/json.hpp>
 #include <sstream>
 
 #include "TCPsocketFile.hpp"
@@ -46,7 +45,6 @@ void net::TCPsocketFile::write(std::string const& text) const
 void net::TCPsocketFile::colseSocket() const
 {
     close(m_fileDescriptor);
-    std::cout<<"void net::TCPsocketFile::colseSocket() const"<<std::endl;//todo delete
 }
 
 int net::TCPsocketFile::fileDescriptorNum() const noexcept
