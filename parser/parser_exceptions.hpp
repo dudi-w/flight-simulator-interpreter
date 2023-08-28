@@ -1,13 +1,14 @@
 #ifndef PARSER_EXCEPTIONS_HPP
 #define PARSER_EXCEPTIONS_HPP
 
-#include <stdexcept>
 #include <string>
+
+#include "../includs/base_exception.hpp"
 
 namespace fp { 
 namespace parser {
 
-class ParserError : public std::runtime_error {
+class ParserError : public BaseException {
 public:
     inline ParserError(size_t row, size_t column);
     inline ParserError(size_t row, size_t column, std::string msg);
@@ -20,13 +21,13 @@ private:
 };
 
 inline ParserError::ParserError(size_t row, size_t column)
-:std::runtime_error("Parser failed in line " + std::to_string(row) + " column " + std::to_string(column))
+:BaseException("Parser failed in line " + std::to_string(row) + " column " + std::to_string(column))
 ,m_row(row)
 ,m_column(column)
 {}
 
 inline ParserError::ParserError(size_t row, size_t column, std::string msg)
-:std::runtime_error("Parser failed in line " + std::to_string(row) + " column " + std::to_string(column) + "message: \n\t" + msg)
+:BaseException("Parser failed in line " + std::to_string(row) + " column " + std::to_string(column) + "message: \n\t" + msg)
 ,m_row(row)
 ,m_column(column)
 {}
