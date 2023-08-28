@@ -4,10 +4,12 @@
 #include <stdexcept>
 #include <string>
 
+#include "../includs/base_exception.hpp"
+
 namespace fp {
 namespace lexer {
 
-class LexerError : public std::runtime_error {
+class LexerError : public BaseException {
 public:
     inline LexerError(size_t row, size_t column);
     inline LexerError(size_t row, size_t column, std::string msg);
@@ -20,13 +22,13 @@ private:
 };
 
 inline LexerError::LexerError(size_t row, size_t column)
-:std::runtime_error("Lexar failed in line " + std::to_string(row) + " column " + std::to_string(column))
+:BaseException("Lexar failed in line " + std::to_string(row) + " column " + std::to_string(column))
 ,m_row(row)
 ,m_column(column)
 {}
 
 inline LexerError::LexerError(size_t row, size_t column, std::string msg)
-:std::runtime_error("Lexar failed in line " + std::to_string(row) + " column " + std::to_string(column) + "message: \n\t" + msg)
+:BaseException("Lexar failed in line " + std::to_string(row) + " column " + std::to_string(column) + "message: \n\t" + msg)
 ,m_row(row)
 ,m_column(column)
 {}
