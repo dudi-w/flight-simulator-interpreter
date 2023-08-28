@@ -1,6 +1,6 @@
 #include "add.hpp"
 
-namespace fgi { // namespace flight gear
+namespace fp { // namespace flight gear
 
 Add::Add(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
 : m_first(first)

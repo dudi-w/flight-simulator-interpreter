@@ -1,6 +1,6 @@
 #include "small_operator.hpp"
 
-namespace fgi { // namespace flight gear
+namespace fp { // namespace flight plain
 
 SmallOperator::SmallOperator(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
 : m_first(first)
@@ -17,4 +17,4 @@ float SmallOperator::get_value() const
     return 0;
 }
 
-} //namespace
+} //namespace fp
