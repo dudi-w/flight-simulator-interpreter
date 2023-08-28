@@ -5,7 +5,7 @@
 
 #include "expression.hpp"
 
-namespace fgi { // namespace flight gear
+namespace fp { // namespace flight gear
 
 class GreatOperator : public IExpression
 {

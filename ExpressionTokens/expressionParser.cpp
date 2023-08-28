@@ -1,15 +1,9 @@
 #include <unordered_map>
+#include <functional>
 
 #include "expressionParser.hpp"
-#include "./Lexer/token_enum.hpp"
-#include "add.hpp"
-#include "literal.hpp"
-#include "sub.hpp"
-#include "great_operator.hpp"
-#include "small_operator.hpp"
-#include "mull_operator.hpp"
 
-using namespace fgi;
+using namespace fp;
 using namespace Parser;
 
 ExpressionParser::ExpressionParser(std::vector<lexer::Token>::const_iterator start, std::vector<lexer::Token>::const_iterator end)
@@ -19,20 +13,6 @@ std::shared_ptr<IExpression> ExpressionParser::parse()
 {
     return parseAddSub();
 }
-
-std::unordered_map<lexer::TokenType, std::function<std::shared_ptr<IExpression>(std::shared_ptr<IExpression>, std::shared_ptr<IExpression>)>> caseMap;
-    caseMap[lexer::TokenType::Add] = [](std::shared_ptr<IExpression> left, std::shared_ptr<IExpression> right) {
-        return std::make_shared<Add>(left, right);
-    };
-    caseMap[lexer::TokenType::Sub] = [](std::shared_ptr<IExpression> left, std::shared_ptr<IExpression> right) {
-    return std::make_shared<Sub>(left, right);
-    };
-    caseMap[lexer::TokenType::LowThen] = [](std::shared_ptr<IExpression> left, std::shared_ptr<IExpression> right) {
-        return std::make_shared<GreatOperator>(left, right);
-    };
-    caseMap[lexer::TokenType::GreatThen] = [](std::shared_ptr<IExpression> left, std::shared_ptr<IExpression> right) {
-        return std::make_shared<SmallOperator>(left, right);
-    };
     
 std::shared_ptr<IExpression> ExpressionParser::parseAddSub() const
 {
@@ -47,30 +27,13 @@ std::shared_ptr<IExpression> ExpressionParser::parseAddSub() const
         lexer::TokenType op = m_startToken->m_type;
         ++m_startToken;
         std::shared_ptr<IExpression> right = parseMulDiv();
-        auto it = caseMap.find(op);
-        if(it != caseMap.end()){
+        auto it = m_caseMap.find(op);
+        if(it != m_caseMap.end()){
             result = it->second(left, right);
         }
         else {
         throw std::runtime_error("No action defined for the given op value");
         }
-        // switch (op)
-        // {
-        // case lexer::TokenType::Add:
-        //     result = std::make_shared<Add>(left, right);
-        //     break;
-        // case lexer::TokenType::Sub:
-        //     result = std::make_shared<Sub>(left, right);
-        //     break;
-        // case lexer::TokenType::LowThen:
-        //     result = std::make_shared<GreatOperator>(left, right);
-        //     break;
-        // case lexer::TokenType::GreatThen:
-        //     result = std::make_shared<SmallOperator>(left, right);
-        //     break;
-        // default:
-        //     break;
-        // }
     }
     return result;
 }
@@ -86,10 +49,12 @@ std::shared_ptr<IExpression> ExpressionParser::parseMulDiv() const
         lexer::TokenType op = m_startToken->m_type;
         ++m_startToken;
         std::shared_ptr<IExpression> right = parseNumber();
-        if (op == lexer::TokenType::Mul) {
-            result = std::make_shared<Mul>(left, right);
-        } else {
-            result = std::make_shared<Sub>(left, right);
+        auto it = m_caseMap.find(op);
+        if(it != m_caseMap.end()){
+            result = it->second(left, right);
+        }
+        else {
+        throw std::runtime_error("No action defined for the given op value");
         }
     }
     return result;
