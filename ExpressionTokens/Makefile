@@ -6,18 +6,20 @@ CXXFLAGS += -g3
 CXXFLAGS += -Werror
 CXXFLAGS += -I ExpressoinTokens/
 
-test_expressionTokens: test_expressionTokens.o expressionParser.o ../lexer/token.o ../lexer/token_enum.o expression.o
+OBJECTS = test_expressionTokens.o expressionParser.o ../lexer/token.o ../lexer/token_enum.o
 
-test_expressionTokens.o: test_expressionTokens.cpp
+test_expressionTokens: $(OBJECTS)
+
+test_expressionTokens.o: test_expressionTokens.cpp expression.hpp ../lexer/token.hpp ../lexer/token_enum.hpp expressionParser.hpp
 
 expressionParser.o: expressionParser.cpp expressionParser.hpp 
 
-../lexer/token.o: ../lexer/token.cpp ../lexer/token.hpp
+../lexer/token.o: ../lexer/token.cpp ../lexer/token.hpp ../lexer/token_enum.hpp
 
-../lexer/token_enum.o: ../lexer/token_enum.hpp
+# ../lexer/token_enum.o: ../lexer/token_enum.hpp
 
-expression.o: expression.hpp
+# expression.o: expression.hpp
 
 
 clean:
-	$(RM) *.o *.o test_expressionTokens
+	$(RM) $(OBJECTS) test_expressionTokens
