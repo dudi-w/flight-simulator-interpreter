@@ -6,11 +6,9 @@
 #include <unordered_map>
 #include <functional>
 
-
-
-#include "./lexer/token.hpp"
+#include "../lexer/token.hpp"
 #include "expression.hpp"
-#include "./Lexer/token_enum.hpp"
+#include "../lexer/token_enum.hpp"
 #include "add.hpp"
 #include "literal.hpp"
 #include "sub.hpp"
@@ -18,7 +16,7 @@
 #include "small_operator.hpp"
 #include "mull_operator.hpp"
 #include "div.hpp"
-
+#include "variable_expression.hpp"
 
 
 namespace fp {
@@ -32,12 +30,12 @@ public:
     ExpressionParser(ExpressionParser const& other) = default;
     ExpressionParser& operator=(ExpressionParser const& other) = default;
 
-    std::shard_ptr<IExpression> parse();
+    std::shared_ptr<IExpression> parse();
 
 private:
-    std::shared_ptr<IExpression> parseAddSub() const;
-    std::shared_ptr<IExpression> parseMulDiv() const;
-    std::shared_ptr<IExpression> parseNumber() const;
+    std::shared_ptr<IExpression> parseAddSub() ;
+    std::shared_ptr<IExpression> parseMulDiv() ;
+    std::shared_ptr<IExpression> parseNumber() ;
 
 private:
     std::vector<lexer::Token>::const_iterator m_startToken;
@@ -66,7 +64,7 @@ private:
         }},
     
        
-    }
+    };
 
 };
 
