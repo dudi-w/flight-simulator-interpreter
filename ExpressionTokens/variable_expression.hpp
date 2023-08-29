@@ -5,7 +5,7 @@
 
 #include "expression.hpp"
 
-namespace fg { // namespace flight gear
+namespace fp { // namespace flight gear
 
 class VariableExpression : public IExpression
 {
