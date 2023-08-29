@@ -29,9 +29,9 @@ std::pair<ComPtr, TokensItr> CommandsFactory::create(TokensItr it, TokensItr end
     }
 }
 
-std::unique_ptr<Expression> fp::parser::CommandsFactory::build_expression(TokensItr &it, TokensItr end)
+std::pair<std::unique_ptr<Expression> TokensItr> fp::parser::CommandsFactory::build_expression(TokensItr it, TokensItr end)
 {
-    return std::unique_ptr<Expression>();
+    return {std::unique_ptr<Expression>(), it};
 }
 
 std::pair<ComPtr, TokensItr> CommandsFactory::codeBlock_builder(TokensItr it, TokensItr end)
@@ -53,7 +53,7 @@ std::pair<ComPtr, TokensItr> CommandsFactory::codeBlock_builder(TokensItr it, To
 
 std::pair<ComPtr, TokensItr> CommandsFactory::connect_builder(TokensItr it, TokensItr end)
 {
-    if(end - it >= 3 
+    if(it + 2 < end 
         && (it + 1)->type() == lexer::TokenType::String 
         && (it + 2)->type() == lexer::TokenType::Number
     ){
@@ -67,14 +67,13 @@ std::pair<ComPtr, TokensItr> CommandsFactory::connect_builder(TokensItr it, Toke
 
 std::pair<ComPtr, TokensItr> CommandsFactory::openDataServer_builder(TokensItr it, TokensItr end)
 {
-    if(end - it >= 3
+    if(it + 2 < end
         && (it + 1)->type() == lexer::TokenType::Number 
         && (it + 2)->type() == lexer::TokenType::Number
     ){
         std::string const& port = (it + 1)->str();
         std::string const& ups = (it + 2)->str();
-        it += 3;
-        return {std::make_unique<com::OpenServerCommand>(port, ups), it};
+        return {std::make_unique<com::OpenServerCommand>(port, ups), it + 3};
     } else {
         throw ParserError(it->row(), it->column(), "OpenServerCommand expects to get two numbers.");
     }
@@ -82,13 +81,12 @@ std::pair<ComPtr, TokensItr> CommandsFactory::openDataServer_builder(TokensItr i
 
 std::pair<ComPtr, TokensItr> CommandsFactory::print_builder(TokensItr it, TokensItr end)
 {
-    if(end - it >= 2){
+    if(it + 1 < end){
         if((it + 1)->type() == lexer::TokenType::String){
             std::string const& msg = (it + 1)->str();
-            it += 2;
-            return {std::make_unique<com::PrintStringCommand>(msg), it};
-        } else if(auto expr = build_expression(++it, end); expr){
-            return {std::make_unique<com::PrintExpCommand>(expr), it};
+            return {std::make_unique<com::PrintStringCommand>(msg), it + 2};
+        } else if(auto [expr, next_it] = build_expression(it + 1, end); expr){
+            return {std::make_unique<com::PrintExpCommand>(expr), next_it};
         }
     }
     throw ParserError(it->row(), it->column(), "print expects to get string or expression.");
@@ -96,36 +94,32 @@ std::pair<ComPtr, TokensItr> CommandsFactory::print_builder(TokensItr it, Tokens
 
 std::pair<ComPtr, TokensItr> CommandsFactory::sleep_builder(TokensItr it, TokensItr end)
 {
-    if(it->type() == lexer::TokenType::Sleep){
-        ++it;
-        if(auto expr = build_expression(it, end); expr){
+    if(it + 1 < end){
+        if(auto [expr, next_it] = build_expression(it + 1, end); expr){
             auto sleep_comm = std::make_unique<com::SleepCommand>(std::move(expr));
-            return {std::move(sleep_comm), it};
-        } 
+            return {std::move(sleep_comm), next_it};
+        }
     }
     throw ParserError(it->row(), it->column(), "sleep expects to get an expression.");
 }
 
 std::pair<ComPtr, TokensItr> CommandsFactory::var_heandler(TokensItr it, TokensItr end)
 {
-    if(end - it >= 3 
+    if(it + 3 < end
         && (it + 1)->type() == lexer::TokenType::Name 
         && (it + 2)->type() == lexer::TokenType::Equal
     ){
         std::string const& varName = (it + 1)->str();
-        if(end - it >= 5
+        if(it + 4 < end
             && (it + 3)->type() == lexer::TokenType::Bind
             && (it + 4)->type() == lexer::TokenType::String
         ) {
             std::string const& path = (it + 1)->str();
-            it += 5;
-            return {std::make_unique<com::BindCommand>(varName, path), it};
+            return {std::make_unique<com::BindCommand>(varName, path), it + 5};
         }
-        it += 3;
-        if(auto expr = build_expression(it, end); expr){
-            return {std::make_unique<com::AssigmentCommand>(varName, expr), it}; //??????
+        if(auto [expr, next_it] = build_expression(it + 3, end); expr){
+            return {std::make_unique<com::AssigmentCommand>(varName, expr), next_it}; //??????
         } else {
-            it -= 3;
             throw ParserError(it->row(), it->column(), "local var expects to get an expression.");
         }
     }
@@ -134,11 +128,10 @@ std::pair<ComPtr, TokensItr> CommandsFactory::var_heandler(TokensItr it, TokensI
 
 std::pair<ComPtr, TokensItr> CommandsFactory::while_builder(TokensItr it, TokensItr end)
 {
-    ++it;
-    if(auto expr = build_expression(it, end); expr){
-        auto [comm, next_it] = CommandsFactory::create(it, end);
+    if(auto [expr, next_it_1] = build_expression(it + 1, end); expr){
+        auto [comm, next_it_2] = CommandsFactory::create(next_it_1, end);
         ComPtr while_comm = std::make_unique<com::WhileCommand>(std::move(expr), std::move(comm));
-        return std::make_pair(while_comm, next_it);
+        return {while_comm, next_it_2};
     }
-    throw ParserError(it->row(), it->column(), "while expects to get an expression end command.");
+    throw ParserError(it->row(), it->column(), "whileCommand expects to get an expression end command.");
 }
