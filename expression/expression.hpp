@@ -1,7 +1,7 @@
 #ifndef I_EXPRESSION_HPP
 #define I_EXPRESSION_HPP
 
-namespace fp { // namespace flight plan
+namespace fp { // namespace flight gear
 namespace exp { // namespace exp
 
 class IExpression

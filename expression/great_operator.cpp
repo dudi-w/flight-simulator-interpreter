@@ -1,6 +1,6 @@
 #include "great_operator.hpp"
 
-namespace fp { // namespace flight plan
+namespace fp { // namespace flight gear
 namespace exp { // namespace exp
 
 GreatOperator::GreatOperator(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
