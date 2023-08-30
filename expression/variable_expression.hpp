@@ -6,11 +6,16 @@
 #include "expression.hpp"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 namespace fp { // namespace flight plan
 namespace exp { // namespace exp
 =======
 namespace fg { // namespace flight gear
 >>>>>>> 3900797 (variable expression)
+=======
+namespace fp { // namespace flight gear
+namespace exp { // namespace exp
+>>>>>>> dd66aa6 (name space)
 
 class VariableExpression : public IExpression
 {
@@ -27,10 +32,15 @@ private:
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 } //namespace exp
 } //namespace fp
 =======
 } //namespace
 >>>>>>> 3900797 (variable expression)
+=======
+} //namespace exp
+} //namespace fp
+>>>>>>> dd66aa6 (name space)
 
 #endif

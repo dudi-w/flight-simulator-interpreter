@@ -5,7 +5,11 @@
 
 #include "expression.hpp"
 
+<<<<<<< HEAD
 namespace fp { // namespace flight plan
+=======
+namespace fp { // namespace flight gear
+>>>>>>> dd66aa6 (name space)
 namespace exp { // namespace exp
 
 class SmallOperator : public IExpression

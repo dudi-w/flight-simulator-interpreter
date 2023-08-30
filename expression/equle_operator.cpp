@@ -1,6 +1,6 @@
 #include "equle_operator.hpp"
 
-namespace fp { // namespace flight plan
+namespace fp { // namespace flight gear
 namespace exp { // namespace exp
 
 EquleOperator::EquleOperator(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
