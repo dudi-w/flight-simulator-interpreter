@@ -5,7 +5,8 @@
 
 #include "expression.hpp"
 
-namespace fg { // namespace flight gear
+namespace fp { // namespace flight gear
+namespace exp { // namespace exp
 
 class Literal : public IExpression
 {
@@ -21,6 +22,7 @@ private:
     float m_num;
 };
 
-} //namespace
+} //namespace exp
+} //namespace fp
 
 #endif

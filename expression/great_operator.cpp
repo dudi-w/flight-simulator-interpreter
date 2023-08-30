@@ -1,6 +1,7 @@
 #include "great_operator.hpp"
 
-namespace fg { // namespace flight gear
+namespace fp { // namespace flight gear
+namespace exp { // namespace exp
 
 GreatOperator::GreatOperator(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
 : m_first(first)
@@ -17,4 +18,5 @@ float GreatOperator::get_value() const
     return 0;
 }
 
-} //namespace
+} //namespace exp
+} //namespace fp
