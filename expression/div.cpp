@@ -2,7 +2,7 @@
 
 #include "div.hpp"
 
-namespace fp { // namespace flight gear
+namespace fp { // namespace flight plan
 namespace exp { // namespace exp
 
 Div::Div(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
