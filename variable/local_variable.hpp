@@ -5,7 +5,8 @@
 
 #include "variable.hpp"
 
-namespace fg { // namespace flight gear
+namespace fp { // namespace flight plan
+namespace var { // namespace var
 
 class LocalVariable : public IVariable
 {
@@ -23,6 +24,7 @@ private:
     float m_variable_value;
 };
 
-} //namespace
+} //namespace var
+} //namespace fp
 
 #endif

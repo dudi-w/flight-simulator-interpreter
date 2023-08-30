@@ -2,7 +2,8 @@
 
 #include "variable_map.hpp"
 
-namespace fg { // namespace flight gear
+namespace fp { // namespace flight plan
+namespace var { // namespace var
 
 void VariableMap::insert(std::string const& variable_name, std::shared_ptr<IVariable> variable)
 {
@@ -33,4 +34,5 @@ void VariableMap::set_variable_value(std::string const& variable_name, float new
     }
 }
 
-} //namespace
+} //namespace var
+} //namespace fp
