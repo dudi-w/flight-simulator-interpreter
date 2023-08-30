@@ -9,11 +9,11 @@ void VariableMap::insert(std::string const& variable_name, std::shared_ptr<IVari
     m_map.insert({variable_name, variable});
 }
 
-IVariable& VariableMap::at(std::string const& variable_name) const
+float VariableMap::get_variable_value(std::string const& variable_name) const
 {
     try
     {
-        return *(m_map.at(variable_name));
+        return m_map.at(variable_name)->get_value();
     }
     catch(const std::out_of_range& e)
     {
@@ -21,11 +21,11 @@ IVariable& VariableMap::at(std::string const& variable_name) const
     }
 }
 
-IVariable& VariableMap::operator[](std::string const& variable_name) const
+void VariableMap::set_variable_value(std::string const& variable_name, float new_value)
 {
     try
     {
-        return *(m_map.at(variable_name));
+        m_map.at(variable_name)->set(new_value);
     }
     catch(const std::out_of_range& e)
     {
