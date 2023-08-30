@@ -2,7 +2,7 @@
 #define ENVIRONMENT_HPP
 
 #include <iostream>
-#include <nenory>
+#include <memory>
 
 #include "communication_mudule/netClient.hpp"
 #include "communication_mudule/netServer.hpp"
@@ -19,10 +19,10 @@ public:
     Environment& operator=(Environment const& other) = delete;
     ~Environment() = default;
 
-    Environment& get_instance(std::ostream& output_stream)
+    Environment& get_instance(std::ostream& output_stream)//???
 
     void initialization_client(int host, int port);
-    void open_data_server(int port, int ups);   
+    void initialization_server(int port, int ups);   
     
     void insert_to_map(std::string const& variable_name, std::shared_ptr<IVariable> variable);
     float get_variable_value(std::string const& variable_name) const;
@@ -33,14 +33,14 @@ public:
     void print_float(float number);
 
 private:
-        Environment(std::ostream& output_stream);
+    Environment(std::ostream& output_stream);
 
 private:
-        net::TelnetetClient m_client;
-        net::NetServer m_server;
-        VariableMap m_variable_map;
-        std::ostream& m_output_stream;
-    };
+    net::TelnetetClient m_client;
+    net::NetServer m_server;
+    VariableMap m_variable_map;
+    std::ostream& m_output_stream;
+};
 
 } //namespace env
 } //namespace fp

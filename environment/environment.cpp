@@ -18,9 +18,9 @@ void Environment::initialization_client(int host, int port)
     
 }
 
-void Environment::open_data_server(int port, int ups)
+void Environment::initialization_server(int port, int ups)
 {
-
+    
 }
     
 void Environment::insert_to_map(std::string const& variable_name, std::shared_ptr<IVariable> variable)
