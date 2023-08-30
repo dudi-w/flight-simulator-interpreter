@@ -1,6 +1,10 @@
 #include "mul.hpp"
 
+<<<<<<< HEAD
 namespace fp { // namespace flight plan
+=======
+namespace fp { // namespace flight gear
+>>>>>>> dd66aa6 (name space)
 namespace exp { // namespace exp
 
 Mul::Mul(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
