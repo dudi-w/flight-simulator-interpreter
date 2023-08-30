@@ -1,0 +1,11 @@
+test/
+*.o
+*.json
+*.gch
+*.vscode/
+*README.cpp
+main
+main*
+*.txt
+*.gi
+*Test*
