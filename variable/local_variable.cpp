@@ -1,6 +1,7 @@
 #include "local_variable.hpp"
 
-namespace fg { // namespace flight gear
+namespace fp { // namespace flight plan
+namespace var { // namespace var
 
 LocalVariable::LocalVariable(std::string const& variable_name, float variable_value)
 : m_variable_name(variable_name)
@@ -17,4 +18,5 @@ void LocalVariable::set(float new_value)
     m_variable_value = new_value;
 }
 
-} //namespace
+} //namespace var
+} //namespace fp

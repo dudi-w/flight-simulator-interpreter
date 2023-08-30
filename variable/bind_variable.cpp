@@ -1,6 +1,7 @@
 #include "bind_variable.hpp"
 
-namespace fg { // namespace flight gear
+namespace fp { // namespace flight plan
+namespace var { // namespace var
 
 BindVariable::BindVariable(std::string const& variable_name, std::string variable_path, float variable_value)
 : m_variable_name(variable_name)
@@ -18,4 +19,5 @@ void BindVariable::set(float new_value)
     m_variable_value = new_value;
 }
 
-} //namespace
+} //namespace var
+} //namespace fp
