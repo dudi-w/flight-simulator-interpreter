@@ -5,7 +5,8 @@
 
 #include "expression.hpp"
 
-namespace fg { // namespace flight gear
+namespace fp { // namespace flight gear
+namespace exp { // namespace exp
 
 class Sub : public IExpression
 {
@@ -22,6 +23,7 @@ private:
     std::shared_ptr<IExpression> m_second;
 };
 
-} //namespace
+} //namespace exp
+} //namespace fp
 
 #endif

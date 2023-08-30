@@ -1,6 +1,7 @@
 #include "literal.hpp"
 
-namespace fg { // namespace flight gear
+namespace fp { // namespace flight gear
+namespace exp { // namespace exp
 
 Literal::Literal(std::string const& num)
 {
@@ -12,4 +13,5 @@ float Literal::get_value() const
     return m_num;
 }
 
-} //namespace
+} //namespace exp
+} //namespace fp
