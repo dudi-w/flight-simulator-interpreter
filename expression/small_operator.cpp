@@ -1,6 +1,6 @@
 #include "small_operator.hpp"
 
-namespace fp { // namespace flight gear
+namespace fp { // namespace flight plan
 namespace exp { // namespace exp
 
 SmallOperator::SmallOperator(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
