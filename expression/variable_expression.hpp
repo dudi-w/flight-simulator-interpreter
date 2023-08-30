@@ -7,6 +7,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 namespace fp { // namespace flight plan
 namespace exp { // namespace exp
 =======
@@ -14,6 +15,9 @@ namespace fg { // namespace flight gear
 >>>>>>> 3900797 (variable expression)
 =======
 namespace fp { // namespace flight gear
+=======
+namespace fp { // namespace flight plan
+>>>>>>> 25583f8 (namespace)
 namespace exp { // namespace exp
 >>>>>>> dd66aa6 (name space)
 
