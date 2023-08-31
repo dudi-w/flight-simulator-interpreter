@@ -8,7 +8,10 @@ VariableExpression::VariableExpression(std::string const& variable_name)
 
 float VariableExpression::get_value() const
 {
-    
+    // Environment& environment = Environment::get_instance(std::cout);
+    // float value = environment.get_variable(m_variable_name).get_value();
+    float value = 3.5;
+    return value;
 }
 
 } //namespace
