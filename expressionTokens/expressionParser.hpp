@@ -20,7 +20,7 @@
 
 
 namespace fp {
-namespace Parser
+namespace parser
 {
 
 class ExpressionParser
@@ -70,6 +70,6 @@ private:
 
 } // namespace fp
 
-} // namespace Parser
+} // namespace parser
 
 #endif
