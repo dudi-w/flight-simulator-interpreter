@@ -12,7 +12,6 @@
 
 #include "../includs/command.hpp"
 
-
 namespace fp {
 namespace parser {
 
