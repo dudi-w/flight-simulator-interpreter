@@ -22,10 +22,10 @@ std::unique_ptr<Command> Parser::parse(TokensItr it, TokensItr end)
         ssize_t estimated_vector_size = std::ceil(((end-1)->row() - it->row())*0.7);
         commands.reserve(estimated_vector_size);
 
+        std::unique_ptr<Command> comm;
         while (it != end)
         {
-            auto [comm, next_it] = CommandsFactory::create(it, end);
-            it = next_it;
+            std::tie(comm, it) = CommandsFactory::create(it, end);
             commands.emplace_back( std::move(comm) );
         }
 
