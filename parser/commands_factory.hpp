@@ -23,7 +23,7 @@ public:
     static std::pair<ComPtr, TokensItr> create(TokensItr it, TokensItr end);
 
 private:
-    static std::pair<std::unique_ptr<Expression> TokensItr> build_expression(TokensItr it, TokensItr end);
+    static std::pair<std::unique_ptr<Expression>, TokensItr> build_expression(TokensItr it, TokensItr end);
 
     // commands builders
     static std::pair<ComPtr, TokensItr> codeBlock_builder(TokensItr it, TokensItr end);
