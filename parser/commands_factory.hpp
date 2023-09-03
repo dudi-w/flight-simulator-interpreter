@@ -26,21 +26,23 @@ private:
     static std::pair<std::unique_ptr<Expression>, TokensItr> build_expression(TokensItr it, TokensItr end);
 
     // commands builders
+    using BuilderFunc = std::pair<ComPtr, TokensItr>(*)(TokensItr, TokensItr);
     static std::pair<ComPtr, TokensItr> codeBlock_builder(TokensItr it, TokensItr end);
     static std::pair<ComPtr, TokensItr> connect_builder(TokensItr it, TokensItr end);
     static std::pair<ComPtr, TokensItr> openDataServer_builder(TokensItr it, TokensItr end);
     static std::pair<ComPtr, TokensItr> print_builder(TokensItr it, TokensItr end);
     static std::pair<ComPtr, TokensItr> sleep_builder(TokensItr it, TokensItr end);
     static std::pair<ComPtr, TokensItr> var_heandler(TokensItr it, TokensItr end);
+    static std::pair<ComPtr, TokensItr> assignment_builder(TokensItr it, TokensItr end);
     static std::pair<ComPtr, TokensItr> while_builder(TokensItr it, TokensItr end);
-
-    using BuilderFunc = std::pair<ComPtr, TokensItr>(*)(TokensItr, TokensItr);
+    
     static inline std::unordered_map<lexer::TokenType, BuilderFunc> m_buildersMap = {
         {lexer::TokenType::Connect, connect_builder},
         {lexer::TokenType::OpenDataServer, openDataServer_builder},
         {lexer::TokenType::Print, print_builder},
         {lexer::TokenType::Sleep, sleep_builder},
         {lexer::TokenType::Var, var_heandler},
+        {lexer::TokenType::Name, assignment_builder},
         {lexer::TokenType::While, while_builder},
         {lexer::TokenType::LeftCurlyBracket, codeBlock_builder}
     };
