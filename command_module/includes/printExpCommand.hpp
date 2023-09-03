@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "command.hpp"
-#include "../expression.hpp"
+#include "expression.hpp"
 
 namespace fp{ //flight plan
 namespace com{ // commands
@@ -14,6 +14,7 @@ class PrintExpCommand : public Command
 {
 public:
     explicit PrintExpCommand(std::unique_ptr<fp::Expression> expr);
+    explicit PrintExpCommand(std::unique_ptr<fp::Expression> && expr);
     PrintExpCommand(PrintExpCommand const& other) = default;
     PrintExpCommand& operator=(PrintExpCommand const& other) = default;
     ~PrintExpCommand() = default;

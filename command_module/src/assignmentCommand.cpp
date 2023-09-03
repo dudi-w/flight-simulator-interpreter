@@ -1,21 +1,17 @@
-#include "../../includes/command/assignmentCommand.hpp"
+#include "assignmentCommand.hpp"
+#include "environment.hpp"
 
-fp::com::AssigmentCommand::AssigmentCommand(std::string const& variableName ,fp::Expression const& exp)
+fp::com::AssigmentCommand::AssigmentCommand(std::string const& variableName ,std::unique_ptr<fp::Expression> expr)
 : m_variableName(variableName)
-, m_exp(std::make_shared<fp::Expression>(exp))
+, m_expr(std::move(expr))
 {}
 
-fp::com::AssigmentCommand::AssigmentCommand(std::string const& variableName ,std::shared_ptr<fp::Expression> exp)
-: m_variableName(variableName)
-, m_exp(exp)
-{}
-
-fp::com::AssigmentCommand::AssigmentCommand(std::string const& variableName ,fp::Expression && exp)
-: m_variableName(variableName)
-, m_exp(std::make_shared<fp::Expression>(exp))
+fp::com::AssigmentCommand::AssigmentCommand(std::string && variableName ,std::unique_ptr<fp::Expression> && expr)
+: m_variableName(std::move(variableName))
+, m_expr(std::move(expr))
 {}
 
 void fp::com::AssigmentCommand::execute()
 {
-    fp::environment::map.at(m_variableName) = m_exp->get();
+    fp::env::Environment::set_variable_value(m_variableName, m_expr->get());
 }

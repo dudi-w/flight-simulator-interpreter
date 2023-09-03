@@ -6,7 +6,6 @@
 
 #include "command.hpp"
 
-
 namespace fp{ //flight plan
 
 using Commands = std::vector<std::unique_ptr<fp::com::Command>>;

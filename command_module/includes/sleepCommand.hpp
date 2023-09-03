@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "command.hpp"
-#include "../expression.hpp"
+#include "expression.hpp"
 
 namespace fp{ //flight plan
 namespace com{ // commands

@@ -1,4 +1,5 @@
 #include "allocationLocalVarCommand.hpp"
+#include "environment.hpp"
 
 fp::com::AllocationLocalVarCommand::AllocationLocalVarCommand(std::string const& variableName)
 : m_variableName(variableName)
@@ -10,5 +11,5 @@ fp::com::AllocationLocalVarCommand::AllocationLocalVarCommand(std::string && var
 
 void fp::com::AllocationLocalVarCommand::execute()
 {
-    fp::environment::map.insert(m_variableName , std::make_unique<fp::LocalVer>(0));
+    fp::env::Environment::insert_to_map(m_variableName, std::make_unique<fp::LocalVer>(0))
 }

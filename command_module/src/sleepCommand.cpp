@@ -1,7 +1,7 @@
-#include  <thread>
+#include <thread>
 #include <chrono>
 
-#include "../includes/sleepCommand.hpp"
+#include "sleepCommand.hpp"
 
 fp::com::SleepCommand::SleepCommand(std::unique_ptr<fp::Expression> expr)
 : m_expr(std::move(expr))

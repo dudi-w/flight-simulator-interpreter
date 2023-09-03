@@ -1,12 +1,16 @@
-#include "../includes/codeBlockCommand.hpp"
+#include "codeBlockCommand.hpp"
 
-fp::CodeBlockCommand::CodeBlockCommand(std::vector<fp::Command> const& commands)
+fp::com::CodeBlockCommand::CodeBlockCommand(fp::Commands const& commands)
 : m_commands(commands)
 {}
 
-void fp::CodeBlockCommand::execute()
+fp::com::CodeBlockCommand::CodeBlockCommand(fp::Commands && commands)
+: m_commands(std::move(commands))
+{}
+
+void fp::com::CodeBlockCommand::execute()
 {
     for(auto & command : m_commands){
-        command.execute();
+        command->execute();
     }
 }

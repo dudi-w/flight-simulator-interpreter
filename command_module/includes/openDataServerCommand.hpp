@@ -12,6 +12,7 @@ class OpenServerCommand : public Command
 {
 public:
     explicit OpenServerCommand(std::string const& port, std::string const& ups);
+    explicit OpenServerCommand(std::string && port, std::string && ups);
     OpenServerCommand(OpenServerCommand const& other) = default;
     OpenServerCommand& operator=(OpenServerCommand const& other) = default;
     ~OpenServerCommand() = default;
@@ -19,8 +20,8 @@ public:
     virtual void execute() override;
 
 private:
-    uint m_port;
-    uint m_ups;
+    const std::string m_port;
+    const std::string m_ups;
 };
 
 }// namespace commands

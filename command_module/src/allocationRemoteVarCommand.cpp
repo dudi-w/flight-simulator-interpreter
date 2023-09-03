@@ -1,4 +1,5 @@
 #include "allocationRemoteVarCommand.hpp"
+#include "environment.hpp"
 
 fp::com::AllocationRemoteVarCommand::AllocationRemoteVarCommand(std::string const& variableName, std::string const& variablePath)
 : m_variableName(variableName)
@@ -12,5 +13,5 @@ fp::com::AllocationRemoteVarCommand::AllocationRemoteVarCommand(std::string && v
 
 void fp::com::AllocationRemoteVarCommand::execute()
 {
-    fp::environment::map.insert(m_variableName , std::make_unique<fp::bindVar>(0, m_variablePath));
+    fp::env::environment::insert_to_map(m_variableName , std::make_unique<fp::bindVar>(0, m_variablePath));
 }
