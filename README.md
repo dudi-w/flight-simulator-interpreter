@@ -4,6 +4,8 @@
 To download the flight simulator [`FlightGear`](https://www.flightgear.org/) , Enter the following lines into the terminal
 
 ```bash
+sudo apt install -y software-properties-common
+sudo apt install software-properties-common
 sudo add-apt-repository ppa:saiarcot895/flightgear
 sudo apt update
 sudo apt install flightgear
