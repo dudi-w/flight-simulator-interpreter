@@ -1,4 +1,4 @@
-#include "../includes/allocationLocalVarCommand.hpp"
+#include "allocationLocalVarCommand.hpp"
 
 fp::com::AllocationLocalVarCommand::AllocationLocalVarCommand(std::string const& variableName)
 : m_variableName(variableName)

@@ -1,30 +1,16 @@
-#ifndef ALLOCATION_REMOTE_VAR_COMMAND_HPP
-#define ALLOCATION_REMOTE_VAR_COMMAND_HPP
+#include "allocationRemoteVarCommand.hpp"
 
-#include <string>
-#include <memory>
+fp::com::AllocationRemoteVarCommand::AllocationRemoteVarCommand(std::string const& variableName, std::string const& variablePath)
+: m_variableName(variableName)
+, m_variablePath(variablePath)
+{}
 
-#include "command.hpp"
+fp::com::AllocationRemoteVarCommand::AllocationRemoteVarCommand(std::string && variableName, std::string && variablePath)
+: m_variableName(std::move(variableName))
+, m_variablePath(std::move(variablePath))
+{}
 
-namespace fp{ //flight plan
-namespace com{ // commands
-
-class AllocationRemoteVarCommand : public Command
+void fp::com::AllocationRemoteVarCommand::execute()
 {
-public:
-    explicit AllocationRemoteVarCommand(std::string const& variableName);
-    explicit AllocationRemoteVarCommand(std::string && variableName);
-    AllocationRemoteVarCommand(AllocationRemoteVarCommand const& other) = default;
-    AllocationRemoteVarCommand& operator=(AllocationRemoteVarCommand const& other) = default;
-    ~AllocationRemoteVarCommand() = default;
-
-    virtual void execute() override;
-
-private:
-    const std::string m_variableName;
-};
-
-}// namespace commands
-}// namespace flight plan
-
-#endif
+    fp::environment::map.insert(m_variableName , std::make_unique<fp::bindVar>(0, m_variablePath));
+}

@@ -12,8 +12,8 @@ namespace com{ // commands
 class AllocationRemoteVarCommand : public Command
 {
 public:
-    explicit AllocationRemoteVarCommand(std::string const& variableName);
-    explicit AllocationRemoteVarCommand(std::string && variableName);
+    explicit AllocationRemoteVarCommand(std::string const& variableName, std::string const& variablePath);
+    explicit AllocationRemoteVarCommand(std::string && variableName, std::string && variablePath);
     AllocationRemoteVarCommand(AllocationRemoteVarCommand const& other) = default;
     AllocationRemoteVarCommand& operator=(AllocationRemoteVarCommand const& other) = default;
     ~AllocationRemoteVarCommand() = default;
@@ -22,6 +22,7 @@ public:
 
 private:
     const std::string m_variableName;
+    const std::string m_variablePath;
 };
 
 }// namespace commands
