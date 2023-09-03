@@ -7,8 +7,10 @@
 #include "../command_module/includes/connectCommand.hpp"
 #include "../command_module/includes/openDataServerCommand.hpp"
 #include "../command_module/includes/sleepCommand.hpp"
+
 #include "../command_module/includes/assignmentCommand.hpp"
-#include "../command_module/includes/bindCommand.hpp"
+#include "../command_module/includes/allocationRemoteVarCommand.hpp"
+#include "../command_module/includes/allocationLocalVarCommand.hpp"
 #include "../command_module/includes/printExpCommand.hpp"
 #include "../command_module/includes/printStringCommand.hpp"
 
@@ -29,7 +31,7 @@ std::pair<ComPtr, TokensItr> CommandsFactory::create(TokensItr it, TokensItr end
     }
 }
 
-std::pair<std::unique_ptr<Expression> TokensItr> fp::parser::CommandsFactory::build_expression(TokensItr it, TokensItr end)
+std::pair<std::unique_ptr<Expression>, TokensItr> fp::parser::CommandsFactory::build_expression(TokensItr it, TokensItr end)
 {
     return {std::unique_ptr<Expression>(), it};
 }
@@ -105,25 +107,32 @@ std::pair<ComPtr, TokensItr> CommandsFactory::sleep_builder(TokensItr it, Tokens
 
 std::pair<ComPtr, TokensItr> CommandsFactory::var_heandler(TokensItr it, TokensItr end)
 {
-    if(it + 3 < end
-        && (it + 1)->type() == lexer::TokenType::Name 
+    if(it + 1 >= end && (it + 1)->type() == lexer::TokenType::Name ){
+        throw ParserError(it->row(), it->column(), "behind \"var\" is expected to be \"VarName\".");
+    }
+
+    std::string const& varName = (it + 1)->str();
+    if(it + 4 < end
         && (it + 2)->type() == lexer::TokenType::Equal
-    ){
+        && (it + 3)->type() == lexer::TokenType::Bind
+        && (it + 4)->type() == lexer::TokenType::String
+    ) {
+        std::string const& path = (it + 4)->str();
+        return {std::make_unique<com::AllocationRemoteVarCommand>(varName, path), it + 5};
+    }
+    bool no_init = it + 2 == end || (it + 2)->type() != lexer::TokenType::Equal;
+    return {std::make_unique<com::AllocationLocalVarCommand>(varName), it + 1 + no_init};
+}
+
+std::pair<ComPtr, TokensItr> fp::parser::CommandsFactory::assignment_builder(TokensItr it, TokensItr end)
+{
+    if(it + 2 < end && (it + 1)->type() == lexer::TokenType::Equal){
         std::string const& varName = (it + 1)->str();
-        if(it + 4 < end
-            && (it + 3)->type() == lexer::TokenType::Bind
-            && (it + 4)->type() == lexer::TokenType::String
-        ) {
-            std::string const& path = (it + 4)->str();
-            return {std::make_unique<com::BindCommand>(varName, path), it + 5};
-        }
         if(auto [expr, it_behind_expr] = build_expression(it + 3, end); expr){
-            return {std::make_unique<com::AssigmentCommand>(varName, expr), it_behind_expr}; //??????
-        } else {
-            throw ParserError(it->row(), it->column(), "local var expects to get an expression.");
+            return {std::make_unique<com::AssigmentCommand>(varName, expr), it_behind_expr}; 
         }
     }
-    throw ParserError(it->row(), it->column(), "behind \"var\" is expected to be \"VarName\" and \"=\"");
+    throw ParserError(it->row(), it->column(), "var assignment expects to get an expression.");
 }
 
 std::pair<ComPtr, TokensItr> CommandsFactory::while_builder(TokensItr it, TokensItr end)
