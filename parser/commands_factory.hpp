@@ -27,7 +27,7 @@ private:
 
     // commands builders
     using BuilderFunc = std::pair<ComPtr, TokensItr>(*)(TokensItr, TokensItr);
-    static std::pair<ComPtr, TokensItr> codeBlock_builder(TokensItr it, TokensItr end);
+    static std::pair<ComPtr, TokensItr> curlyBracket_heandler(TokensItr it, TokensItr end);
     static std::pair<ComPtr, TokensItr> connect_builder(TokensItr it, TokensItr end);
     static std::pair<ComPtr, TokensItr> openDataServer_builder(TokensItr it, TokensItr end);
     static std::pair<ComPtr, TokensItr> print_builder(TokensItr it, TokensItr end);
@@ -44,7 +44,7 @@ private:
         {lexer::TokenType::Var, var_heandler},
         {lexer::TokenType::Name, assignment_builder},
         {lexer::TokenType::While, while_builder},
-        {lexer::TokenType::LeftCurlyBracket, codeBlock_builder}
+        {lexer::TokenType::LeftCurlyBracket, curlyBracket_heandler}
     };
 };
 

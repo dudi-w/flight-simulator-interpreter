@@ -36,7 +36,7 @@ std::pair<std::unique_ptr<Expression>, TokensItr> fp::parser::CommandsFactory::b
     return {std::unique_ptr<Expression>(), it};
 }
 
-std::pair<ComPtr, TokensItr> CommandsFactory::codeBlock_builder(TokensItr it, TokensItr end)
+std::pair<ComPtr, TokensItr> CommandsFactory::curlyBracket_heandler(TokensItr it, TokensItr end)
 {   
     TokensItr beginOfBlock = ++it;
     int nesting_level = 0;
