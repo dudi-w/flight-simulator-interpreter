@@ -18,6 +18,7 @@ ExpressionParser::ExpressionParser(std::vector<lexer::Token>::const_iterator sta
 
 std::shared_ptr<IExpression> ExpressionParser::parse()
 {
+    
     if (m_startToken->type() != lexer::TokenType::Number &&
     m_startToken->type() != lexer::TokenType::LeftBracket &&
     m_startToken->type() != lexer::TokenType::Var) {
@@ -88,7 +89,7 @@ std::shared_ptr<IExpression> ExpressionParser::parseNumber()
         ++m_startToken;
         return result;
     }
-    if (m_startToken->type() == lexer::TokenType::LeftBracket && m_startToken->row() == m_row) {
+    if (m_startToken->type() == lexer::TokenType::LeftBracket ) {
         ++m_parenLevel;
         ++m_startToken;
         std::shared_ptr<IExpression> result = parseAddSub();

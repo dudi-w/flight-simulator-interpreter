@@ -61,9 +61,7 @@ private:
         }},
         {lexer::TokenType::Div, [](std::shared_ptr<IExpression> left, std::shared_ptr<IExpression> right) {
         return std::make_shared<Div>(left, right);
-        }},
-    
-       
+        }}, 
     };
 
 };
