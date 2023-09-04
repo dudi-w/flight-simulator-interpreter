@@ -26,16 +26,24 @@ namespace parser
 class ExpressionParser
 {
 public:
+
+    using ResultPtr = std::shared_ptr<IExpression>;
+    using TokenIterator = std::vector<lexer::Token>::const_iterator;
+    
     explicit ExpressionParser(std::vector<lexer::Token>::const_iterator start, std::vector<lexer::Token>::const_iterator end);
     ExpressionParser(ExpressionParser const& other) = default;
     ExpressionParser& operator=(ExpressionParser const& other) = default;
 
-    std::shared_ptr<IExpression> parse();
+    std::pair<ResultPtr, TokenIterator> parse();
 
 private:
     std::shared_ptr<IExpression> parseAddSub() ;
     std::shared_ptr<IExpression> parseMulDiv() ;
     std::shared_ptr<IExpression> parseNumber() ;
+    std::shared_ptr<IExpression> parseComparison();
+    bool IsAddSubOperator(lexer::TokenType type) const;
+    bool IsMulDivOperator(lexer::TokenType type) const;
+    bool IsLowGreatThen(lexer::TokenType type) const;
 
 private:
     std::vector<lexer::Token>::const_iterator m_startToken;
