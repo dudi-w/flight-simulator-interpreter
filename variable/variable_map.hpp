@@ -7,7 +7,8 @@
 
 #include "variable.hpp"
 
-namespace fg { // namespace flight gear
+namespace fp { // namespace flight plan
+namespace var { // namespace var
 
 class VariableMap
 {
@@ -18,13 +19,14 @@ public:
     ~VariableMap() = default;
 
     void insert(std::string const& variable_name, std::shared_ptr<IVariable> variable);
-    IVariable& at(std::string const& variable_name) const;
-    IVariable& operator[](std::string const& variable_name) const;
+    float get_variable_value(std::string const& variable_name) const;
+    void set_variable_value(std::string const& variable_name, float new_value);
 
 private:
     std::unordered_map<std::string, std::shared_ptr<IVariable>> m_map;
 };
 
-} //namespace
+} //namespace var
+} //namespace fp
 
 #endif
