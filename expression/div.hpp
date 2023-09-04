@@ -1,5 +1,5 @@
-#ifndef MUL_HPP
-#define MUL_HPP
+#ifndef DIV_HPP
+#define DIV_HPP
 
 #include <memory>
 
@@ -8,13 +8,13 @@
 namespace fp { // namespace flight plan
 namespace exp { // namespace exp
 
-class Mul : public IExpression
+class Div : public IExpression
 {
 public:
-    explicit Mul(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second);
-    Mul(Mul const& other) = default;
-    Mul& operator=(Mul const& other) = default;
-    ~Mul() = default;
+    explicit Div(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second);
+    Div(Div const& other) = default;
+    Div& operator=(Div const& other) = default;
+    ~Div() = default;
 
     float get_value() const override;
 
