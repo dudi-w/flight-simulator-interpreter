@@ -1,7 +1,7 @@
 #include "variable_expression.hpp"
 #include "environment.hpp"
 
-namespace fp { // namespace flight gear
+namespace fp { // namespace flight plan
 namespace exp { // namespace exp
 
 VariableExpression::VariableExpression(std::string const& variable_name)
