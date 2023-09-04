@@ -1,5 +1,5 @@
-#ifndef MUL_HPP
-#define MUL_HPP
+#ifndef ADD_HPP
+#define ADD_HPP
 
 #include <memory>
 
@@ -8,13 +8,13 @@
 namespace fp { // namespace flight plan
 namespace exp { // namespace exp
 
-class Mul : public IExpression
+class Add : public IExpression
 {
 public:
-    explicit Mul(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second);
-    Mul(Mul const& other) = default;
-    Mul& operator=(Mul const& other) = default;
-    ~Mul() = default;
+    explicit Add(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second);
+    Add(Add const& other) = default;
+    Add& operator=(Add const& other) = default;
+    ~Add() = default;
 
     float get_value() const override;
 
