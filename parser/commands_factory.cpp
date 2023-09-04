@@ -14,6 +14,8 @@
 #include "../command_module/includes/printExpCommand.hpp"
 #include "../command_module/includes/printStringCommand.hpp"
 
+#include "../expressionTokens/expressionParser.hpp"
+
 using namespace fp;
 using namespace parser;
 
@@ -33,7 +35,7 @@ std::pair<ComPtr, TokensItr> CommandsFactory::create(TokensItr it, TokensItr end
 
 std::pair<std::unique_ptr<Expression>, TokensItr> fp::parser::CommandsFactory::build_expression(TokensItr it, TokensItr end)
 {
-    return {std::unique_ptr<Expression>(), it};
+    return ExpressionParser().parse(it, end);
 }
 
 std::pair<ComPtr, TokensItr> CommandsFactory::curlyBracket_heandler(TokensItr it, TokensItr end)
