@@ -1,7 +1,8 @@
 #ifndef I_VARIABLE_HPP
 #define I_VARIABLE_HPP
 
-namespace fg { // namespace flight gear
+namespace fp { // namespace flight plan
+namespace var { // namespace var
 
 class IVariable
 {
@@ -12,6 +13,7 @@ public:
     virtual void set(float value) = 0;
 };
 
-} //namespace
+} //namespace var
+} //namespace fp
 
 #endif
