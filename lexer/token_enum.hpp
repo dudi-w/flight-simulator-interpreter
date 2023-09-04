@@ -1,7 +1,10 @@
+#ifndef ENUM_HPP
+#define ENUM_HPP
+
 namespace fp {
 namespace lexer {
 
-enum class TokenType{
+enum class TokenType : u_int8_t{
     Name,
     String,
     Number,
@@ -28,3 +31,5 @@ enum class TokenType{
 
 } // namespace lexer
 } // namespace fp
+
+#endif
