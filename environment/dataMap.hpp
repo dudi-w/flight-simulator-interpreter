@@ -5,8 +5,8 @@
 #include <atomic>
 #include <string>
 
-namespace fp{
-namespace env{
+namespace fp { // namespace flight plan
+namespace env { // namespace env
 
 class DataMap
 {
