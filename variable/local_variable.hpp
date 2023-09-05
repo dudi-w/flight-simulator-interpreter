@@ -17,7 +17,7 @@ public:
     ~LocalVariable() = default;
 
     float get_value() const override;
-    void set(float new_value) override;
+    void set_value(float new_value) override;
 
 private:
     std::string m_variable_name;

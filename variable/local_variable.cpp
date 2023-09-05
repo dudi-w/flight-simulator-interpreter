@@ -13,7 +13,7 @@ float LocalVariable::get_value() const
     return m_variable_value;
 }
 
-void LocalVariable::set(float new_value)
+void LocalVariable::set_value(float new_value)
 {
     m_variable_value = new_value;
 }

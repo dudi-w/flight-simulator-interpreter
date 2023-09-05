@@ -14,7 +14,7 @@ float RemoteVariable::get_value() const
     return m_variable_value;
 }
 
-void RemoteVariable::set(float new_value)
+void RemoteVariable::set_value(float new_value)
 {
     m_variable_value = new_value;
 }

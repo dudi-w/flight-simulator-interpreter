@@ -26,7 +26,7 @@ void VariableMap::set_variable_value(std::string const& variable_name, float new
 {
     try
     {
-        m_map.at(variable_name)->set(new_value);
+        m_map.at(variable_name)->set_value(new_value);
     }
     catch(const std::out_of_range& e)
     {
