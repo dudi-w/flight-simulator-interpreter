@@ -6,6 +6,7 @@
 
 #include "../communication_mudule/includes/netClient.hpp"
 #include "../communication_mudule/includes/simulatorServer.hpp"
+#include "dataMap.hpp"
 // #include "../variable/variable_map.hpp"
 // #include "../variable/variable.hpp"
 
@@ -38,6 +39,7 @@ private:
 private:
     net::TelnetetClient m_client;
     fp::env::SimulatorServer m_server;
+    env::DataMap dataMap;
     VariableMap m_variable_map;
     std::ostream& m_output_stream;
 };
