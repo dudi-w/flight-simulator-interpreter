@@ -24,7 +24,7 @@ void Environment::insert_to_map(std::string const& variable_name, std::shared_pt
     get_instance().m_variable_map.insert(variable_name, variable);
 }
 
-float Environment::get_variable_value(std::string const& variable_name) const
+float Environment::get_variable_value(std::string const& variable_name)
 {
     get_instance().m_variable_map.get_variable_value(variable_name);
 }
