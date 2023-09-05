@@ -19,7 +19,7 @@ void Environment::initialization_server(int port, int ups)
     get_instance().m_server.initialize(port);
 }
 
-void Environment::insert_to_map(std::string const& variable_name, std::shared_ptr<IVariable> variable)
+void Environment::insert_to_map(std::string const& variable_name, std::unique_ptr<IVariable> variable)
 {
     get_instance().m_variable_map.insert(variable_name, variable);
 }

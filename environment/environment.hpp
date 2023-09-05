@@ -21,7 +21,7 @@ public:
     static void initialization_client(std::string const& host, int port);
     static void initialization_server(int port, int ups);   
 
-    static void insert_to_map(std::string const& variable_name, std::shared_ptr<IVariable> variable);
+    static void insert_to_map(std::string const& variable_name, std::unique_ptr<IVariable> variable);
     static float get_variable_value(std::string const& variable_name);
     static void set_variable_value(std::string const& variable_name, float new_value);
 
