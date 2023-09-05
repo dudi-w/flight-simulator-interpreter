@@ -9,13 +9,13 @@
 namespace fp { // namespace flight plan
 namespace var { // namespace var
 
-class BindVariable : public IVariable
+class RemoteVariable : public IVariable
 {
 public:
-    explicit BindVariable(std::string const& variable_name, std::string variable_path, float variable_value);
-    BindVariable(BindVariable const& other) = default;
-    BindVariable& operator=(BindVariable const& other) = default;
-    ~BindVariable() = default;
+    explicit RemoteVariable(std::string const& variable_name, std::string variable_path, float variable_value);
+    RemoteVariable(RemoteVariable const& other) = default;
+    RemoteVariable& operator=(RemoteVariable const& other) = default;
+    ~RemoteVariable() = default;
 
     float get_value() const override;
     void set(float new_value) override;
