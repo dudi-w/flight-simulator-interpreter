@@ -3,9 +3,9 @@
 namespace fp { // namespace flight plan
 namespace exp { // namespace exp
 
-EquleOperator::EquleOperator(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
-: m_first(first)
-, m_second(second)
+EquleOperator::EquleOperator(std::unique_ptr<IExpression> first, std::unique_ptr<IExpression> second)
+: m_first(std::move(first))
+, m_second(std::move(second))
 {}
 
 float EquleOperator::get_value() const

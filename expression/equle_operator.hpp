@@ -11,7 +11,7 @@ namespace exp { // namespace exp
 class EquleOperator : public IExpression
 {
 public:
-    explicit EquleOperator(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second);
+    explicit EquleOperator(std::unique_ptr<IExpression> first, std::unique_ptr<IExpression> second);
     EquleOperator(EquleOperator const& other) = default;
     EquleOperator& operator=(EquleOperator const& other) = default;
     ~EquleOperator() = default;
@@ -19,8 +19,8 @@ public:
     float get_value() const override;
 
 private:
-    std::shared_ptr<IExpression> m_first;
-    std::shared_ptr<IExpression> m_second;
+    std::unique_ptr<IExpression> m_first;
+    std::unique_ptr<IExpression> m_second;
 };
 
 } //namespace exp

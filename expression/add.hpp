@@ -11,7 +11,7 @@ namespace exp { // namespace exp
 class Add : public IExpression
 {
 public:
-    explicit Add(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second);
+    explicit Add(std::unique_ptr<IExpression> first, std::unique_ptr<IExpression> second);
     Add(Add const& other) = default;
     Add& operator=(Add const& other) = default;
     ~Add() = default;
@@ -19,8 +19,8 @@ public:
     float get_value() const override;
 
 private:
-    std::shared_ptr<IExpression> m_first;
-    std::shared_ptr<IExpression> m_second;
+    std::unique_ptr<IExpression> m_first;
+    std::unique_ptr<IExpression> m_second;
 };
 
 } //namespace exp
