@@ -1,5 +1,5 @@
-#ifndef ENUM_HPP
-#define ENUM_HPP
+#ifndef TOKEN_ENUM_HPP
+#define TOKEN_ENUM_HPP
 
 namespace fp {
 namespace lexer {

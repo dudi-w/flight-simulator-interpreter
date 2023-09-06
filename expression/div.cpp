@@ -5,9 +5,9 @@
 namespace fp { // namespace flight plan
 namespace exp { // namespace exp
 
-Div::Div(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
-: m_first(first)
-, m_second(second)
+Div::Div(std::unique_ptr<IExpression> first, std::unique_ptr<IExpression> second)
+: m_first(std::move(first))
+, m_second(std::move(second))
 {}
 
 float Div::get_value() const
