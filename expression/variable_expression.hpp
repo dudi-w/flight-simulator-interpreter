@@ -5,12 +5,8 @@
 
 #include "expression.hpp"
 
-<<<<<<< HEAD
 namespace fp { // namespace flight plan
 namespace exp { // namespace exp
-=======
-namespace fg { // namespace flight gear
->>>>>>> 3900797 (variable expression)
 
 class VariableExpression : public IExpression
 {
@@ -26,11 +22,7 @@ private:
     std::string m_variable_name;
 };
 
-<<<<<<< HEAD
 } //namespace exp
 } //namespace fp
-=======
-} //namespace
->>>>>>> 3900797 (variable expression)
 
 #endif
