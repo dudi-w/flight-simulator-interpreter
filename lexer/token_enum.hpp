@@ -1,3 +1,6 @@
+#ifndef TOKEN_ENUM_HPP
+#define TOKEN_ENUM_HPP
+
 namespace fp {
 namespace lexer {
 
@@ -28,3 +31,5 @@ enum class TokenType{
 
 } // namespace lexer
 } // namespace fp
+
+#endif // TOKEN_ENUM_HPP
