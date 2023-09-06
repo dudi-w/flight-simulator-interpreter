@@ -34,6 +34,5 @@ variable_expression.o: variable_expression.cpp variable_expression.hpp
 
 ../../lexer/lexer.o: ../../lexer/lexer.cpp ../../lexer/lexer.hpp
 
-
 clean:
 	$(RM) $(OBJECTS) test_expressionTokens
