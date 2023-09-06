@@ -12,7 +12,10 @@ namespace var { // namespace var
 class RemoteVariable : public IVariable
 {
 public:
-    explicit RemoteVariable(std::string const& variable_name, std::string variable_path, float variable_value);
+    explicit RemoteVariable(std::string const& variable_path, float variable_value);
+    explicit RemoteVariable(std::string && variable_path, float variable_value);
+    explicit RemoteVariable(std::string const& variable_path);
+    explicit RemoteVariable(std::string && variable_path);
     RemoteVariable(RemoteVariable const& other) = default;
     RemoteVariable& operator=(RemoteVariable const& other) = default;
     ~RemoteVariable() = default;
@@ -21,9 +24,7 @@ public:
     void set_value(float new_value) override;
 
 private:
-    std::string m_variable_name;
-    std::string m_variable_path;
-    std::atomic<float> m_variable_value;   
+    const std::string m_variable_path;
 };
 
 } //namespace var
