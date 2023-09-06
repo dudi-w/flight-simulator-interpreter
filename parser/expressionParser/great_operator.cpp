@@ -2,9 +2,9 @@
 
 namespace fp { // namespace flight plain
 
-GreatOperator::GreatOperator(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
-: m_first(first)
-, m_second(second)
+GreatOperator::GreatOperator(std::unique_ptr<IExpression>  first, std::unique_ptr<IExpression>  second)
+: m_first(std::move(first))
+, m_second(std::move(second))
 {}
 
 float GreatOperator::get_value() const

@@ -10,7 +10,7 @@ namespace fp { // namespace flight plain
 class Sub : public IExpression
 {
 public:
-    explicit Sub(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second);
+    explicit Sub(std::unique_ptr<IExpression>  first, std::unique_ptr<IExpression>  second);
     Sub(Sub const& other) = default;
     Sub& operator=(Sub const& other) = default;
     ~Sub() = default;
@@ -18,8 +18,8 @@ public:
     float get_value() const override;
 
 private:
-    std::shared_ptr<IExpression> m_first;
-    std::shared_ptr<IExpression> m_second;
+    std::unique_ptr<IExpression> m_first;
+    std::unique_ptr<IExpression> m_second;
 };
 
 } //namespace fp

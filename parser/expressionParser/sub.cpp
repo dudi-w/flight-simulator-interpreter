@@ -2,9 +2,9 @@
 
 namespace fp { // namespace flight gear
 
-Sub::Sub(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second)
-: m_first(first)
-, m_second(second)
+Sub::Sub(std::unique_ptr<IExpression>  first, std::unique_ptr<IExpression>  second)
+: m_first(std::move(first))
+, m_second(std::move(second))
 {}
 
 float Sub::get_value() const

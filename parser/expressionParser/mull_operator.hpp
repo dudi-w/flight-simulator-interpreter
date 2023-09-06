@@ -10,7 +10,7 @@ namespace fp { // namespace flight plain
 class Mul : public IExpression
 {
 public:
-    explicit Mul(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second);
+    explicit Mul(std::unique_ptr<IExpression>  first, std::unique_ptr<IExpression>  second);
     Mul(Mul const& other) = default;
     Mul& operator=(Mul const& other) = default;
     ~Mul() = default;
@@ -18,8 +18,8 @@ public:
     float get_value() const override;
 
 private:
-    std::shared_ptr<IExpression> m_first;
-    std::shared_ptr<IExpression> m_second;
+    std::unique_ptr<IExpression> m_first;
+    std::unique_ptr<IExpression> m_second;
 };
 
 } //namespace fp

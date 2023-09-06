@@ -10,7 +10,7 @@ namespace fp { // namespace flight plain
 class Div : public IExpression
 {
 public:
-    explicit Div(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second);
+    explicit Div(std::unique_ptr<IExpression>  first, std::unique_ptr<IExpression>  second);
     Div(Div const& other) = default;
     Div& operator=(Div const& other) = default;
     ~Div() = default;
@@ -18,8 +18,8 @@ public:
     float get_value() const override;
 
 private:
-    std::shared_ptr<IExpression> m_first;
-    std::shared_ptr<IExpression> m_second;
+    std::unique_ptr<IExpression> m_first;
+    std::unique_ptr<IExpression> m_second;
 };
 
 } //namespace fp
