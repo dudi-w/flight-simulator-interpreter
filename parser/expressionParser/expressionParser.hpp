@@ -6,9 +6,9 @@
 #include <unordered_map>
 #include <functional>
 
-#include "../lexer/token.hpp"
+#include "../../lexer/token.hpp"
 #include "expression.hpp"
-#include "../lexer/token_enum.hpp"
+#include "../../lexer/token_enum.hpp"
 #include "add.hpp"
 #include "literal.hpp"
 #include "sub.hpp"
