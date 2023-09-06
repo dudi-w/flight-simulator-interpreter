@@ -32,7 +32,7 @@ sub.o: sub.cpp sub.hpp
 
 variable_expression.o: variable_expression.cpp variable_expression.hpp
 
-../lexer/lexer.o: ../lexer/lexer.cpp ../lexer/lexer.hpp
+../../lexer/lexer.o: ../../lexer/lexer.cpp ../../lexer/lexer.hpp
 
 
 clean:
