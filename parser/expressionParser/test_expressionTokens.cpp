@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 
     fp::parser::ExpressionParser eParser(beginIterator, endIterator);
 
-    std::shared_ptr<fp::IExpression> expression = eParser.parse().first;
+    std::unique_ptr<fp::IExpression> expression = eParser.parse().first;
     
     std::cout << expression->get_value() << std::endl;
     

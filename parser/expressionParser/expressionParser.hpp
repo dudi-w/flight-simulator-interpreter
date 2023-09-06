@@ -26,8 +26,7 @@ namespace parser
 class ExpressionParser
 {
 public:
-
-    using ResultPtr = std::shared_ptr<IExpression>;
+    using ResultPtr = std::unique_ptr<IExpression>;
     using TokenIterator = std::vector<lexer::Token>::const_iterator;
     
     explicit ExpressionParser(std::vector<lexer::Token>::const_iterator start, std::vector<lexer::Token>::const_iterator end);
@@ -37,10 +36,10 @@ public:
     std::pair<ResultPtr, TokenIterator> parse();
 
 private:
-    std::shared_ptr<IExpression> parseAddSub() ;
-    std::shared_ptr<IExpression> parseMulDiv() ;
-    std::shared_ptr<IExpression> parseNumber() ;
-    std::shared_ptr<IExpression> parseComparison();
+    std::unique_ptr<IExpression> parseAddSub() ;
+    std::unique_ptr<IExpression> parseMulDiv() ;
+    std::unique_ptr<IExpression> parseNumber() ;
+    std::unique_ptr<IExpression> parseComparison();
     bool IsAddSubOperator(lexer::TokenType type) const;
     bool IsMulDivOperator(lexer::TokenType type) const;
     bool IsLowGreatThen(lexer::TokenType type) const;
@@ -51,27 +50,26 @@ private:
     size_t m_row;
     int m_parenLevel;
 
-    static inline std::unordered_map<lexer::TokenType, std::function<std::shared_ptr<IExpression>(std::shared_ptr<IExpression>, std::shared_ptr<IExpression>)>> m_caseMap = { 
-        {lexer::TokenType::Add, [](std::shared_ptr<IExpression> left, std::shared_ptr<IExpression> right) {
-        return std::make_shared<Add>(left, right);
+    static inline std::unordered_map<lexer::TokenType, std::function<std::unique_ptr<IExpression>(std::unique_ptr<IExpression>, std::unique_ptr<IExpression>)>> m_caseMap = { 
+        {lexer::TokenType::Add, [](std::unique_ptr<IExpression> left, std::unique_ptr<IExpression> right) {
+        return std::make_unique<Add>(std::move(left), std::move(right));
         }},
-        {lexer::TokenType::Sub, [](std::shared_ptr<IExpression> left, std::shared_ptr<IExpression> right) {
-        return std::make_shared<Sub>(left, right);
+        {lexer::TokenType::Sub, [](std::unique_ptr<IExpression> left, std::unique_ptr<IExpression> right) {
+        return std::make_unique<Sub>(std::move(left), std::move(right));
         }},
-        {lexer::TokenType::LowThen, [](std::shared_ptr<IExpression> left, std::shared_ptr<IExpression> right) {
-        return std::make_shared<SmallOperator>(left, right);
+        {lexer::TokenType::LowThen, [](std::unique_ptr<IExpression> left, std::unique_ptr<IExpression> right) {
+        return std::make_unique<SmallOperator>(std::move(left), std::move(right));
         }},
-        {lexer::TokenType::GreatThen, [](std::shared_ptr<IExpression> left, std::shared_ptr<IExpression> right) {
-        return std::make_shared<GreatOperator>(left, right);
+        {lexer::TokenType::GreatThen, [](std::unique_ptr<IExpression> left, std::unique_ptr<IExpression> right) {
+        return std::make_unique<GreatOperator>(std::move(left), std::move(right));
         }},
-        {lexer::TokenType::Mul, [](std::shared_ptr<IExpression> left, std::shared_ptr<IExpression> right) {
-        return std::make_shared<Mul>(left, right);
+        {lexer::TokenType::Mul, [](std::unique_ptr<IExpression> left, std::unique_ptr<IExpression> right) {
+        return std::make_unique<Mul>(std::move(left), std::move(right));
         }},
-        {lexer::TokenType::Div, [](std::shared_ptr<IExpression> left, std::shared_ptr<IExpression> right) {
-        return std::make_shared<Div>(left, right);
+        {lexer::TokenType::Div, [](std::unique_ptr<IExpression> left, std::unique_ptr<IExpression> right) {
+        return std::make_unique<Div>(std::move(left), std::move(right));
         }}, 
     };
-
 };
 
 } // namespace fp

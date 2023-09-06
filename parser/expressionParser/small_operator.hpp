@@ -10,7 +10,7 @@ namespace fp { // namespace flight gear
 class SmallOperator : public IExpression
 {
 public:
-    explicit SmallOperator(std::shared_ptr<IExpression> const& first, std::shared_ptr<IExpression> const& second);
+    explicit SmallOperator(std::unique_ptr<IExpression>  first, std::unique_ptr<IExpression>  second);
     SmallOperator(SmallOperator const& other) = default;
     SmallOperator& operator=(SmallOperator const& other) = default;
     ~SmallOperator() = default;
@@ -18,8 +18,8 @@ public:
     float get_value() const override;
 
 private:
-    std::shared_ptr<IExpression> m_first;
-    std::shared_ptr<IExpression> m_second;
+    std::unique_ptr<IExpression> m_first;
+    std::unique_ptr<IExpression> m_second;
 };
 
 } //namespace

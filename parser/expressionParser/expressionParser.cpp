@@ -8,7 +8,7 @@
 using namespace fp;
 using namespace parser;
 
-using ResultPtr = std::shared_ptr<IExpression>;
+using ResultPtr = std::unique_ptr<IExpression>;
 using TokenIterator = std::vector<lexer::Token>::const_iterator;
 
 ExpressionParser::ExpressionParser(std::vector<lexer::Token>::const_iterator start, std::vector<lexer::Token>::const_iterator end)
@@ -44,8 +44,8 @@ std::pair<ResultPtr, TokenIterator> ExpressionParser::parse() {
     return {parseComparison(), m_startToken}; 
 }
 
-std::shared_ptr<IExpression> ExpressionParser::parseComparison() {
-    std::shared_ptr<IExpression> left = parseAddSub();
+std::unique_ptr<IExpression> ExpressionParser::parseComparison() {
+    std::unique_ptr<IExpression> left = parseAddSub();
     lexer::TokenType prevOp = lexer::TokenType::Add; 
 
     while (IsLowGreatThen(m_startToken->type())) {
@@ -58,11 +58,11 @@ std::shared_ptr<IExpression> ExpressionParser::parseComparison() {
         prevOp = op;
         ++m_startToken;
 
-        std::shared_ptr<IExpression> right = parseAddSub();
+        std::unique_ptr<IExpression> right = parseAddSub();
 
         auto it = m_caseMap.find(op);
         if (it != m_caseMap.end()) {
-            left = it->second(left, right);
+            left = it->second(std::move(left), std::move(right));
         } else {
             throw std::runtime_error("No action defined for the given operator type.");
         }
@@ -71,17 +71,17 @@ std::shared_ptr<IExpression> ExpressionParser::parseComparison() {
     return left;
 }
 
-std::shared_ptr<IExpression> ExpressionParser::parseAddSub() {
-    std::shared_ptr<IExpression> left = parseMulDiv();
+std::unique_ptr<IExpression> ExpressionParser::parseAddSub() {
+    std::unique_ptr<IExpression> left = parseMulDiv();
 
     while ( IsAddSubOperator(m_startToken->type()) ) {
         lexer::TokenType op = m_startToken->type();
         ++m_startToken;
-        std::shared_ptr<IExpression> right = parseMulDiv();
+        std::unique_ptr<IExpression> right = parseMulDiv();
 
         auto it = m_caseMap.find(op);
         if (it != m_caseMap.end()) {
-            left = it->second(left, right);
+            left = it->second(std::move(left), std::move(right));
         } else {
             throw std::runtime_error("No action defined for the given operator type.");
         }
@@ -90,17 +90,17 @@ std::shared_ptr<IExpression> ExpressionParser::parseAddSub() {
     return left;
 }
 
-std::shared_ptr<IExpression> ExpressionParser::parseMulDiv() {
-    std::shared_ptr<IExpression> left = parseNumber();
+std::unique_ptr<IExpression> ExpressionParser::parseMulDiv() {
+    std::unique_ptr<IExpression> left = parseNumber();
 
     while (IsMulDivOperator(m_startToken->type())) {
         lexer::TokenType op = m_startToken->type();
         ++m_startToken;
-        std::shared_ptr<IExpression> right = parseNumber();
+        std::unique_ptr<IExpression> right = parseNumber();
 
         auto it = m_caseMap.find(op);
         if (it != m_caseMap.end()) {
-            left = it->second(left, right);
+            left = it->second(std::move(left), std::move(right));
         } else {
             throw std::runtime_error("No action defined for the given operator type.");
         }
@@ -109,20 +109,20 @@ std::shared_ptr<IExpression> ExpressionParser::parseMulDiv() {
     return left;
 }
 
-std::shared_ptr<IExpression> ExpressionParser::parseNumber() 
+std::unique_ptr<IExpression> ExpressionParser::parseNumber() 
 {
 
     if (m_startToken == m_endToken) {
         throw std::runtime_error("Unexpected end of input.");
     }
     
-    std::shared_ptr<IExpression> result;
+    std::unique_ptr<IExpression> result;
 
     if (m_startToken->type() == lexer::TokenType::Sub) {
         ++m_startToken;
-        std::shared_ptr<Literal> left = std::make_shared<Literal>("0");
-        std::shared_ptr<IExpression> right = parseNumber();
-        result = std::make_shared<Sub>(left, right);
+        std::unique_ptr<Literal> left = std::make_unique<Literal>("0");
+        std::unique_ptr<IExpression> right = parseNumber();
+        result = std::make_unique<Sub>(std::move(left), std::move(right));
         ++m_startToken;
         return result;
     }
@@ -130,7 +130,7 @@ std::shared_ptr<IExpression> ExpressionParser::parseNumber()
     if (m_startToken->type() == lexer::TokenType::LeftBracket) {
         ++m_parenLevel;
         ++m_startToken;
-        std::shared_ptr<IExpression> result = parseAddSub();
+        std::unique_ptr<IExpression> result = parseAddSub();
 
         if (m_startToken == m_endToken || m_startToken->type() != lexer::TokenType::RightBracket) {
             throw std::runtime_error("Expected closing parenthesis.");
@@ -142,10 +142,10 @@ std::shared_ptr<IExpression> ExpressionParser::parseNumber()
     }
 
     if (m_startToken->type() == lexer::TokenType::Number) {
-        result = std::make_shared<Literal>(m_startToken->str());
+        result = std::make_unique<Literal>(m_startToken->str());
 
     } else if (m_startToken->type() == lexer::TokenType::Name) {
-        result = std::make_shared<VariableExpression>(m_startToken->str());
+        result = std::make_unique<VariableExpression>(m_startToken->str());
     }
 
     ++m_startToken;
