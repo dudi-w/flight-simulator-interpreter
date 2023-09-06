@@ -3,7 +3,7 @@
 #include "../../lexer/token.hpp"
 #include "../../lexer/token_enum.hpp"
 #include "expressionParser.hpp"
-#include "expression.hpp"
+#include "../../expression/expression.hpp"
 #include "../../lexer/lexer.hpp"
 
 int main(int argc, char** argv)
@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 
     fp::parser::ExpressionParser eParser(beginIterator, endIterator);
 
-    std::unique_ptr<fp::IExpression> expression = eParser.parse().first;
+    std::unique_ptr<fp::exp::IExpression> expression = eParser.parse().first;
     
     std::cout << expression->get_value() << std::endl;
     

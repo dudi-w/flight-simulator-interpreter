@@ -6,31 +6,31 @@ CXXFLAGS += -g3
 CXXFLAGS += -Werror
 CXXFLAGS += -I ExpressoinTokens/
 
-OBJECTS = test_expressionTokens.o expressionParser.o  add.o div.o great_operator.o literal.o mull_operator.o small_operator.o sub.o variable_expression.o ../../lexer/token.o ../../lexer/lexer.o
+OBJECTS = test_expressionTokens.o expressionParser.o  ../../expression/add.o ../../expression/div.o ../../expression/great_operator.o ../../expression/literal.o ../../expression/mul.o ../../expression/small_operator.o ../../expression/sub.o ../../expression/variable_expression.o ../../lexer/token.o ../../lexer/lexer.o
 
 test_expressionTokens: $(OBJECTS)
 
-test_expressionTokens.o: test_expressionTokens.cpp expression.hpp ../../lexer/token.hpp ../../lexer/token_enum.hpp expressionParser.hpp
+test_expressionTokens.o: test_expressionTokens.cpp ../../expression/expression.hpp ../../lexer/token.hpp ../../lexer/token_enum.hpp expressionParser.hpp
 
 expressionParser.o: expressionParser.cpp expressionParser.hpp 
 
 ../../lexer/token.o: ../../lexer/token.cpp ../../lexer/token.hpp ../../lexer/token_enum.hpp
 
-add.o: add.cpp add.hpp
+../../expression/add.o: ../../expression/add.cpp ../../expression/add.hpp
 
-div.o: div.cpp div.hpp
+../../expression/div.o: ../../expression/div.cpp ../../expression/div.hpp
 
-great_operator.o: great_operator.cpp great_operator.hpp
+../../expression/great_operator.o: ../../expression/great_operator.cpp ../../expression/great_operator.hpp
 
-literal.o: literal.cpp literal.hpp
+../../expression/literal.o: ../../expression/literal.cpp ../../expression/literal.hpp
 
-mull_operator.o: mull_operator.cpp mull_operator.hpp
+../../expression/mul.o: ../../expression/mul.cpp ../../expression/mul.hpp
 
-small_operator.o: small_operator.cpp small_operator.hpp
+../../expression/small_operator.o: ../../expression/small_operator.cpp ../../expression/small_operator.hpp
 
-sub.o: sub.cpp sub.hpp
+../../expression/sub.o: ../../expression/sub.cpp ../../expression/sub.hpp
 
-variable_expression.o: variable_expression.cpp variable_expression.hpp
+../../expression/variable_expression.o: ../../expression/variable_expression.cpp ../../expression/variable_expression.hpp
 
 ../../lexer/lexer.o: ../../lexer/lexer.cpp ../../lexer/lexer.hpp
 

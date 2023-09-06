@@ -8,7 +8,7 @@
 using namespace fp;
 using namespace parser;
 
-using ResultPtr = std::unique_ptr<IExpression>;
+using ResultPtr = std::unique_ptr<exp::IExpression>;
 using TokenIterator = std::vector<lexer::Token>::const_iterator;
 
 ExpressionParser::ExpressionParser(std::vector<lexer::Token>::const_iterator start, std::vector<lexer::Token>::const_iterator end)
@@ -44,8 +44,8 @@ std::pair<ResultPtr, TokenIterator> ExpressionParser::parse() {
     return {parseComparison(), m_startToken}; 
 }
 
-std::unique_ptr<IExpression> ExpressionParser::parseComparison() {
-    std::unique_ptr<IExpression> left = parseAddSub();
+std::unique_ptr<exp::IExpression> ExpressionParser::parseComparison() {
+    std::unique_ptr<exp::IExpression> left = parseAddSub();
     lexer::TokenType prevOp = lexer::TokenType::Add; 
 
     while (IsLowGreatThen(m_startToken->type())) {
@@ -58,7 +58,7 @@ std::unique_ptr<IExpression> ExpressionParser::parseComparison() {
         prevOp = op;
         ++m_startToken;
 
-        std::unique_ptr<IExpression> right = parseAddSub();
+        std::unique_ptr<exp::IExpression> right = parseAddSub();
 
         auto it = m_caseMap.find(op);
         if (it != m_caseMap.end()) {
@@ -71,13 +71,13 @@ std::unique_ptr<IExpression> ExpressionParser::parseComparison() {
     return left;
 }
 
-std::unique_ptr<IExpression> ExpressionParser::parseAddSub() {
-    std::unique_ptr<IExpression> left = parseMulDiv();
+std::unique_ptr<exp::IExpression> ExpressionParser::parseAddSub() {
+    std::unique_ptr<exp::IExpression> left = parseMulDiv();
 
     while ( IsAddSubOperator(m_startToken->type()) ) {
         lexer::TokenType op = m_startToken->type();
         ++m_startToken;
-        std::unique_ptr<IExpression> right = parseMulDiv();
+        std::unique_ptr<exp::IExpression> right = parseMulDiv();
 
         auto it = m_caseMap.find(op);
         if (it != m_caseMap.end()) {
@@ -90,13 +90,13 @@ std::unique_ptr<IExpression> ExpressionParser::parseAddSub() {
     return left;
 }
 
-std::unique_ptr<IExpression> ExpressionParser::parseMulDiv() {
-    std::unique_ptr<IExpression> left = parseNumber();
+std::unique_ptr<exp::IExpression> ExpressionParser::parseMulDiv() {
+    std::unique_ptr<exp::IExpression> left = parseNumber();
 
     while (IsMulDivOperator(m_startToken->type())) {
         lexer::TokenType op = m_startToken->type();
         ++m_startToken;
-        std::unique_ptr<IExpression> right = parseNumber();
+        std::unique_ptr<exp::IExpression> right = parseNumber();
 
         auto it = m_caseMap.find(op);
         if (it != m_caseMap.end()) {
@@ -109,20 +109,20 @@ std::unique_ptr<IExpression> ExpressionParser::parseMulDiv() {
     return left;
 }
 
-std::unique_ptr<IExpression> ExpressionParser::parseNumber() 
+std::unique_ptr<exp::IExpression> ExpressionParser::parseNumber() 
 {
 
     if (m_startToken == m_endToken) {
         throw std::runtime_error("Unexpected end of input.");
     }
     
-    std::unique_ptr<IExpression> result;
+    std::unique_ptr<exp::IExpression> result;
 
     if (m_startToken->type() == lexer::TokenType::Sub) {
         ++m_startToken;
-        std::unique_ptr<Literal> left = std::make_unique<Literal>("0");
-        std::unique_ptr<IExpression> right = parseNumber();
-        result = std::make_unique<Sub>(std::move(left), std::move(right));
+        std::unique_ptr<exp::Literal> left = std::make_unique<exp::Literal>("0");
+        std::unique_ptr<exp::IExpression> right = parseNumber();
+        result = std::make_unique<exp::Sub>(std::move(left), std::move(right));
         ++m_startToken;
         return result;
     }
@@ -130,7 +130,7 @@ std::unique_ptr<IExpression> ExpressionParser::parseNumber()
     if (m_startToken->type() == lexer::TokenType::LeftBracket) {
         ++m_parenLevel;
         ++m_startToken;
-        std::unique_ptr<IExpression> result = parseAddSub();
+        std::unique_ptr<exp::IExpression> result = parseAddSub();
 
         if (m_startToken == m_endToken || m_startToken->type() != lexer::TokenType::RightBracket) {
             throw std::runtime_error("Expected closing parenthesis.");
@@ -142,10 +142,10 @@ std::unique_ptr<IExpression> ExpressionParser::parseNumber()
     }
 
     if (m_startToken->type() == lexer::TokenType::Number) {
-        result = std::make_unique<Literal>(m_startToken->str());
+        result = std::make_unique<exp::Literal>(m_startToken->str());
 
     } else if (m_startToken->type() == lexer::TokenType::Name) {
-        result = std::make_unique<VariableExpression>(m_startToken->str());
+        result = std::make_unique<exp::VariableExpression>(m_startToken->str());
     }
 
     ++m_startToken;
