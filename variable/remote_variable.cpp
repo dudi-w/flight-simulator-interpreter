@@ -1,22 +1,36 @@
-#include "bind_variable.hpp"
+#include "remote_variable.hpp"
 
 namespace fp { // namespace flight plan
 namespace var { // namespace var
 
-RemoteVariable::RemoteVariable(std::string const& variable_name, std::string variable_path, float variable_value)
-: m_variable_name(variable_name)
-, m_variable_path(variable_path)
-, m_variable_value(variable_value)
+RemoteVariable::RemoteVariable(std::string const& variable_path, float variable_value)
+: m_variable_path(variable_path)
+{
+    set_value(variable_value);
+}
+
+RemoteVariable::RemoteVariable(std::string && variable_path, float variable_value)
+: m_variable_path(std::move(variable_path))
+{
+    set_value(variable_value);
+}
+
+RemoteVariable::RemoteVariable(std::string const& variable_path)
+: m_variable_path(variable_path)
 {}
-    
+
+RemoteVariable::RemoteVariable(std::string && variable_path)
+: m_variable_path(std::move(variable_path))
+{}
+
 float RemoteVariable::get_value() const
 {
-    return m_variable_value;
+    return ;
 }
 
 void RemoteVariable::set_value(float new_value)
 {
-    m_variable_value = new_value;
+    
 }
 
 } //namespace var

@@ -11,7 +11,8 @@ namespace var { // namespace var
 class LocalVariable : public IVariable
 {
 public:
-    explicit LocalVariable(std::string const& variable_name, float variable_value);
+    LocalVariable() = default;
+    explicit LocalVariable(float variable_value);
     LocalVariable(LocalVariable const& other) = default;
     LocalVariable& operator=(LocalVariable const& other) = default;
     ~LocalVariable() = default;
@@ -20,7 +21,6 @@ public:
     void set_value(float new_value) override;
 
 private:
-    std::string m_variable_name;
     float m_variable_value;
 };
 
