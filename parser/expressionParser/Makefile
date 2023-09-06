@@ -6,15 +6,15 @@ CXXFLAGS += -g3
 CXXFLAGS += -Werror
 CXXFLAGS += -I ExpressoinTokens/
 
-OBJECTS = test_expressionTokens.o expressionParser.o  add.o div.o great_operator.o literal.o mull_operator.o small_operator.o sub.o variable_expression.o ../lexer/token.o ../lexer/lexer.o
+OBJECTS = test_expressionTokens.o expressionParser.o  add.o div.o great_operator.o literal.o mull_operator.o small_operator.o sub.o variable_expression.o ../../lexer/token.o ../../lexer/lexer.o
 
 test_expressionTokens: $(OBJECTS)
 
-test_expressionTokens.o: test_expressionTokens.cpp expression.hpp ../lexer/token.hpp ../lexer/token_enum.hpp expressionParser.hpp
+test_expressionTokens.o: test_expressionTokens.cpp expression.hpp ../../lexer/token.hpp ../../lexer/token_enum.hpp expressionParser.hpp
 
 expressionParser.o: expressionParser.cpp expressionParser.hpp 
 
-../lexer/token.o: ../lexer/token.cpp ../lexer/token.hpp ../lexer/token_enum.hpp
+../../lexer/token.o: ../../lexer/token.cpp ../../lexer/token.hpp ../../lexer/token_enum.hpp
 
 add.o: add.cpp add.hpp
 
@@ -31,13 +31,8 @@ small_operator.o: small_operator.cpp small_operator.hpp
 sub.o: sub.cpp sub.hpp
 
 variable_expression.o: variable_expression.cpp variable_expression.hpp
-# ../lexer/token_enum.o: ../lexer/token_enum.hpp
-
-# expression.o: expression.hpp
-
 
 ../lexer/lexer.o: ../lexer/lexer.cpp ../lexer/lexer.hpp
-
 
 
 clean:
