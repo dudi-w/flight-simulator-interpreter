@@ -5,9 +5,14 @@
 namespace fp { // namespace flight plan
 namespace var { // namespace var
 
-void VariableMap::insert(std::string const& variable_name, std::shared_ptr<IVariable> variable)
+void VariableMap::insert(std::string const& variable_name, std::unique_ptr<IVariable> variable)
 {
-    m_map.insert({variable_name, variable});
+    m_map.insert({variable_name, std::move(variable)});
+}
+
+void VariableMap::insert(std::string && variable_name, std::unique_ptr<IVariable> variable)
+{
+    m_map.insert({std::move(variable_name), std::move(variable)});
 }
 
 float VariableMap::get_variable_value(std::string const& variable_name) const
