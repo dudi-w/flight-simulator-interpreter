@@ -7,8 +7,8 @@
 #include "../communication_mudule/includes/netClient.hpp"
 #include "../communication_mudule/includes/simulatorServer.hpp"
 #include "dataMap.hpp"
-// #include "../variable/variable_map.hpp"
-// #include "../variable/variable.hpp"
+#include "../variable/variable_map.hpp"
+#include "../variable/variable.hpp"
 
 namespace fp { // namespace flight plan
 namespace env { // namespace env
@@ -21,7 +21,7 @@ public:
     static void initialization_client(std::string const& host, int port);
     static void initialization_server(int port, int ups);   
 
-    static void insert_to_map(std::string const& variable_name, std::unique_ptr<IVariable> variable);
+    static void insert_to_map(std::string const& variable_name, std::unique_ptr<fp::var::IVariable> variable);
     static float get_variable_value(std::string const& variable_name);
     static void set_variable_value(std::string const& variable_name, float new_value);
 
@@ -40,7 +40,7 @@ private:
     net::TelnetetClient m_client;
     fp::env::SimulatorServer m_server;
     env::DataMap dataMap;
-    VariableMap m_variable_map;
+    fp::var::VariableMap m_variable_map;
     std::ostream& m_output_stream;
 };
 

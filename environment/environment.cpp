@@ -5,7 +5,7 @@ namespace env { // namespace env
 
 Environment& Environment::get_instance()
 {
-    static Environment instanc;
+    static Environment instanc{};
     return instance;
 }
 
@@ -19,9 +19,9 @@ void Environment::initialization_server(int port, int ups)
     get_instance().m_server.initialize(port);
 }
 
-void Environment::insert_to_map(std::string const& variable_name, std::unique_ptr<IVariable> variable)
+void Environment::insert_to_map(std::string const& variable_name, std::unique_ptr<fp::var::IVariable> variable)
 {
-    get_instance().m_variable_map.insert(variable_name, variable);
+    get_instance().m_variable_map.insert(variable_name, std::move(variable));
 }
 
 float Environment::get_variable_value(std::string const& variable_name)
