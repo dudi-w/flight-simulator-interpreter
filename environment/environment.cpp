@@ -5,7 +5,7 @@ namespace env { // namespace env
 
 Environment& Environment::get_instance()
 {
-    static Environment instanc{};
+    static Environment instance{};
     return instance;
 }
 

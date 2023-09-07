@@ -30,7 +30,7 @@ public:
     static void print_float(float number);
 
 private:
-    Environment() = default;
+    Environment();
     Environment(Environment const& other) = delete;
     Environment& operator=(Environment const& other) = delete;
 
@@ -41,7 +41,7 @@ private:
     fp::env::SimulatorServer m_server;
     env::DataMap dataMap;
     fp::var::VariableMap m_variable_map;
-    std::ostream& m_output_stream;
+    std::ostream m_output_stream;
 };
 
 } //namespace env
