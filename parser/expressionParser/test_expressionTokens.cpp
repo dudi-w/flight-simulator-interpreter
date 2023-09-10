@@ -12,8 +12,8 @@ int main(int argc, char** argv)
 	fp::lexer::Lexer lexer;
 
     std::vector<fp::lexer::Token> myVector = lexer.tokenize(
-		    argc == 2 ? argv[1] : "1 -1 < 2 + 1 "
-		    );
+        argc == 2 ? argv[1] : "1 + 1/1 + 1/(1*2) + 1/(1*2*3) + 1/(1*2*3*4) + 1/(1*2*3*4*5)"
+	);
 
 
     std::vector<fp::lexer::Token>::const_iterator beginIterator = myVector.cbegin();
