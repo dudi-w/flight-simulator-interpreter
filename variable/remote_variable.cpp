@@ -25,12 +25,12 @@ RemoteVariable::RemoteVariable(std::string && variable_path)
 
 float RemoteVariable::get_value() const
 {
-    return ;
+    return fp::env::DataMap.get(m_variable_path);
 }
 
 void RemoteVariable::set_value(float new_value)
 {
-    
+    fp::env::simulator.setVariableValue(m_variable_path , new_value);
 }
 
 } //namespace var
