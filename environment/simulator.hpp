@@ -20,7 +20,7 @@ public:
     void set_simulator_host(std::string const& host);
     void set_simulator_port(uint16_t port);
 
-    void setVariableValue(std::string variablePath ,float value);
+    void setValue(std::string variablePath ,float value);
 
 private:
     void tryRun();
@@ -113,7 +113,7 @@ void run()
     m_client.initialize(m_simulator_host, m_simulator_port);
 }
 
-void fp::env::SimulatorControl::setVariableValue(std::string variablePath, float value)
+void fp::env::SimulatorControl::setValue(std::string variablePath, float value)
 {
     m_client.send("set " + variablePath + " " + std::to_string(value));
 }
@@ -129,8 +129,8 @@ void fp::env::SimulatorControl::updateMap()
         auto it = j.begin();
         while(it != j.end()){
             if(it->is_number_float()){
-                fp::env::Environment::
-                fp::env::Environment::set_variable_value(fp::env::Environment::mapVar_at(it.key()), it.value());
+                fp::env::Environment::m_dataMap.set(it.key(), it.value());
+                // fp::env::Environment::set_variable_value(fp::env::Environment::mapVar_at(it.key()), it.value());
             }
             ++it;
         }
