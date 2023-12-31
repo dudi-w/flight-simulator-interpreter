@@ -30,16 +30,16 @@ public:
     static void print_str(std::string const& message);
     static void print_float(float number);
 
-
+public:
     static env::DataMap m_dataMap;
     static fp::env::SimulatorControl m_simulator;
+
 private:
     Environment();
     Environment(Environment const& other) = delete;
     Environment& operator=(Environment const& other) = delete;
 
     static Environment& get_instance();
-
 
 private:
     fp::var::VariableMap m_variable_map;
