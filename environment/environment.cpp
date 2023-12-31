@@ -3,18 +3,22 @@
 namespace fp { // namespace flight plan
 namespace env { // namespace env
 
+Environment::Environment()
+: m_output_stream(std::cout.rdbuf())
+{}
+
 Environment& Environment::get_instance()
 {
     static Environment instance{};
     return instance;
 }
 
-void Environment::initialization_client(std::string const& host, int port)
+void Environment::initialization_client(std::string const& host, uint16_t port)
 {
     get_instance().m_client.initialize(host, port);
 }
 
-void Environment::initialization_server(int port, int ups)
+void Environment::initialization_server(uint16_t port, int ups)
 {
     get_instance().m_server.initialize(port);
 }
@@ -29,6 +33,7 @@ float Environment::get_variable_value(std::string const& variable_name)
     get_instance().m_variable_map.get_variable_value(variable_name);
 }
 
+//Remember: this function is only used by the user
 void Environment::set_variable_value(std::string const& variable_name, float new_value)
 {
     get_instance().m_variable_map.set_variable_value(variable_name, new_value);
@@ -44,7 +49,7 @@ void Environment::print_str(std::string const& message)
     get_instance().m_output_stream << message << std::endl;
 }
 
-void Environment::print_float(float number)
+void Environment::print_float(float number)//?
 {
     get_instance().m_output_stream << number << std::endl;
 }

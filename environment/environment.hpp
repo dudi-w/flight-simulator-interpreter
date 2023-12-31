@@ -7,6 +7,7 @@
 #include "../communication_mudule/includes/netClient.hpp"
 #include "../communication_mudule/includes/simulatorServer.hpp"
 #include "dataMap.hpp"
+#include "simulator.hpp"
 #include "../variable/variable_map.hpp"
 #include "../variable/variable.hpp"
 
@@ -18,16 +19,18 @@ class Environment
 public:
     ~Environment() = default;
 
-    static void initialization_client(std::string const& host, int port);
-    static void initialization_server(int port, int ups);   
+    // static void initialization_server(int port, int ups);   
+    // static void initialization_simulator_cliant(std::string const& host, int port);
 
     static void insert_to_map(std::string const& variable_name, std::unique_ptr<fp::var::IVariable> variable);
-    static float get_variable_value(std::string const& variable_name);
     static void set_variable_value(std::string const& variable_name, float new_value);
+    static float get_variable_value(std::string const& variable_name);
 
     static void set_output_stream(std::ostream& output_stream);
     static void print_str(std::string const& message);
     static void print_float(float number);
+
+    const fp::env::SimulatorControl simulator;
 
 private:
     Environment();
@@ -36,10 +39,9 @@ private:
 
     static Environment& get_instance();
 
+
 private:
-    net::TelnetetClient m_client;
-    fp::env::SimulatorServer m_server;
-    env::DataMap dataMap;
+    env::DataMap m_dataMap;
     fp::var::VariableMap m_variable_map;
     std::ostream m_output_stream;
 };
