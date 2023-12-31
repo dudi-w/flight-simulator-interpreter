@@ -30,8 +30,9 @@ public:
     static void print_str(std::string const& message);
     static void print_float(float number);
 
-    const fp::env::SimulatorControl simulator;
 
+    static env::DataMap m_dataMap;
+    static fp::env::SimulatorControl m_simulator;
 private:
     Environment();
     Environment(Environment const& other) = delete;
@@ -41,7 +42,6 @@ private:
 
 
 private:
-    env::DataMap m_dataMap;
     fp::var::VariableMap m_variable_map;
     std::ostream m_output_stream;
 };
