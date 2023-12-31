@@ -100,7 +100,7 @@ void fp::env::SimulatorControl::tryRun()
     }
 }
 
-void run()
+void fp::env::SimulatorControl::run()
 {
     m_server.initialize(m_serverPort);
     // std::unique_lock<std::mutex> lock(mtx);
