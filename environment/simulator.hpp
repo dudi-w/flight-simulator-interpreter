@@ -130,7 +130,6 @@ void fp::env::SimulatorControl::updateMap()
         while(it != j.end()){
             if(it->is_number_float()){
                 fp::env::Environment::m_dataMap.set(it.key(), it.value());
-                // fp::env::Environment::set_variable_value(fp::env::Environment::mapVar_at(it.key()), it.value());
             }
             ++it;
         }
