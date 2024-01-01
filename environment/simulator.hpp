@@ -106,7 +106,7 @@ void fp::env::SimulatorControl::run()
     // std::unique_lock<std::mutex> lock(mtx);
     // cv.wait(lock, [] { return step1_done; });
     // fp::env::Environment::initialization_server(stoi(m_port), stoi(m_ups));
-    std::string systemCommand("fgfs --generic=socket,out," + std::to_string(m_updatePerSecond) + ",127.0.0.1," + std::to_string(m_serverPort) + ",tcp,generic_json_format --telnet=socket,in,10," + m_simulator_host + ',' + std::to_string(m_simulator_port) + ",tcp --httpd=8080");
+    std::string systemCommand = "fgfs --generic=socket,out," + std::to_string(m_updatePerSecond) + ",127.0.0.1," + std::to_string(m_serverPort) + ",tcp,generic_json_format --telnet=socket,in,10," + m_simulator_host + ',' + std::to_string(m_simulator_port) + ",tcp --httpd=8080";
     if(FILE* pipe = popen(systemCommand.c_str(), "r"); !pipe){
         throw; //TODO my exption;
     }
