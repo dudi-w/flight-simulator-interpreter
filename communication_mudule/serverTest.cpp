@@ -1,14 +1,19 @@
 #include <iostream>
 
-#include "includes/netServer.hpp"
+#include "includes/simulatorServer.hpp"
 
 int main(){
 
-    net::SimulatoServer server;
+    fp::env::SimulatorServer server;
     server.initialize(5400);
-    while (true)
+    std::string message;
+    
+    while(message[0] != '9')
     {
-        std::cout<<"\033[1;33m"<<server.receive()<<std::endl;
+        message = server.receive();
+        std::cout<<"\033[1;33mserver.receive() = "<<message<<std::endl;
+        std::cout<<"\033[1;33mserver.send() = \033[0m"<<std::endl;
+        server.send("{jhk : lmn}");
     }
 
     return EXIT_SUCCESS;

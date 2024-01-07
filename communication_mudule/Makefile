@@ -8,23 +8,31 @@ CXXFLAGS += -Wextra
 CXXFLAGS += -g3
 
 CPPFLAGS = -I ./includes -I ./../
+CXXFLAGS += -I ./../googletest/googletest/include
+
 
 # LDLIBS += -lcurlpp -lcurl -lgumbo
 
-OBJECTS_SERVER_TEST = serverTest.o src/netServer.o src/TCPsocketFile.o src/TCPserver.o
-OBJECTS_CLIENT_TEST = clientTest.o src/netClient.o src/TCPsocketFile.o src/TCPclient.o
+OBJECTS_SERVER_TEST = serverTest.o src/simulatorServer.o src/TCPsocketFile.o src/TCPserver.o
+OBJECTS_CLIENT_TEST = clientTelnetTest.o src/netClient.o src/TCPsocketFile.o src/TCPclient.o
+MAIN_TEST = mainTest.o src/simulatorServer.o src/TCPserver.o src/netClient.o src/TCPsocketFile.o src/TCPclient.o
+all: serverTest clientTelnetTest mainTest
 
-all: serverTest clientTest
+mainTest : $(MAIN_TEST)
+	g++ $(MAIN_TEST) -o mainTest -I ./../googletest/googletest/include -L ./../googletest/build/lib -lgtest
+
 
 serverTest : $(OBJECTS_SERVER_TEST)
 
-clientTest : $(OBJECTS_CLIENT_TEST)
+clientTelnetTest : $(OBJECTS_CLIENT_TEST)
 
 serverTest.o : serverTest.cpp
 
-clientTest.o : clientTest.cpp
+clientTelnetTest.o : clientTelnetTest.cpp
 
-src/netServer.o : includes/netServer.hpp src/netServer.cpp myExceptions.hpp includes/TCPsocketFile.hpp includes/TCPserver.hpp
+mainTest.o : mainTest.cpp includes/simulatorServer.hpp includes/netClient.hpp myExceptions.hpp
+
+src/simulatorServer.o : includes/simulatorServer.hpp src/simulatorServer.cpp myExceptions.hpp includes/TCPsocketFile.hpp includes/TCPserver.hpp
 
 src/netClient.o : includes/netClient.hpp src/netClient.cpp myExceptions.hpp includes/TCPsocketFile.hpp includes/TCPserver.hpp
 
@@ -37,4 +45,4 @@ src/TCPclient.o : includes/TCPclient.hpp src/TCPclient.cpp includes/TCPsocketFil
 # src/TCPqueryIF.o : includes/TCPqueryIF.hpp src/TCPqueryIF.cpp includes/TCPsocketFile.hpp includes/TCPserver.hpp
 
 clean :
-	$(RM) $(OBJECTS_SERVER_TEST) $(OBJECTS_CLIENT_TEST)
+	$(RM) $(OBJECTS_SERVER_TEST) $(OBJECTS_CLIENT_TEST) $(MAIN_TEST) mainTest serverTest clientTelnetTest
