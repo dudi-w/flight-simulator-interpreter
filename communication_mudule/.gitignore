@@ -1,4 +1,3 @@
-test/
 *.o
 *.json
 *.gch
@@ -8,4 +7,6 @@ main
 main*
 *.txt
 *.gi
-*Test*
+*test
+*Test
+*.o
