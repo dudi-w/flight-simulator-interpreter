@@ -19,20 +19,26 @@ class Environment
 public:
     ~Environment() = default;
 
-    // static void initialization_server(int port, int ups);   
-    // static void initialization_simulator_cliant(std::string const& host, int port);
+/*simulator functions*/
+    static env::SimulatorControl& simulatorControl();
+    // static void setServerPort(uint16_t serverPort);
+    // static void setServerUpdatePerSecond(uint16_t updatePerSecond);
+    // static void setSimulatorHost(std::string const& host);
+    // static void setSimulatorPort(uint16_t port);
+    // static void setValueInSimulator(std::string variablePath ,float value);
+
+/*dataMap functions*/
+    static env::DataMap& getDataMap();
+    static void set_output_stream(std::ostream& output_stream);
 
     static void insert_to_map(std::string const& variable_name, std::unique_ptr<fp::var::IVariable> variable);
     static void set_variable_value(std::string const& variable_name, float new_value);
     static float get_variable_value(std::string const& variable_name);
 
-    static void set_output_stream(std::ostream& output_stream);
     static void print_str(std::string const& message);
     static void print_float(float number);
 
 public:
-    static env::DataMap m_dataMap;
-    static fp::env::SimulatorControl m_simulator;
 
 private:
     Environment();
@@ -42,7 +48,9 @@ private:
     static Environment& get_instance();
 
 private:
+    env::DataMap m_dataMap;
     fp::var::VariableMap m_variable_map;
+    fp::env::SimulatorControl m_simulator;
     std::ostream m_output_stream;
 };
 

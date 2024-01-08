@@ -13,14 +13,39 @@ Environment& Environment::get_instance()
     return instance;
 }
 
-void Environment::initialization_client(std::string const& host, uint16_t port)
+// void Environment::setServerPort(uint16_t serverPort)
+// {
+//     get_instance().m_simulator.set_server_port(serverPort);
+// }
+
+// void Environment::setServerUpdatePerSecond(uint16_t updatePerSecond)
+// {
+//     get_instance().m_simulator.set_server_update_per_second(updatePerSecond);
+// }
+
+// void Environment::setSimulatorHost(std::string const& host)
+// {
+//     get_instance().m_simulator.set_simulator_host(host);
+// }
+
+// void Environment::setSimulatorPort(uint16_t port)
+// {
+//     get_instance().m_simulator.set_simulator_port(port);
+// }
+
+// void Environment::setValueInSimulator(std::string variablePath ,float value)
+// {
+//     get_instance().m_simulator.setValue(variablePath ,value);
+// }
+
+env::SimulatorControl& Environment::simulatorControl()
 {
-    get_instance().m_client.initialize(host, port);
+    return get_instance().m_simulator;
 }
 
-void Environment::initialization_server(uint16_t port, int ups)
+env::DataMap& Environment::getDataMap()
 {
-    get_instance().m_server.initialize(port);
+    return get_instance().m_dataMap;
 }
 
 void Environment::insert_to_map(std::string const& variable_name, std::unique_ptr<fp::var::IVariable> variable)
@@ -30,7 +55,7 @@ void Environment::insert_to_map(std::string const& variable_name, std::unique_pt
 
 float Environment::get_variable_value(std::string const& variable_name)
 {
-    get_instance().m_variable_map.get_variable_value(variable_name);
+    return get_instance().m_variable_map.get_variable_value(variable_name);
 }
 
 //Remember: this function is only used by the user
