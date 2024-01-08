@@ -75,8 +75,15 @@ void fp::env::SimulatorControl::updateMap()
         auto it = j.begin();
         while(it != j.end()){
             if(it->is_number_float()){
-                // std::cout<<it.key()+'\t'+std::to_string(static_cast<float>(it.value()))<<std::endl;
-                fp::env::Environment::m_dataMap.set(it.key(), static_cast<float>(it.value()));
+                try
+                {
+                    fp::env::Environment::getDataMap().set(it.key(), static_cast<float>(it.value()));
+                    // std::cout<<it.key()+'\t'+std::to_string(static_cast<float>(it.value()))<<std::endl;
+                }
+                catch(const std::exception& e)
+                {
+                    std::cerr << e.what() << '\n';
+                }
             }
             ++it;
         }
