@@ -15,7 +15,7 @@ class SimulatorControl
 public:
     SimulatorControl();
     SimulatorControl(SimulatorControl const& other) = default;
-    SimulatorControl& operator=(SimulatorControl const& other) = default;
+    SimulatorControl& operator=(SimulatorControl const& other) = delete;
     ~SimulatorControl();
 
     void set_server_port(uint16_t serverPort);
