@@ -10,6 +10,6 @@ sudo apt install flightgear
 ```
 
 run it with:
-```bash
+```sh
 fgfs --generic=socket,out,10,127.0.0.1,5400,tcp,generic_json_format --telnet=socket,in,10,127.0.0.1,5402,tcp --httpd=8080
 ```
