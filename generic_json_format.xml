@@ -1,0 +1,134 @@
+<PropertyList>
+ <generic>
+  <output>
+   <line_separator>newline</line_separator>
+   <var_separator>newline</var_separator>
+   <chunk>
+    <name>warp</name>
+	<type>float</type>
+	<format>{"/sim/time/warp" : %f ,</format>
+    <node>/sim/time/warp</node>
+	</chunk>
+	<chunk>
+    <name>magnetos</name>
+	<type>float</type>
+	<format> "/controls/switches/magnetos" : %f ,</format>
+    <node>/controls/switches/magnetos</node>
+	</chunk>
+	<chunk>
+    <name>throttle</name>
+	<type>float</type>
+	<format> "/controls/engines/engine/throttle" : %f ,</format>
+    <node>/controls/engines/engine/throttle</node>
+	</chunk>
+	<chunk>
+	<name> mixture</name>
+	<type>float</type>
+	<format> "/controls/engines/current-engine/mixture" : %f ,</format>
+    <node>/controls/engines/current-engine/mixture</node>
+	</chunk> 
+	<chunk>
+	<name> masterbat</name>
+	<type>float</type>
+	<format> "/controls/switches/master-bat" : %f ,</format>
+    <node>/controls/switches/master-bat</node>
+	</chunk> 
+	<chunk>
+	<name> masterlat</name>
+	<type>float</type>
+	<format> "/controls/switches/master-alt" : %f ,</format>
+    <node>/controls/switches/master-alt</node>
+	</chunk> 
+	<chunk>
+	<name> masteravionics</name>
+	<type>float</type>
+	<format> "/controls/switches/master-avionics" : %f ,</format>
+    <node>/controls/switches/master-avionics</node>
+	</chunk> 
+	<chunk>
+	<name> brakeparking</name>
+	<type>float</type>
+	<format> "/sim/model/c172p/brake-parking" : %f ,</format>
+    <node>/sim/model/c172p/brake-parking</node>
+	</chunk> 
+	<chunk>
+	<name> primer</name>
+	<type>float</type>
+	<format> "/controls/engines/engine/primer" : %f ,</format>
+    <node>/controls/engines/engine/primer</node>
+	</chunk> 
+	<chunk>
+	<name> starter</name>
+	<type>float</type>
+	<format> "/controls/switches/starter" : %f ,</format>
+    <node>/controls/switches/starter</node>
+	</chunk> 
+	<chunk>
+	<name> autostart</name>
+	<type>float</type>
+	<format> "/engines/active-engine/auto-start" : %f ,</format>
+    <node>/engines/active-engine/auto-start</node>
+	</chunk> 
+	<chunk>
+	<name> breaks</name>
+	<type>float</type>
+	<format> "/controls/flight/speedbrake" : %f ,</format>
+    <node>/controls/flight/speedbrake</node>
+	</chunk> 
+	<chunk>
+	<name> heading</name>
+	<type>float</type>
+	<format> "/instrumentation/heading-indicator/offset-deg" : %f ,</format>
+    <node>/instrumentation/heading-indicator/offset-deg</node>
+	</chunk> 
+	<chunk>
+	<name> airspeed</name>
+	<type>float</type>
+	<format> "/instrumentation/airspeed-indicator/indicated-speed-kt" : %f ,</format>
+    <node>/instrumentation/airspeed-indicator/indicated-speed-kt</node>
+	</chunk> 
+	<chunk>
+	<name> roll</name>
+	<type>float</type>
+	<format> "/instrumentation/attitude-indicator/indicated-roll-deg" : %f ,</format>
+    <node>/instrumentation/attitude-indicator/indicated-roll-deg</node>
+	</chunk> 
+	<chunk>
+	<name> pitch</name>
+	<type>float</type>
+	<format> "/instrumentation/attitude-indicator/internal-pitch-deg" : %f ,</format>
+    <node>/instrumentation/attitude-indicator/internal-pitch-deg</node>
+	</chunk> 
+	<chunk>
+	<name> rudder</name>
+	<type>float</type>
+	<format> "/controls/flight/rudder" : %f ,</format>
+    <node>/controls/flight/rudder</node>
+	</chunk> 
+	<chunk>
+	<name> aileron</name>
+	<type>float</type>
+	<format> "/controls/flight/aileron" : %f ,</format>
+    <node>/controls/flight/aileron</node>
+	</chunk> 
+	<chunk>
+	<name> elevator</name>
+	<type>float</type>
+	<format> "/controls/flight/elevator" : %f ,</format>
+    <node>/controls/flight/elevator</node>
+	</chunk> 
+	<chunk>
+	<name> alt</name>
+	<type>float</type>
+	<format> "/instrumentation/altimeter/indicated-altitude-ft" : %f ,</format>
+    <node>/instrumentation/altimeter/indicated-altitude-ft</node>
+	</chunk> 
+	<chunk>
+	<name> rpm</name>
+	<type>float</type>
+	<format> "/engines/engine/rpm" : %f \n}</format>
+    <node>/engines/engine/rpm</node>
+	</chunk> 
+  </output>
+ </generic>
+</PropertyList>
