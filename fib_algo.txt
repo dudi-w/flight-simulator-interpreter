@@ -1,4 +1,3 @@
-
 fib_req = 3
 var res1 = 0
 var res2 = 1
