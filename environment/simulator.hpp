@@ -3,6 +3,7 @@
 
 #include <thread>
 #include <string>
+#include <atomic>
 
 #include "../communication_mudule/includes/simulatorServer.hpp"
 #include "../communication_mudule/includes/netClient.hpp"
@@ -29,6 +30,7 @@ private:
     void tryRun();
     void run();
     void updateMap();
+    void stopUpdateMap();
 
 private:
     uint16_t m_serverPort;
@@ -37,6 +39,7 @@ private:
     uint16_t m_simulator_port;
 
     std::thread m_updater;
+    std::atomic_bool m_toUpdataMap;
     net::TelnetetClient m_client;
     fp::env::SimulatorServer m_server;
 };

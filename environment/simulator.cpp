@@ -9,10 +9,12 @@ fp::env::SimulatorControl::SimulatorControl()
 , m_updatePerSecond{0}
 , m_simulator_host{""}
 , m_simulator_port{0}
+, m_toUpdataMap{false}
 {}
 
 fp::env::SimulatorControl::~SimulatorControl()
 {
+    stopUpdateMap();
     m_updater.join();
 }
 
@@ -56,6 +58,7 @@ void fp::env::SimulatorControl::run()
     }
     std::this_thread::sleep_for(std::chrono::seconds(30));
     m_client.initialize(m_simulator_host, m_simulator_port);
+    m_toUpdataMap = true;
     m_updater = std::thread([this](){updateMap();});
 }
 
@@ -64,9 +67,14 @@ void fp::env::SimulatorControl::setValue(std::string variablePath, float value)
     m_client.send("set " + variablePath + " " + std::to_string(value));
 }
 
+void fp::env::SimulatorControl::stopUpdateMap()
+{
+    m_toUpdataMap = false;
+}
+
 void fp::env::SimulatorControl::updateMap()
 {
-    while(true){//TODO stop conditions
+    while(m_toUpdataMap){//TODO stop conditions
         std::string message = m_server.receive();
         std::stringstream strs(message);
         nlohmann::json j;
@@ -82,7 +90,7 @@ void fp::env::SimulatorControl::updateMap()
                 }
                 catch(const std::exception& e)
                 {
-                    std::cerr << e.what() << '\n';
+                    // std::cerr << e.what() << '\n';
                 }
             }
             ++it;
