@@ -11,7 +11,8 @@ fp::com::ConnectCommand::ConnectCommand(std::string && host ,std::string && port
 , m_port(std::move(port))
 {}
 
-fp::ConnectCommand::execute()
+void fp::com::ConnectCommand::execute()
 {
-    fp::env::Environment::initialization_client(stoi(m_host), stoi(m_port));
+    fp::env::Environment::simulatorControl().set_simulator_host(m_host);
+    fp::env::Environment::simulatorControl().set_simulator_port(static_cast<uint16_t>(stoi(m_port)));
 }

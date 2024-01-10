@@ -13,5 +13,5 @@ fp::com::SleepCommand::SleepCommand(std::unique_ptr<fp::Expression> && expr)
 
 void fp::com::SleepCommand::execute()
 {
-    std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int64_t>(m_expr->get())));
 }
