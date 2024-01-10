@@ -4,10 +4,10 @@ CC = $(CXX)
 CXXFLAGS = -std=c++17 -Wall -pedantic
 CXXFLAGS += -g3
 CXXFLAGS += -Werror 
-CXXFLAGS += -I ./../communication_mudule/includes 
+CXXFLAGS += -I ./../communication_module/includes 
 CXXFLAGS += -I ./../googletest/googletest/include -L ./../googletest/build/lib -lgtest -lgtest_main -pthread
 
-COMMUN = ../communication_mudule/
+COMMUN = ../communication_module/
 VAR = ../variable/
 
 SIMULATOR_TEST = simulatorTest.o simulator.o $(COMMUN)src/simulatorServer.o $(COMMUN)src/TCPserver.o $(COMMUN)src/netClient.o $(COMMUN)src/TCPsocketFile.o $(COMMUN)src/TCPclient.o

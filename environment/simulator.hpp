@@ -5,8 +5,8 @@
 #include <string>
 #include <atomic>
 
-#include "../communication_mudule/includes/simulatorServer.hpp"
-#include "../communication_mudule/includes/netClient.hpp"
+#include "../communication_module/includes/simulatorServer.hpp"
+#include "../communication_module/includes/netClient.hpp"
 
 namespace fp {
 namespace env {
