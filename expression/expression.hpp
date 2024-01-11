@@ -12,6 +12,8 @@ public:
     virtual float get_value() const = 0;
 };
 
+using Expression = IExpression;
+
 } //namespace exp
 } //namespace fp
 
