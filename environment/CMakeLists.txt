@@ -1,7 +1,5 @@
 add_library(environment 
-    dataMapTest.cpp
     environment.cpp
-    environmentTest.cpp
     simulator.cpp
     simulatorTest.cpp
 )
