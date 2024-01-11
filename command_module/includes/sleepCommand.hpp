@@ -13,7 +13,6 @@ namespace com{ // commands
 class SleepCommand : public Command
 {
 public:
-    explicit SleepCommand(std::unique_ptr<fp::exp::Expression> expr);
     explicit SleepCommand(std::unique_ptr<fp::exp::Expression> && expr);
     SleepCommand(SleepCommand const& other) = default;
     SleepCommand& operator=(SleepCommand const& other) = default;
