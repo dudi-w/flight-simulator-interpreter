@@ -5,7 +5,7 @@ fp::com::PrintExpCommand::PrintExpCommand(std::unique_ptr<fp::Expression> expr)
 : m_expr(std::move(expr))
 {}
 
-fp::com::PrintExpCommand::PrintExpCommand(std::unique_ptr<fp::Expression> && expr)
+fp::com::PrintExpCommand::PrintExpCommand(std::unique_ptr<fp::exp::Expression> && expr)
 : m_expr(std::move(expr))
 {}
 
