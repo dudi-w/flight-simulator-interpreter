@@ -123,14 +123,13 @@ std::unique_ptr<exp::IExpression> ExpressionParser::parseNumber()
         std::unique_ptr<exp::Literal> left = std::make_unique<exp::Literal>("0");
         std::unique_ptr<exp::IExpression> right = parseNumber();
         result = std::make_unique<exp::Sub>(std::move(left), std::move(right));
-        ++m_startToken;
         return result;
     }
 
     if (m_startToken->type() == lexer::TokenType::LeftBracket) {
         ++m_parenLevel;
         ++m_startToken;
-        std::unique_ptr<exp::IExpression> result = parseAddSub();
+        result = parseAddSub();
 
         if (m_startToken == m_endToken || m_startToken->type() != lexer::TokenType::RightBracket) {
             throw std::runtime_error("Expected closing parenthesis.");
