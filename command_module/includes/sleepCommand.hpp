@@ -13,8 +13,8 @@ namespace com{ // commands
 class SleepCommand : public Command
 {
 public:
-    explicit SleepCommand(std::unique_ptr<fp::Expression> expr);
-    explicit SleepCommand(std::unique_ptr<fp::Expression> && expr);
+    explicit SleepCommand(std::unique_ptr<fp::exp::Expression> expr);
+    explicit SleepCommand(std::unique_ptr<fp::exp::Expression> && expr);
     SleepCommand(SleepCommand const& other) = default;
     SleepCommand& operator=(SleepCommand const& other) = default;
     ~SleepCommand() = default;
@@ -22,7 +22,7 @@ public:
     virtual void execute() override;
 
 private:
-    std::unique_ptr<fp::Expression> m_expr;
+    std::unique_ptr<fp::exp::Expression> m_expr;
 };
 
 }// namespace commands
