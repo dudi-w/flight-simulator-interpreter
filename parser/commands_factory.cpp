@@ -1,26 +1,31 @@
-#include "commands_factory.hpp"
+#include <string>
+
+//parser
 #include "parser.hpp"
+#include "commands_factory.hpp"
+#include "expressionParser.hpp"
 #include "parser_exceptions.hpp"
 
-#include "../command_module/includes/codeBlockCommand.hpp"
-#include "../command_module/includes/whileCommand.hpp"
-#include "../command_module/includes/connectCommand.hpp"
-#include "../command_module/includes/openDataServerCommand.hpp"
-#include "../command_module/includes/sleepCommand.hpp"
+#include "expression.hpp"
 
-#include "../command_module/includes/assignmentCommand.hpp"
-#include "../command_module/includes/allocationRemoteVarCommand.hpp"
-#include "../command_module/includes/allocationLocalVarCommand.hpp"
-#include "../command_module/includes/printExpCommand.hpp"
-#include "../command_module/includes/printStringCommand.hpp"
+//commands
+#include "codeBlockCommand.hpp"
+#include "whileCommand.hpp"
+#include "connectCommand.hpp"
+#include "openDataServerCommand.hpp"
+#include "sleepCommand.hpp"
+#include "assignmentCommand.hpp"
+#include "allocationRemoteVarCommand.hpp"
+#include "allocationLocalVarCommand.hpp"
+#include "printExpCommand.hpp"
+#include "printStringCommand.hpp"
 
-#include "../expressionTokens/expressionParser.hpp"
 
 using namespace fp;
 using namespace parser;
 
 using TokensItr = std::vector<lexer::Token>::const_iterator;
-using ComPtr = std::unique_ptr<Command>;
+using ComPtr = std::unique_ptr<com::Command>;
 
 std::pair<ComPtr, TokensItr> CommandsFactory::create(TokensItr it, TokensItr end)
 {   
@@ -30,15 +35,13 @@ std::pair<ComPtr, TokensItr> CommandsFactory::create(TokensItr it, TokensItr end
         } else {
             throw ParserError(it->row(), it->column(), "unexpected token \"" + it->str() + "\".");
         }
-        nesting_level += (it->type() == lexer::TokenType::LeftCurlyBracket);
-        nesting_level -= (it->type() == lexer::TokenType::RightCurlyBracket);
-        ++it;
     }
+    throw ParserError(it->row(), it->column(), "unexpected end of file.");
 }
 
-std::pair<std::unique_ptr<Expression>, TokensItr> fp::parser::CommandsFactory::build_expression(TokensItr it, TokensItr end)
+std::pair<std::unique_ptr<exp::Expression>, TokensItr> fp::parser::CommandsFactory::build_expression(TokensItr it, TokensItr end)
 {
-    return ExpressionParser().parse(it, end);
+    return ExpressionParser(it, end).parse();
 }
 
 std::pair<ComPtr, TokensItr> CommandsFactory::curlyBracket_heandler(TokensItr it, TokensItr end)
@@ -66,7 +69,7 @@ std::pair<ComPtr, TokensItr> CommandsFactory::connect_builder(TokensItr it, Toke
     ){
         std::string const& host = (it + 1)->str();
         std::string const& port = (it + 2)->str();
-        return {std::make_unique<com::ConnectCommand>(host, port), it};
+        return {std::make_unique<com::ConnectCommand>(host, port), it + 3};
     } else {
         throw ParserError(it->row(), it->column(), "ConnectCommand expects to get a string and a number.");
     }
@@ -93,7 +96,8 @@ std::pair<ComPtr, TokensItr> CommandsFactory::print_builder(TokensItr it, Tokens
             std::string const& msg = (it + 1)->str();
             return {std::make_unique<com::PrintStringCommand>(msg), it + 2};
         } else if(auto [expr, it_behind_expr] = build_expression(it + 1, end); expr){
-            return {std::make_unique<com::PrintExpCommand>(expr), it_behind_expr};
+            return {std::make_unique<com::PrintExpCommand>(std::move(expr)), it_behind_expr};
+
         }
     }
     throw ParserError(it->row(), it->column(), "print expects to get string or expression.");
@@ -112,7 +116,7 @@ std::pair<ComPtr, TokensItr> CommandsFactory::sleep_builder(TokensItr it, Tokens
 
 std::pair<ComPtr, TokensItr> CommandsFactory::var_heandler(TokensItr it, TokensItr end)
 {
-    if(it + 1 >= end && (it + 1)->type() == lexer::TokenType::Name ){
+    if(it + 1 >= end || (it + 1)->type() != lexer::TokenType::Name ){
         throw ParserError(it->row(), it->column(), "behind \"var\" is expected to be \"VarName\".");
     }
 
@@ -132,9 +136,9 @@ std::pair<ComPtr, TokensItr> CommandsFactory::var_heandler(TokensItr it, TokensI
 std::pair<ComPtr, TokensItr> fp::parser::CommandsFactory::assignment_builder(TokensItr it, TokensItr end)
 {
     if(it + 2 < end && (it + 1)->type() == lexer::TokenType::Equal){
-        std::string const& varName = (it + 1)->str();
-        if(auto [expr, it_behind_expr] = build_expression(it + 3, end); expr){
-            return {std::make_unique<com::AssigmentCommand>(varName, expr), it_behind_expr}; 
+        std::string const& varName = it->str();
+        if(auto [expr, it_behind_expr] = build_expression(it + 2, end); expr){
+            return {std::make_unique<com::AssigmentCommand>(varName, std::move(expr)), it_behind_expr}; 
         }
     }
     throw ParserError(it->row(), it->column(), "var assignment expects to get an expression.");
@@ -145,7 +149,7 @@ std::pair<ComPtr, TokensItr> CommandsFactory::while_builder(TokensItr it, Tokens
     if(auto [expr, it_behind_expr] = build_expression(it + 1, end); expr){
         auto [comm, it_behind_com] = CommandsFactory::create(it_behind_expr, end);
         ComPtr while_com = std::make_unique<com::WhileCommand>(std::move(expr), std::move(comm));
-        return {while_com, it_behind_com};
+        return std::make_pair(std::move(while_com), it_behind_com);
     }
     throw ParserError(it->row(), it->column(), "whileCommand expects to get an expression end command.");
 }

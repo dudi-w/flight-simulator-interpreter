@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <nlohmann/json.hpp>
+#include "nlohmann/json.hpp"
 
 #include "simulator.hpp"
 #include "environment.hpp"
@@ -15,7 +15,9 @@ fp::env::SimulatorControl::SimulatorControl()
 fp::env::SimulatorControl::~SimulatorControl()
 {
     stopUpdateMap();
-    m_updater.join();
+    if(m_updater.joinable()){
+        m_updater.join();
+    }
 }
 
 void fp::env::SimulatorControl::set_server_port(uint16_t serverPort)
