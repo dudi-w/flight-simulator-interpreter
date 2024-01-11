@@ -13,5 +13,5 @@ fp::com::AssigmentCommand::AssigmentCommand(std::string && variableName ,std::un
 
 void fp::com::AssigmentCommand::execute()
 {
-    fp::env::Environment::set_variable_value(m_variableName, m_expr->get());
+    fp::env::Environment::set_variable_value(m_variableName, m_expr->get_value());
 }

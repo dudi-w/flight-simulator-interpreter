@@ -11,6 +11,6 @@ fp::com::PrintExpCommand::PrintExpCommand(std::unique_ptr<fp::Expression> && exp
 
 void fp::com::PrintExpCommand::execute()
 {
-    float num = m_expr->get();
+    float num = m_expr->get_value();
     fp::env::Environment::print_float(num);
 }

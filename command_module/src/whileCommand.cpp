@@ -12,7 +12,7 @@ fp::com::WhileCommand::WhileCommand(std::unique_ptr<fp::Expression> && exp, std:
 
 void fp::com::WhileCommand::execute()
 {
-    while(m_exp->get()){
+    while(m_exp->get_value()){
         m_command->execute();
     }
 }
