@@ -26,7 +26,7 @@ PUBLIC communication_module
 PUBLIC environment
 PUBLIC variable
 PUBLIC command_module
-PUBLIC larser
+PUBLIC parser
 PUBLIC lexer
 )
 

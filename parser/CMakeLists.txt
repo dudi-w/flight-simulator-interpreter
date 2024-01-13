@@ -1,11 +1,11 @@
-add_library(larser 
+add_library(parser 
     parser.cpp 
     expressionParser.cpp 
     commands_factory.cpp
 )
 
 target_include_directories(
-    larser INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+    parser INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(
-    larser PRIVATE flightplan_compiler_flags lexer command_module expression)
+    parser PRIVATE flightplan_compiler_flags lexer command_module expression)
