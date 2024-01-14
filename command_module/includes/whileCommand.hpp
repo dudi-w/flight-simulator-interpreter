@@ -13,8 +13,8 @@ class WhileCommand : public Command
 {
 public:
     explicit WhileCommand(std::unique_ptr<fp::exp::Expression> && expr, std::unique_ptr<Command> && command);
-    WhileCommand(WhileCommand const& other) = default;
-    WhileCommand& operator=(WhileCommand const& other) = default;
+    WhileCommand(WhileCommand const& other) = delete;
+    WhileCommand& operator=(WhileCommand const& other) = delete;
     ~WhileCommand() = default;
 
     virtual void execute() override;

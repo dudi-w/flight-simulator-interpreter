@@ -15,7 +15,7 @@ public:
     explicit AllocationRemoteVarCommand(std::string const& variableName, std::string const& variablePath);
     explicit AllocationRemoteVarCommand(std::string && variableName, std::string && variablePath);
     AllocationRemoteVarCommand(AllocationRemoteVarCommand const& other) = default;
-    AllocationRemoteVarCommand& operator=(AllocationRemoteVarCommand const& other) = default;
+    AllocationRemoteVarCommand& operator=(AllocationRemoteVarCommand const& other) = delete;
     ~AllocationRemoteVarCommand() = default;
 
     virtual void execute() override;

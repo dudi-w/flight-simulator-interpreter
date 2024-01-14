@@ -12,8 +12,8 @@ class EquleOperator : public IExpression
 {
 public:
     explicit EquleOperator(std::unique_ptr<IExpression> first, std::unique_ptr<IExpression> second);
-    EquleOperator(EquleOperator const& other) = default;
-    EquleOperator& operator=(EquleOperator const& other) = default;
+    EquleOperator(EquleOperator const& other) = delete;
+    EquleOperator& operator=(EquleOperator const& other) = delete;
     ~EquleOperator() = default;
 
     float get_value() const override;

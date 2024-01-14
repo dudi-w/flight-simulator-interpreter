@@ -16,7 +16,7 @@ class SimulatorControl
 {
 public:
     SimulatorControl();
-    SimulatorControl(SimulatorControl const& other) = default;
+    SimulatorControl(SimulatorControl const& other) = delete;
     SimulatorControl& operator=(SimulatorControl const& other) = delete;
     ~SimulatorControl();
 
