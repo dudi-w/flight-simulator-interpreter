@@ -16,8 +16,8 @@ class CodeBlockCommand : public Command
 {
 public:
     explicit CodeBlockCommand(fp::Commands && commands);
-    CodeBlockCommand(CodeBlockCommand const& other) = default;
-    CodeBlockCommand& operator=(CodeBlockCommand const& other) = default;
+    CodeBlockCommand(CodeBlockCommand const& other) = delete;
+    CodeBlockCommand& operator=(CodeBlockCommand const& other) = delete;
     ~CodeBlockCommand() = default;
 
     virtual void execute() override;

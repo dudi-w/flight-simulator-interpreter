@@ -12,8 +12,8 @@ class Add : public IExpression
 {
 public:
     explicit Add(std::unique_ptr<IExpression> first, std::unique_ptr<IExpression> second);
-    Add(Add const& other) = default;
-    Add& operator=(Add const& other) = default;
+    Add(Add const& other) = delete;
+    Add& operator=(Add const& other) = delete;
     ~Add() = default;
 
     float get_value() const override;

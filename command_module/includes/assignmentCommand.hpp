@@ -15,8 +15,8 @@ class AssigmentCommand : public Command
 public:
     explicit AssigmentCommand(std::string const& variableName ,std::unique_ptr<fp::exp::Expression> expr);
     explicit AssigmentCommand(std::string && variableName ,std::unique_ptr<fp::exp::Expression> && expr);
-    AssigmentCommand(AssigmentCommand const& other) = default;
-    AssigmentCommand& operator=(AssigmentCommand const& other) = default;
+    AssigmentCommand(AssigmentCommand const& other) = delete;
+    AssigmentCommand& operator=(AssigmentCommand const& other) = delete;
     ~AssigmentCommand() = default;
 
     virtual void execute() override;

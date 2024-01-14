@@ -14,8 +14,8 @@ class SleepCommand : public Command
 {
 public:
     explicit SleepCommand(std::unique_ptr<fp::exp::Expression> && expr);
-    SleepCommand(SleepCommand const& other) = default;
-    SleepCommand& operator=(SleepCommand const& other) = default;
+    SleepCommand(SleepCommand const& other) = delete;
+    SleepCommand& operator=(SleepCommand const& other) = delete;
     ~SleepCommand() = default;
 
     virtual void execute() override;

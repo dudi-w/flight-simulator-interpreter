@@ -13,8 +13,8 @@ class TelnetetClient
 {
 public:
     TelnetetClient();
-    TelnetetClient(TelnetetClient const& other) = default;
-    TelnetetClient& operator=(TelnetetClient const& other) = default;
+    TelnetetClient(TelnetetClient const& other) = delete;
+    TelnetetClient& operator=(TelnetetClient const& other) = delete;
     ~TelnetetClient() = default;
 
     void initialize(std::string const& serverAddress, uint16_t port);

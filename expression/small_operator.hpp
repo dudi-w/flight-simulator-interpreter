@@ -12,8 +12,8 @@ class SmallOperator : public IExpression
 {
 public:
     explicit SmallOperator(std::unique_ptr<IExpression> first, std::unique_ptr<IExpression> second);
-    SmallOperator(SmallOperator const& other) = default;
-    SmallOperator& operator=(SmallOperator const& other) = default;
+    SmallOperator(SmallOperator const& other) = delete;
+    SmallOperator& operator=(SmallOperator const& other) = delete;
     ~SmallOperator() = default;
 
     float get_value() const override;

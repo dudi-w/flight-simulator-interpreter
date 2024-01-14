@@ -12,8 +12,8 @@ class GreatOperator : public IExpression
 {
 public:
     explicit GreatOperator(std::unique_ptr<IExpression> first, std::unique_ptr<IExpression> second);
-    GreatOperator(GreatOperator const& other) = default;
-    GreatOperator& operator=(GreatOperator const& other) = default;
+    GreatOperator(GreatOperator const& other) = delete;
+    GreatOperator& operator=(GreatOperator const& other) = delete;
     ~GreatOperator() = default;
 
     float get_value() const override;
