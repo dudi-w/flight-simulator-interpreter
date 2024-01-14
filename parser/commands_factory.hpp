@@ -6,11 +6,12 @@
 #include <unordered_map>
 #include <functional>
 
-#include "../lexer/I_lexer.hpp"
-#include "../lexer/token.hpp"
-#include "../lexer/token_enum.hpp"
+#include "I_lexer.hpp"
+#include "token.hpp"
+#include "token_enum.hpp"
 
-#include "../includs/command.hpp"
+#include "command.hpp"
+#include "expression.hpp"
 
 namespace fp {
 namespace parser {
@@ -18,12 +19,12 @@ namespace parser {
 class CommandsFactory {
 public:
     using TokensItr = std::vector<lexer::Token>::const_iterator;
-    using ComPtr = std::unique_ptr<Command>;
+    using ComPtr = std::unique_ptr<com::Command>;
 
     static std::pair<ComPtr, TokensItr> create(TokensItr it, TokensItr end);
 
 private:
-    static std::pair<std::unique_ptr<Expression>, TokensItr> build_expression(TokensItr it, TokensItr end);
+    static std::pair<std::unique_ptr<exp::IExpression>, TokensItr> build_expression(TokensItr it, TokensItr end);
 
     // commands builders
     using BuilderFunc = std::pair<ComPtr, TokensItr>(*)(TokensItr, TokensItr);

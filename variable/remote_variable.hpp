@@ -17,7 +17,7 @@ public:
     explicit RemoteVariable(std::string const& variable_path);
     explicit RemoteVariable(std::string && variable_path);
     RemoteVariable(RemoteVariable const& other) = default;
-    RemoteVariable& operator=(RemoteVariable const& other) = default;
+    RemoteVariable& operator=(RemoteVariable const& other) = delete;
     ~RemoteVariable() = default;
 
     float get_value() const override;

@@ -13,8 +13,8 @@ class TCPserver
 {
 public:
     explicit TCPserver(uint16_t port);
-    TCPserver(TCPserver const& other) = default;
-    TCPserver& operator=(TCPserver const& other) = default;
+    TCPserver(TCPserver const& other) = delete;
+    TCPserver& operator=(TCPserver const& other) = delete;
     ~TCPserver();
 
 public:

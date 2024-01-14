@@ -6,11 +6,11 @@
 #include <unordered_map>
 #include <functional>
 
-#include "../lexer/I_lexer.hpp"
-#include "../lexer/token.hpp"
-#include "../lexer/token_enum.hpp"
+#include "I_lexer.hpp"
+#include "token.hpp"
+#include "token_enum.hpp"
 
-#include "../includs/command.hpp"
+#include "command.hpp"
 
 
 namespace fp {
@@ -23,8 +23,8 @@ public:
     Parser& operator=(Parser const& other) = delete;
     Parser() = default;
 
-    static std::unique_ptr<Command> parse(std::vector<lexer::Token> const& tokens);
-    static std::unique_ptr<Command> parse(TokensItr it, TokensItr end);
+    static std::unique_ptr<com::Command> parse(std::vector<lexer::Token> const& tokens);
+    static std::unique_ptr<com::Command> parse(TokensItr it, TokensItr end);
 };
 
 } // namespace parser

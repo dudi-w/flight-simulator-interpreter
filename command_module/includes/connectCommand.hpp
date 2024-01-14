@@ -14,7 +14,7 @@ public:
     explicit ConnectCommand(std::string const& host ,std::string const& port);
     explicit ConnectCommand(std::string && host ,std::string && port);
     ConnectCommand(ConnectCommand const& other) = default;
-    ConnectCommand& operator=(ConnectCommand const& other) = default;
+    ConnectCommand& operator=(ConnectCommand const& other) = delete;
     ~ConnectCommand() = default;
 
     virtual void execute() override;

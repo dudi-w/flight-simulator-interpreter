@@ -12,8 +12,8 @@ class Sub : public IExpression
 {
 public:
     explicit Sub(std::unique_ptr<IExpression> first, std::unique_ptr<IExpression> second);
-    Sub(Sub const& other) = default;
-    Sub& operator=(Sub const& other) = default;
+    Sub(Sub const& other) = delete;
+    Sub& operator=(Sub const& other) = delete;
     ~Sub() = default;
 
     float get_value() const override;

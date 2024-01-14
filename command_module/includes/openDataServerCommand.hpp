@@ -14,7 +14,7 @@ public:
     explicit OpenServerCommand(std::string const& port, std::string const& ups);
     explicit OpenServerCommand(std::string && port, std::string && ups);
     OpenServerCommand(OpenServerCommand const& other) = default;
-    OpenServerCommand& operator=(OpenServerCommand const& other) = default;
+    OpenServerCommand& operator=(OpenServerCommand const& other) = delete;
     ~OpenServerCommand() = default;
 
     virtual void execute() override;

@@ -18,7 +18,7 @@ std::string net::TelnetetClient::receive() const
     }
     
     if(int fileDescriptorNum = m_fileDescription->fileDescriptorNum(); fileDescriptorNum < 3){
-        throw net::FileDiscreptorError("invalid file discreptor number " + fileDescriptorNum);
+        throw net::FileDiscreptorError("invalid file discreptor number " + std::to_string(fileDescriptorNum));
     }
     return m_fileDescription->read();
 }
@@ -30,7 +30,7 @@ void net::TelnetetClient::send(std::string const& message)
     }
     
     if(int fileDescriptorNum = m_fileDescription->fileDescriptorNum(); fileDescriptorNum < 3){
-        throw net::FileDiscreptorError("invalid file discreptor number " + fileDescriptorNum);
+        throw net::FileDiscreptorError("invalid file discreptor number " + std::to_string(fileDescriptorNum));
     }
     m_fileDescription->write(message + "\r\n");//telnet protocol
 }

@@ -15,7 +15,7 @@ public:
     explicit AllocationLocalVarCommand(std::string const& variableName);
     explicit AllocationLocalVarCommand(std::string && variableName);
     AllocationLocalVarCommand(AllocationLocalVarCommand const& other) = default;
-    AllocationLocalVarCommand& operator=(AllocationLocalVarCommand const& other) = default;
+    AllocationLocalVarCommand& operator=(AllocationLocalVarCommand const& other) = delete;
     ~AllocationLocalVarCommand() = default;
 
     virtual void execute() override;

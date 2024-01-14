@@ -14,7 +14,7 @@ public:
     explicit PrintStringCommand(std::string const& message);
     explicit PrintStringCommand(std::string && message);
     PrintStringCommand(PrintStringCommand const& other) = default;
-    PrintStringCommand& operator=(PrintStringCommand const& other) = default;
+    PrintStringCommand& operator=(PrintStringCommand const& other) = delete;
     ~PrintStringCommand() = default;
 
     virtual void execute() override;
