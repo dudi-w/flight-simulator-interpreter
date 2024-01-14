@@ -62,11 +62,18 @@ void fp::env::SimulatorControl::run()
     m_updater = std::thread([this](){updateMap();});
 }
 
-void fp::env::SimulatorControl::setValue(std::string variablePath, float value)
+void fp::env::SimulatorControl::setValue(std::string const& variablePath, float value)
 {
     m_client.send("set " + variablePath + " " + std::to_string(value));
 }
 
+float fp::env::SimulatorControl::getValue(std::string const& variablePath)
+{
+    m_client.send("get " + variablePath);
+    std::string res = m_client.receive();
+    auto it = res.cbegin();
+    return stof(std::string(it +1+ res.find("'"),it + res.rfind("'")));
+}
 void fp::env::SimulatorControl::stopUpdateMap()
 {
     m_toUpdataMap = false;

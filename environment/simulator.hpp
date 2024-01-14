@@ -24,8 +24,9 @@ public:
     void set_simulator_host(std::string const& host);
     void set_simulator_port(uint16_t port);
 
-    void setValue(std::string variablePath ,float value);
-
+    void setValue(std::string const& variablePath ,float value);
+    float getValue(std::string const& variablePath);
+    
 private:
     void tryRun();
     void run();

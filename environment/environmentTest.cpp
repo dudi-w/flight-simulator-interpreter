@@ -21,5 +21,6 @@ int main(){
     env::set_variable_value("warp",0.3f);
     std::this_thread::sleep_for(std::chrono::seconds(5));
     std::cout<<"\033[1;35mwarp = "<<env::get_variable_value("warp")<<"\033[0m"<<std::endl;
+    std::cout<<"\033[1;36m\"/sim/time/warp\" = "<<env::simulatorControl().getValue("/sim/time/warp")<<"\033[0m"<<std::endl;
     return EXIT_SUCCESS;
 }
