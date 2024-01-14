@@ -25,7 +25,7 @@ std::string net::TCPsocketFile::read()
         std::string buffer(m_buffSize, 0);
         ssize_t bytesReceived = recv(m_fileDescriptor, buffer.data(), m_buffSize ,0);
         if(bytesReceived < 0){
-            throw net::ReadError("Cannot read from file descriptor number " + m_fileDescriptor);
+            throw net::ReadError("Cannot read from file descriptor number " + std::to_string(m_fileDescriptor));
         }
         message.append(buffer ,0 ,bytesReceived);
         if(bytesReceived < m_buffSize && bytesReceived){
@@ -38,7 +38,7 @@ std::string net::TCPsocketFile::read()
 void net::TCPsocketFile::write(std::string const& text) const
 {
     if(ssize_t bytesSent = send(m_fileDescriptor, text.c_str(), text.size(), 0); bytesSent < 0){
-        throw net::WriteError("Cannot write to file descriptor number " + m_fileDescriptor);
+        throw net::WriteError("Cannot write to file descriptor number " + std::to_string(m_fileDescriptor));
     }
 }
 
