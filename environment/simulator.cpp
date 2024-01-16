@@ -95,11 +95,10 @@ void fp::env::SimulatorControl::updateMap()
                 try
                 {
                     fp::env::Environment::getDataMap().set(it.key(), static_cast<float>(it.value()));
-                    // std::cout<<it.key()+'\t'+std::to_string(static_cast<float>(it.value()))<<std::endl;
                 }
-                catch(const std::exception& e)
+                catch(const std::runtime_error& e)
                 {
-                    // std::cerr << e.what() << '\n';
+                    std::clog<<e.what()<<std::endl;
                 }
             }
             ++it;
