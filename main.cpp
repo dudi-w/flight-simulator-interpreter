@@ -21,14 +21,14 @@ int main1(int argc, char *argv[])
         std::cerr << "Usage: " << argv[0] << " " << "<path to flight instructions file>.";
         return EXIT_FAILURE;
     }
-    std::string code = ss.str();
+    const std::string code = ss.str();
 
     fp::lexer::Lexer lexer;
     auto tokens = lexer.tokenize(code);
     auto out = fp::parser::Parser::parse(tokens);
 
     out->execute();
-  
+
     return 0;
 }
 
