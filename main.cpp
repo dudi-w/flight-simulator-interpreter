@@ -12,16 +12,14 @@
 int main1(int argc, char *argv[])
 {
     std::stringstream ss;
-    if(isatty(STDIN_FILENO)){
-        if(argc != 2){
-            std::cerr << "Usage: " << argv[0] << " " << "<path to flight instructions file>.";
-            exit(-1);
-        } else {
-            auto fs = std::ifstream(argv[1]);
-            ss << fs.rdbuf();
-        }
-    } else {
+    if(argc == 2){
+        auto fs = std::ifstream(argv[1]);
+        ss << fs.rdbuf();
+    } else if(!isatty(STDIN_FILENO)){ // on shell pipe
         ss << std::cin.rdbuf();
+    } else {
+        std::cerr << "Usage: " << argv[0] << " " << "<path to flight instructions file>.";
+        exit(-1);
     }
     std::string code = ss.str();
 
