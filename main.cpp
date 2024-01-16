@@ -19,7 +19,7 @@ int main1(int argc, char *argv[])
         ss << std::cin.rdbuf();
     } else {
         std::cerr << "Usage: " << argv[0] << " " << "<path to flight instructions file>.";
-        exit(-1);
+        return EXIT_FAILURE;
     }
     std::string code = ss.str();
 
