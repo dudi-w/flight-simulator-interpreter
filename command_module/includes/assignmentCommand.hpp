@@ -13,17 +13,17 @@ namespace com{ // commands
 class AssigmentCommand : public Command
 {
 public:
-    explicit AssigmentCommand(std::string const& variableName ,std::unique_ptr<fp::Expression> expr);
-    explicit AssigmentCommand(std::string && variableName ,std::unique_ptr<fp::Expression> && expr);
-    AssigmentCommand(AssigmentCommand const& other) = default;
-    AssigmentCommand& operator=(AssigmentCommand const& other) = default;
+    explicit AssigmentCommand(std::string const& variableName ,std::unique_ptr<fp::exp::Expression> expr);
+    explicit AssigmentCommand(std::string && variableName ,std::unique_ptr<fp::exp::Expression> && expr);
+    AssigmentCommand(AssigmentCommand const& other) = delete;
+    AssigmentCommand& operator=(AssigmentCommand const& other) = delete;
     ~AssigmentCommand() = default;
 
     virtual void execute() override;
 
 private:
     const std::string m_variableName;
-    std::unique_ptr<fp::Expression> m_expr;
+    std::unique_ptr<fp::exp::Expression> m_expr;
 };
 
 }// namespace commands

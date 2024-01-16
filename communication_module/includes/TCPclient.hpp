@@ -13,8 +13,8 @@ class TCPclient
 {
 public:
     explicit TCPclient(std::string const& serverAddress, uint16_t port);
-    TCPclient(TCPclient const& other) = default;
-    TCPclient& operator=(TCPclient const& other) = default;
+    TCPclient(TCPclient const& other) = delete;
+    TCPclient& operator=(TCPclient const& other) = delete;
     ~TCPclient();
 
     std::unique_ptr<net::TCPsocketFile> connectToServer();

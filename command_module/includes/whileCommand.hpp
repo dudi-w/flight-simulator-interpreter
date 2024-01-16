@@ -12,16 +12,15 @@ namespace com{ // commands
 class WhileCommand : public Command
 {
 public:
-    explicit WhileCommand(std::unique_ptr<fp::Expression> expr, std::unique_ptr<Command> command);
-    explicit WhileCommand(std::unique_ptr<fp::Expression> && expr, std::unique_ptr<Command> && command);
-    WhileCommand(WhileCommand const& other) = default;
-    WhileCommand& operator=(WhileCommand const& other) = default;
+    explicit WhileCommand(std::unique_ptr<fp::exp::Expression> && expr, std::unique_ptr<Command> && command);
+    WhileCommand(WhileCommand const& other) = delete;
+    WhileCommand& operator=(WhileCommand const& other) = delete;
     ~WhileCommand() = default;
 
     virtual void execute() override;
 
 private:
-    std::unique_ptr<fp::Expression> m_exp;
+    std::unique_ptr<fp::exp::Expression> m_exp;
     std::unique_ptr<Command> m_command;
 };
 

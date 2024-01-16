@@ -4,12 +4,12 @@
 #include <iostream>
 #include <memory>
 
-#include "../communication_module/includes/netClient.hpp"
-#include "../communication_module/includes/simulatorServer.hpp"
+#include "netClient.hpp"
+#include "simulatorServer.hpp"
 #include "dataMap.hpp"
 #include "simulator.hpp"
-#include "../variable/variable_map.hpp"
-#include "../variable/variable.hpp"
+#include "variable_map.hpp"
+#include "variable.hpp"
 
 namespace fp { // namespace flight plan
 namespace env { // namespace env

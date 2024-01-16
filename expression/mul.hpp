@@ -12,8 +12,8 @@ class Mul : public IExpression
 {
 public:
     explicit Mul(std::unique_ptr<IExpression> first, std::unique_ptr<IExpression> second);
-    Mul(Mul const& other) = default;
-    Mul& operator=(Mul const& other) = default;
+    Mul(Mul const& other) = delete;
+    Mul& operator=(Mul const& other) = delete;
     ~Mul() = default;
 
     float get_value() const override;

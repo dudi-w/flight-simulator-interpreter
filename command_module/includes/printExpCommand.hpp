@@ -13,16 +13,16 @@ namespace com{ // commands
 class PrintExpCommand : public Command
 {
 public:
-    explicit PrintExpCommand(std::unique_ptr<fp::Expression> expr);
-    explicit PrintExpCommand(std::unique_ptr<fp::Expression> && expr);
-    PrintExpCommand(PrintExpCommand const& other) = default;
-    PrintExpCommand& operator=(PrintExpCommand const& other) = default;
+    // explicit PrintExpCommand(std::unique_ptr<fp::exp::Expression> expr);
+    explicit PrintExpCommand(std::unique_ptr<fp::exp::Expression> && expr);
+    PrintExpCommand(PrintExpCommand const& other) = delete;
+    PrintExpCommand& operator=(PrintExpCommand const& other) = delete;
     ~PrintExpCommand() = default;
 
     virtual void execute() override;
 
 private:
-    std::unique_ptr<fp::Expression> m_expr;
+    std::unique_ptr<fp::exp::Expression> m_expr;
 };
 
 }// namespace commands

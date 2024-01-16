@@ -12,8 +12,8 @@ class VariableExpression : public IExpression
 {
 public:
     explicit VariableExpression(std::string const& variable_name);
-    VariableExpression(VariableExpression const& other) = default;
-    VariableExpression& operator=(VariableExpression const& other) = default;
+    VariableExpression(VariableExpression const& other) = delete;
+    VariableExpression& operator=(VariableExpression const& other) = delete;
     ~VariableExpression() = default;
 
     float get_value() const override;

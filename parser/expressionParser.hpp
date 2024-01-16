@@ -6,17 +6,17 @@
 #include <unordered_map>
 #include <functional>
 
-#include "../../lexer/token.hpp"
-#include "../../expression/expression.hpp"
-#include "../../lexer/token_enum.hpp"
-#include "../../expression/add.hpp"
-#include "../../expression/literal.hpp"
-#include "../../expression/sub.hpp"
-#include "../../expression/great_operator.hpp"
-#include "../../expression/small_operator.hpp"
-#include "../../expression/mul.hpp"
-#include "../../expression/div.hpp"
-#include "../../expression/variable_expression.hpp"
+#include "../lexer/token.hpp"
+#include "../expression/expression.hpp"
+#include "../lexer/token_enum.hpp"
+#include "../expression/add.hpp"
+#include "../expression/literal.hpp"
+#include "../expression/sub.hpp"
+#include "../expression/great_operator.hpp"
+#include "../expression/small_operator.hpp"
+#include "../expression/mul.hpp"
+#include "../expression/div.hpp"
+#include "../expression/variable_expression.hpp"
 
 
 namespace fp {

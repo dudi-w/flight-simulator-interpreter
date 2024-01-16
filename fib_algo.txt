@@ -1,12 +1,12 @@
-fib_req = 3
+var fib_req = 7
 var res1 = 0
 var res2 = 1
-while fib_req > 0 {
-	res2 = res1 + res2
-	res1 = res2 -res1
-	fib_req = fib_req - 1
-}
 print "The "
 print fib_req
-print "th number in the Fibonacci series is "
+while fib_req > 1 {
+	res2 = res1 + res2
+	res1 = res2 - res1
+	fib_req = fib_req - 1
+}
+print "th number in the Fibonacci series is: "
 print res2
