@@ -88,8 +88,20 @@ sudo add-apt-repository ppa:saiarcot895/flightgear
 sudo apt update
 sudo apt install flightgear
 ```
+or
+```sh
+sudo apt-get update && apt-get install -y flightgear
+```
+
+or with doker
+```sh
+xhost +si:localuser:root
+docker buildx build --rm --tag flightGearDocker --file ./flightGear .
+docker run --rm -it --env DISPLAY=$DISPLAY --privileged --volume /tmp/.X11-unix:/tmp/.X11-unix flightGearDocker
+```
 
 run it with:
 ```sh
+xhost +si:localuser:root
 fgfs --generic=socket,out,10,127.0.0.1,5400,tcp,generic_json_format --telnet=socket,in,10,127.0.0.1,5402,tcp --httpd=8080
 ```
