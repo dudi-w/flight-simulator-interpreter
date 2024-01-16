@@ -96,9 +96,9 @@ void fp::env::SimulatorControl::updateMap()
                 {
                     fp::env::Environment::getDataMap().set(it.key(), static_cast<float>(it.value()));
                 }
-                catch(const std::runtime_error& e)
+                catch(const std::out_of_range& e)
                 {
-                    std::clog<<e.what()<<std::endl;
+                    // std::clog<<e.what()<<std::endl;
                 }
             }
             ++it;
