@@ -14,5 +14,6 @@ fp::com::AllocationRemoteVarCommand::AllocationRemoteVarCommand(std::string && v
 
 void fp::com::AllocationRemoteVarCommand::execute()
 {
+    fp::env::Environment::getDataMap().insert(m_variablePath);
     fp::env::Environment::insert_to_map(m_variableName , std::make_unique<fp::var::RemoteVariable>(std::move(m_variablePath),0));
 }
