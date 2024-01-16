@@ -29,7 +29,7 @@ int main1(int argc, char *argv[])
 
     out->execute();
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 #include "simulator.hpp"
