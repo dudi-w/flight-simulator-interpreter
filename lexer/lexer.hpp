@@ -14,9 +14,10 @@ namespace lexer {
 
 class Lexer : public Ilexer {
 public:
+    Lexer() = default;
     Lexer(Lexer const& other) = delete;
     Lexer& operator=(Lexer const& other) = delete;
-    Lexer() = default;
+    virtual ~Lexer() = default;
 
     std::vector<Token> tokenize(std::string const& code);
 
