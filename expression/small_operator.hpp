@@ -8,13 +8,13 @@
 namespace fp { // namespace flight plan
 namespace exp { // namespace exp
 
-class SmallOperator : public IExpression
+class LessOperator : public IExpression
 {
 public:
-    explicit SmallOperator(std::unique_ptr<IExpression> first, std::unique_ptr<IExpression> second);
-    SmallOperator(SmallOperator const& other) = delete;
-    SmallOperator& operator=(SmallOperator const& other) = delete;
-    ~SmallOperator() = default;
+    explicit LessOperator(std::unique_ptr<IExpression> first, std::unique_ptr<IExpression> second);
+    LessOperator(LessOperator const& other) = delete;
+    LessOperator& operator=(LessOperator const& other) = delete;
+    ~LessOperator() = default;
 
     float get_value() const override;
 
