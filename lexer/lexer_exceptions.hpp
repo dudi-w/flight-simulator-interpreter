@@ -33,12 +33,12 @@ inline LexerError::LexerError(size_t row, size_t column, std::string msg)
 ,m_column(column)
 {}
 
-inline size_t fp::lexer::LexerError::row()
+inline size_t LexerError::row()
 {
     return m_row;
 }
 
-inline size_t fp::lexer::LexerError::column()
+inline size_t LexerError::column()
 {
     return m_column;
 }
