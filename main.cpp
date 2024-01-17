@@ -28,7 +28,7 @@ int main1(int argc, char *argv[])
 
     std::ofstream fileStream;
     if(argc == 3 ){
-        fileStream = std::ofstream(argv[2]);
+        fileStream = std::ofstream(argv[2], std::ios::out);
         fp::env::Environment::set_output_stream(fileStream);
     }
 
