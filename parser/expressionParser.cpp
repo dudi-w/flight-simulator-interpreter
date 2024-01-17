@@ -30,7 +30,7 @@ bool ExpressionParser::IsMulDivOperator(lexer::TokenType type) const {
 
 bool ExpressionParser::IsLowGreatThen(lexer::TokenType type) const {
     return (type == lexer::TokenType::GreatThen || 
-            type == lexer::TokenType::LowThen);
+            type == lexer::TokenType::LessThan);
 }
 
 
@@ -51,7 +51,7 @@ std::unique_ptr<exp::IExpression> ExpressionParser::parseComparison() {
     while (IsLowGreatThen(m_startToken->type())) {
         lexer::TokenType op = m_startToken->type();
         
-        if (prevOp == lexer::TokenType::LowThen || prevOp == lexer::TokenType::GreatThen) {
+        if (prevOp == lexer::TokenType::LessThan || prevOp == lexer::TokenType::GreatThen) {
             throw std::runtime_error("Consecutive comparison operators are not allowed.");
         }
 

@@ -9,7 +9,7 @@ enum class TokenType : u_int8_t{
     String,
     Number,
     While,
-    LowThen,
+    LessThan,
     GreatThen,
     Equal,
     NotEqual,

@@ -57,7 +57,7 @@ private:
         {lexer::TokenType::Sub, [](std::unique_ptr<exp::IExpression> left, std::unique_ptr<exp::IExpression> right) {
         return std::make_unique<exp::Sub>(std::move(left), std::move(right));
         }},
-        {lexer::TokenType::LowThen, [](std::unique_ptr<exp::IExpression> left, std::unique_ptr<exp::IExpression> right) {
+        {lexer::TokenType::LessThan, [](std::unique_ptr<exp::IExpression> left, std::unique_ptr<exp::IExpression> right) {
         return std::make_unique<exp::SmallOperator>(std::move(left), std::move(right));
         }},
         {lexer::TokenType::GreatThen, [](std::unique_ptr<exp::IExpression> left, std::unique_ptr<exp::IExpression> right) {

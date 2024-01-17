@@ -41,7 +41,7 @@ private:
 private: //static data
     inline static const std::unordered_map<std::string, TokenType> known_symbols = {
         {"while", TokenType::While},
-        {"<", TokenType::LowThen},
+        {"<", TokenType::LessThan},
         {">", TokenType::GreatThen},
         {"=", TokenType::Equal},
         {"!=", TokenType::NotEqual},
