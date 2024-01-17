@@ -3,17 +3,19 @@
 #include <sstream>
 #include <unistd.h>
 #include <filesystem>
+#include <fstream>
 
 #include "lexer.hpp"
 #include "token.hpp"
 
 #include "parser.hpp"
 #include "expressionParser.hpp"
+#include "environment.hpp"
 
 int main1(int argc, char *argv[])
 {
     std::stringstream ss;
-    if(argc == 2 && std::filesystem::exists(argv[1])){
+    if(argc >= 2 && std::filesystem::exists(argv[1])){
         auto fs = std::ifstream(argv[1]);
         ss << fs.rdbuf();
     } else if(!isatty(STDIN_FILENO)){ // on shell pipe
@@ -23,6 +25,12 @@ int main1(int argc, char *argv[])
         return EXIT_FAILURE;
     }
     const std::string code = ss.str();
+
+    std::ofstream fileStream;
+    if(argc == 3 ){
+        fileStream = std::ofstream(argv[2]);
+        fp::env::Environment::set_output_stream(fileStream);
+    }
 
     fp::lexer::Lexer lexer;//! It doesn't behave like a class
     auto tokens = lexer.tokenize(code);
