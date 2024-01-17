@@ -21,7 +21,7 @@ int main1(int argc, char *argv[])
     } else if(!isatty(STDIN_FILENO)){ // on shell pipe
         ss << std::cin.rdbuf();
     } else {
-        std::cerr << "Usage: " << argv[0] << " " << "<path to flight instructions file>."<<std::endl;
+        std::cerr << "Usage: " << argv[0] << " " << "<path to source code file> [path to output file]"<<std::endl;
         return EXIT_FAILURE;
     }
     const std::string code = ss.str();
