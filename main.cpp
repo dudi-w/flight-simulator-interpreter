@@ -3,11 +3,9 @@
 #include <sstream>
 #include <unistd.h>
 #include <filesystem>
-#include <fstream>
 
 #include "lexer.hpp"
 #include "token.hpp"
-
 #include "parser.hpp"
 #include "expressionParser.hpp"
 #include "environment.hpp"
