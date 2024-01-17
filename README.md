@@ -12,7 +12,7 @@ The goal of this project is to control the [FlightGear](https://www.flightgear.o
 - MultiThreads.
 - TCP protocol.
 - Telnet protocol.
-- Design patterns: Command pattren, Singleton pattren.
+- Design patterns: Command pattern, Singleton pattern ,Factory pattern.
 - Object-Oriented Programming (OOP) principles.
 - SOLID principles.
 
