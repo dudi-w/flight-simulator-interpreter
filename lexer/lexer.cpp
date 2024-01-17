@@ -71,8 +71,8 @@ void Lexer::wordHeandler(State &state)
     const std::string str_token = sm[0].str();
 
     TokenType type;
-    if(known_symbols.count(str_token)){
-        type = known_symbols.at(str_token);
+    if(auto symbol = known_symbols.find(str_token); symbol != known_symbols.end()){
+        type = symbol->second;
     } else {
         type = TokenType::Name;
     }
