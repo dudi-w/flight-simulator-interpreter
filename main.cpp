@@ -24,7 +24,7 @@ int main1(int argc, char *argv[])
     }
     const std::string code = ss.str();
 
-    fp::lexer::Lexer lexer;
+    fp::lexer::Lexer lexer;//! It doesn't behave like a class
     auto tokens = lexer.tokenize(code);
     auto out = fp::parser::Parser::parse(tokens);
 
