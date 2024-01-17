@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <unistd.h>
+#include <filesystem>
 
 #include "lexer.hpp"
 #include "token.hpp"
@@ -12,7 +13,7 @@
 int main1(int argc, char *argv[])
 {
     std::stringstream ss;
-    if(argc == 2){
+    if(argc == 2 && std::filesystem::exists(argv[1])){
         auto fs = std::ifstream(argv[1]);
         ss << fs.rdbuf();
     } else if(!isatty(STDIN_FILENO)){ // on shell pipe
