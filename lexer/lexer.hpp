@@ -6,13 +6,12 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "I_lexer.hpp"
 #include "token.hpp"
 
 namespace fp {
 namespace lexer {
 
-class Lexer : public Ilexer {//! Why is inheritance necessary
+class Lexer {
 public:
     Lexer() = default;
     Lexer(Lexer const& other) = delete;
