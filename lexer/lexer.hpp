@@ -12,7 +12,7 @@
 namespace fp {
 namespace lexer {
 
-class Lexer : public Ilexer {
+class Lexer : public Ilexer {//! Why is inheritance necessary
 public:
     Lexer() = default;
     Lexer(Lexer const& other) = delete;
