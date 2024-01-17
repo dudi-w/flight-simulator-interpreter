@@ -5,7 +5,6 @@
 #include "token.hpp"
 #include "lexer_exceptions.hpp"
 
-
 using namespace fp;
 using namespace lexer;
 
@@ -57,7 +56,7 @@ bool Lexer::skipSpaces(State &state)
         } else {
             return true;
         }
-    };
+    }
     return false;
 }
 
