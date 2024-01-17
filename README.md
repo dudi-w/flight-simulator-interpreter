@@ -22,6 +22,9 @@ Ensure the following dependencies are installed:
 
 - gtest libray
 - Free ports for communication
+- docker
+- gcc compaler
+- Cmake
 
 <!-- ## Key Features -->
 <!--  -->
