@@ -1,15 +1,14 @@
 #ifndef MY_EXCEPTIONS_HPP
 #define MY_EXCEPTIONS_HPP
 
-#include <stdexcept>
-#include <exception>
+#include "../base_exception.hpp"
 
 namespace net{ //network
 
-class CommunicationError : public std::runtime_error
+class CommunicationError : public fp::BaseException
 {
 public:
-    using std::runtime_error::runtime_error;
+    using fp::BaseException::BaseException;
 };
 
 class CreateSocketError : public net::CommunicationError
