@@ -68,7 +68,7 @@ void Lexer::wordHeandler(State &state)
         throw LexerError(state.m_row, state.m_it - state.m_begin_of_row);
     }
     state.m_it = sm[0].second;  
-    const std::string str_token = sm[0].str();
+    std::string str_token = sm[0].str();
 
     TokenType type;
     if(auto symbol = known_symbols.find(str_token); symbol != known_symbols.end()){
