@@ -16,7 +16,7 @@ public:
     Lexer() = default;
     Lexer(Lexer const& other) = delete;
     Lexer& operator=(Lexer const& other) = delete;
-    virtual ~Lexer() = default;
+    ~Lexer() = default;
 
     std::vector<Token> tokenize(std::string const& code);
 
