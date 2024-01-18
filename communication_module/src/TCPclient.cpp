@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "TCPclient.hpp"
-#include "../myExceptions.hpp"
+#include "../communicationExceptions.hpp"
 
 net::TCPclient::TCPclient::TCPclient(std::string const& serverAddress, uint16_t port)
 : m_serverPort(port)

@@ -6,7 +6,7 @@
 #include <sstream>
 
 #include "TCPsocketFile.hpp"
-#include "../myExceptions.hpp"
+#include "../communicationExceptions.hpp"
 
 net::TCPsocketFile::TCPsocketFile(int fileDescriptor)
 : m_fileDescriptor(fileDescriptor)

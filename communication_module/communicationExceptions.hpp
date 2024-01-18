@@ -1,5 +1,5 @@
-#ifndef MY_EXCEPTIONS_HPP
-#define MY_EXCEPTIONS_HPP
+#ifndef COMMUNICATION_EXCEPTIONS_HPP
+#define COMMUNICATION_EXCEPTIONS_HPP
 
 #include "../base_exception.hpp"
 
