@@ -7,11 +7,8 @@ add_library(environment
 target_include_directories(
     environment INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_include_directories(
-    environment PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_link_libraries(
-    environment PUBLIC flightplan_compiler_flags communication_module variable)
-
-target_link_libraries(
-    environment PRIVATE nlohmann_json)
+target_link_libraries(environment 
+    PRIVATE flightplan_compiler_flags
+    PUBLIC communication_module 
+    PRIVATE variable
+    PRIVATE nlohmann_json)
