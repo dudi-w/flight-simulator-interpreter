@@ -6,7 +6,7 @@ target_include_directories(
     variable PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(
-    variable PRIVATE flightplan_compiler_flags communication_module)
+    variable PRIVATE flightplan_compiler_flags communication_module environment)
 
 target_link_libraries(
     variable PRIVATE nlohmann_json)
