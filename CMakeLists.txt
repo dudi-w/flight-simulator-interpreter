@@ -34,7 +34,6 @@ target_include_directories(
   project_root_dir_include INTERFACE "$(PROJECT_SOURCE_DIR)")
 
 
-add_library(nlohmann_json INTERFACE)
-target_include_directories(
-  nlohmann_json INTERFACE "$(PROJECT_SOURCE_DIR)/nlohmann_json/single_include")
-
+include(FetchContent)
+FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
+FetchContent_MakeAvailable(json)
