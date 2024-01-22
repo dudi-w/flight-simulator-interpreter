@@ -9,9 +9,7 @@
 #include "lexer.hpp"
 #include "token.hpp"
 #include "token_enum.hpp"
-
 #include "command.hpp"
-
 
 namespace fp {
 namespace parser {
@@ -28,5 +26,5 @@ public:
 };
 
 } // namespace parser
-} // namespace fgi
+} // namespace fg
 #endif
