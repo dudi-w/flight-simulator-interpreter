@@ -6,8 +6,10 @@ project(FlightPlan VERSION 1.0)
 add_library(flightplan_compiler_flags INTERFACE)
 target_compile_features(flightplan_compiler_flags INTERFACE cxx_std_20)
 target_compile_options(flightplan_compiler_flags INTERFACE
-  "-g3;-Wall;-Wextra;-Wshadow;-Wformat=2;-Wunused"
+"-g3;-Wall;-Wextra;-Wshadow;-Wformat=2;-Wunused"
 )
+
+enable_testing()
 
 add_subdirectory(environment)
 add_subdirectory(expression)
@@ -32,8 +34,16 @@ PUBLIC lexer
 add_library(project_root_dir_include INTERFACE)
 target_include_directories(
   project_root_dir_include INTERFACE "$(PROJECT_SOURCE_DIR)")
-
+  
+  
+  include(FetchContent)
+  FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
+  FetchContent_MakeAvailable(json)
 
 include(FetchContent)
-FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
-FetchContent_MakeAvailable(json)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip)
+  # For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)

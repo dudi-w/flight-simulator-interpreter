@@ -7,8 +7,12 @@ add_library(environment
 target_include_directories(
     environment INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(environment 
+target_link_libraries(environment
     PRIVATE flightplan_compiler_flags
-    PUBLIC communication_module 
+    PUBLIC communication_module
     PRIVATE variable
     PRIVATE nlohmann_json)
+
+add_executable(dataMapTest dataMapTest.cpp)
+target_link_libraries(dataMapTest gtest_main )
+add_test(NAME dataMapTest COMMAND dataMapTest)
