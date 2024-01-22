@@ -50,7 +50,7 @@ private:
     size_t m_row;
     int m_parenLevel;
 
-    static inline std::unordered_map<lexer::TokenType, std::function<std::unique_ptr<exp::IExpression>(std::unique_ptr<exp::IExpression>, std::unique_ptr<exp::IExpression>)>> m_caseMap = { 
+    static inline const std::unordered_map<lexer::TokenType, std::function<std::unique_ptr<exp::IExpression>(std::unique_ptr<exp::IExpression>, std::unique_ptr<exp::IExpression>)>> m_caseMap = { 
         {lexer::TokenType::Add, [](std::unique_ptr<exp::IExpression> left, std::unique_ptr<exp::IExpression> right) {
         return std::make_unique<exp::Add>(std::move(left), std::move(right));
         }},
