@@ -1,7 +1,7 @@
 #ifndef COMMUNICATION_EXCEPTIONS_HPP
 #define COMMUNICATION_EXCEPTIONS_HPP
 
-#include "../base_exception.hpp"
+#include "base_exception.hpp"
 
 namespace net{ //network
 

@@ -1,5 +1,5 @@
 #include "netClient.hpp"
-#include "../communicationExceptions.hpp"
+#include "communicationExceptions.hpp"
 
 net::TelnetetClient::TelnetetClient()
 : m_client(nullptr)

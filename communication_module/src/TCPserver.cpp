@@ -6,7 +6,7 @@
 #include <memory>
 
 #include "TCPserver.hpp"
-#include "../communicationExceptions.hpp"
+#include "communicationExceptions.hpp"
 
 net::TCPserver::TCPserver(uint16_t port)
 : m_port(port)

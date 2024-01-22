@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "../base_exception.hpp"
+#include "base_exception.hpp"
 
 namespace fp { 
 namespace parser {

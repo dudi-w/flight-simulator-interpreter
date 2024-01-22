@@ -1,6 +1,6 @@
 #include "environment.hpp"
-#include "../variable/local_variable.hpp"
-#include "../variable/remote_variable.hpp"
+#include "variable/local_variable.hpp"
+#include "variable/remote_variable.hpp"
 
 using env = fp::env::Environment;
 

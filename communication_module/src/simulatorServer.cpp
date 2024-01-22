@@ -1,5 +1,5 @@
-#include "../includes/simulatorServer.hpp"
-#include "../communicationExceptions.hpp"
+#include "includes/simulatorServer.hpp"
+#include "communicationExceptions.hpp"
 
 fp::env::SimulatorServer::SimulatorServer()
 : m_server(nullptr)
