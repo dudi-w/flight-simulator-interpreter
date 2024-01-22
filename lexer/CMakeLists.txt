@@ -3,8 +3,8 @@ add_library(lexer
     token.cpp
 )
 
-target_include_directories(
-    lexer INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(lexer 
+    INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(
-    lexer PUBLIC flightplan_compiler_flags)
+target_link_libraries(lexer 
+    PRIVATE flightplan_compiler_flags project_root_dir_include)

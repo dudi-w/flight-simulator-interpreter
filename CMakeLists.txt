@@ -19,7 +19,6 @@ add_subdirectory(communication_module)
 # add the executable
 add_executable(main main.cpp)
 
-# target_link_libraries(test_lexer PUBLIC Parser)
 target_link_libraries(main PUBLIC flightplan_compiler_flags 
 PUBLIC expression
 PUBLIC communication_module
@@ -30,7 +29,12 @@ PUBLIC parser
 PUBLIC lexer
 )
 
+add_library(project_root_dir_include INTERFACE)
+target_include_directories(
+  project_root_dir_include INTERFACE "$(PROJECT_SOURCE_DIR)")
+
+
 add_library(nlohmann_json INTERFACE)
 target_include_directories(
-    nlohmann_json INTERFACE "$(PROJECT_SOURCE_DIR)/nlohmann_json/single_include")
+  nlohmann_json INTERFACE "$(PROJECT_SOURCE_DIR)/nlohmann_json/single_include")
 
