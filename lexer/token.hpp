@@ -9,14 +9,15 @@ namespace lexer {
 
 class Token {
 public:
-    Token(Token const& other) = default;
-    Token& operator=(Token const& other) = default;
     explicit Token(
         TokenType type,
         std::string str,
         size_t row,
         size_t column
     );
+    Token(Token const& other) = default;
+    Token& operator=(Token const& other) = default;
+    ~Token() = default;
 
     TokenType type() const;
     std::string const& str() const;
