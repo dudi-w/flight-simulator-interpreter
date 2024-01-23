@@ -1,4 +1,4 @@
-#include  <cctype>
+#include <cctype>
 #include <regex>
 
 #include "lexer.hpp"
@@ -86,20 +86,21 @@ void Lexer::wordHeandler(State &state)
 
 void Lexer::operatorrHeandler(State &state)
 { 
-    std::string str_token(state.m_it, state.m_it+1);
+    std::string str_token(state.m_it, state.m_it+std::min<int>(2, state.m_end-state.m_it));
     TokenType type;
-    if(auto match = known_symbols.find(str_token); match != known_symbols.end()){
-        type = match->second;
+    if(known_symbols.count(str_token) || known_symbols.count(str_token=str_token.substr(0, 1))){
+        type = known_symbols.at(str_token);
     } else {
         throw LexerError(state.m_row, state.m_it - state.m_begin_of_row);
     }
+    int n_str = str_token.size();
     state.m_ret.emplace_back(
         type,
         std::move(str_token),
         state.m_row,
         state.m_it - state.m_begin_of_row
     );
-    ++state.m_it;
+    state.m_it += n_str;
 }
 
 void Lexer::stringHeandler(State &state) {

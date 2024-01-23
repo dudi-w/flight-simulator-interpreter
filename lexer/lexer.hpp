@@ -40,9 +40,12 @@ private:
 private: //static data
     inline static const std::unordered_map<std::string, TokenType> known_symbols = {
         {"while", TokenType::While},
+        {"=", TokenType::Assign},
         {"<", TokenType::LessThan},
         {">", TokenType::GreatThen},
-        {"=", TokenType::Equal},
+        {"<=", TokenType::LessEqualThan},
+        {">=", TokenType::GreatEqualThen},
+        {"==", TokenType::Equal},
         {"!=", TokenType::NotEqual},
         {"+", TokenType::Add},
         {"-", TokenType::Sub},

@@ -122,20 +122,20 @@ std::pair<ComPtr, TokensItr> CommandsFactory::var_heandler(TokensItr it, TokensI
 
     std::string const& varName = (it + 1)->str();
     if(it + 4 < end
-        && (it + 2)->type() == lexer::TokenType::Equal
+        && (it + 2)->type() == lexer::TokenType::Assign
         && (it + 3)->type() == lexer::TokenType::Bind
         && (it + 4)->type() == lexer::TokenType::String
     ) {
         std::string const& path = (it + 4)->str();
         return {std::make_unique<com::AllocationRemoteVarCommand>(varName, path), it + 5};
     }
-    bool no_init = it + 2 == end || (it + 2)->type() != lexer::TokenType::Equal;
+    bool no_init = it + 2 == end || (it + 2)->type() != lexer::TokenType::Assign;
     return {std::make_unique<com::AllocationLocalVarCommand>(varName), it + 1 + no_init};
 }
 
 std::pair<ComPtr, TokensItr> fp::parser::CommandsFactory::assignment_builder(TokensItr it, TokensItr end)
 {
-    if(it + 2 < end && (it + 1)->type() == lexer::TokenType::Equal){
+    if(it + 2 < end && (it + 1)->type() == lexer::TokenType::Assign){
         std::string const& varName = it->str();
         if(auto [expr, it_behind_expr] = build_expression(it + 2, end); expr){
             return {std::make_unique<com::AssigmentCommand>(varName, std::move(expr)), it_behind_expr}; 

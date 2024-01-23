@@ -1,12 +1,15 @@
 add_library(expression 
+    literal.cpp
     add.cpp
     div.cpp
-    equle_operator.cpp
-    great_operator.cpp
-    literal.cpp
     mul.cpp
-    small_operator.cpp
     sub.cpp
+    equle_operator.cpp
+    not_equal_operator.cpp
+    small_operator.cpp
+    less_equal_operator.cpp
+    great_operator.cpp
+    great_equal_operator.cpp
     variable_expression.cpp
 )
 
