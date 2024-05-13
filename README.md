@@ -71,7 +71,7 @@ For examples and usage scenarios, refer to the [demo video](link_to_demo_video) 
 ## Acknowledgments
 
 Special thanks to:
-- [Friend 1]
+- [itzchck pintel](https://github.com/izpintel)
 - [Friend 2]
 - [Friend 3]
 
