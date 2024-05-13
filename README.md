@@ -78,7 +78,7 @@ Special thanks to:
 
 ## UML Diagram
 
-![UML Diagram](link_to_uml_diagram)
+![UML Diagram](https://github.com/izpintel/flight_plan/blob/dev%23dudi/code_review/UAV_Diagram.png)
 
 ## Downloads
 To download the flight simulator [`FlightGear`](https://www.flightgear.org/) , Enter the following lines into the terminal
