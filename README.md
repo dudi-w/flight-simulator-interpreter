@@ -1,6 +1,6 @@
 # Flight plan
 ![fligear Image](https://github.com/izpintel/flight_plan/blob/dev%23dudi/code_review/project_logo.jpeg)
-Flight Simulator Code Interpreter
+<center>Flight Simulator Code Interpreter</center>
 
 **Flight plan** project is to control a flight simulator using a code source file written in an custom language. The interpreter, written in C++, analyzes and executes the code, communicating with the FlightGear simulator via TCP and TELNET protocols.
 
