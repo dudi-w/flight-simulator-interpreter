@@ -1,4 +1,5 @@
 # Flight plan
+
 <p align="center">Flight Simulator Code Interpreter</p>
 
 ![fligear Image](https://github.com/izpintel/flight_plan/blob/dev%23dudi/code_review/project_logo.jpeg)
@@ -21,17 +22,12 @@ The goal of this project is to control the [FlightGear](https://www.flightgear.o
 
 Ensure the following dependencies are installed:
 
+- gcc compiler at least version 8
+- Cmake
 - gtest libray
 - Free ports for communication
 
-<!-- ## Key Features -->
-<!--  -->
-<!-- 1. Tokenization of code -->
-<!-- 2. Analysis and parser for creating a Binary Expression Tree -->
-<!-- 3. Definition file generation for simulator environment variables -->
-<!-- 4. Code execution, including OS access, server connection (TCP), simulator launch, data reception (Telnet), and database storage. -->
-   <!--  -->
-# Key Features
+# Description of the program flow process
 
 1. **Tokenization**: The code is tokenized to prepare for analysis.
 2. **Parsing**: An analysis is performed, and a Binary Expression Tree is generated.
@@ -40,22 +36,13 @@ Ensure the following dependencies are installed:
 5. **Device Settings**: Adjustments for simulator plane devices are supported.
 6. **Data Storage**: Data received from the simulator is stored in a database.
 
-<!-- 
-## Installation and Setup
-
-1. Clone the repository
-2. Download and install third-party libraries
-3. Ensure free ports for communication
-4. Compile the files
-5. Run GTEST unit tests -->
-
 ## Installation and Setup
 
 1. Clone the repository.
 2. Download and install required third-party libraries.
 3. Ensure the availability of the necessary ports.
 4. Compile the files.
-   
+
 ## Contribution Guidelines
 
 We welcome contributions! If you would like to contribute to the project, follow these steps:
@@ -72,15 +59,17 @@ For examples and usage scenarios, refer to the [demo video](link_to_demo_video) 
 ## Acknowledgments
 
 Special thanks to:
+
 - [itzchck pintel](https://github.com/izpintel)
-- [Friend 2]
-- [Friend 3]
+- [nahum hilperin](https://github.com/nahumnahum)
+- [ushi aerunube](https://github.com/ushi-ah)
 
 ## UML Diagram
 
 ![UML Diagram](https://github.com/izpintel/flight_plan/blob/dev%23dudi/code_review/UAV_Diagram.png)
 
 ## Downloads
+
 To download the flight simulator [`FlightGear`](https://www.flightgear.org/) , Enter the following lines into the terminal
 
 ```sh
@@ -89,12 +78,15 @@ sudo add-apt-repository ppa:saiarcot895/flightgear
 sudo apt update
 sudo apt install flightgear
 ```
+
 or
+
 ```sh
 sudo apt-get update && apt-get install -y flightgear
 ```
 
 or with doker
+
 ```sh
 xhost +si:localuser:root
 docker buildx build --rm --tag flightGearDocker --file ./flightGear .
@@ -102,6 +94,7 @@ docker run --rm -it --env DISPLAY=$DISPLAY --privileged --volume /tmp/.X11-unix:
 ```
 
 run it with:
+
 ```sh
 xhost +si:localuser:root
 fgfs --generic=socket,out,10,127.0.0.1,5400,tcp,generic_json_format --telnet=socket,in,10,127.0.0.1,5402,tcp --httpd=8080
