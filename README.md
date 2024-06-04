@@ -22,9 +22,9 @@ The goal of this project is to control the [FlightGear](https://www.flightgear.o
 
 Ensure the following dependencies are installed:
 
+- git
 - gcc compiler at least version 8
 - Cmake
-- gtest libray
 - Free ports for communication
 
 # Description of the program flow process
@@ -39,10 +39,35 @@ Ensure the following dependencies are installed:
 ## Installation and Setup
 
 1. Clone the repository.
-2. Download and install required third-party libraries.
-3. Ensure the availability of the necessary ports.
-4. Compile the files.
+   ```sh
+    git clone git@github.com:dudi-w/flight-simulator-interpreter.git
+    ```
+2. Download and install FlightGear simulator.
+   ```sh
+   sudo apt-get update && apt-get install -y flightgear
+   ```
+3. Ensure the availability of the necessary ports (5400, 5402).
+   ```sh
+   lsof  -i :5402 -i :5400
+   ```
+4. setup the simulator
+   ```sh
+   sudo cp flight-simulator-interpreter/generic_json_format.xml /usr/share/games/flightgear/Protocol/generic_json_format.xml
 
+   ```
+5. Compile the files.
+   ```sh
+   cd flight-simulator-interpreter
+   mkdir build
+   cd build
+   cmake ..
+   make -j4
+   ```
+6. run the process
+   ```sh
+   # ./main <code_file> [<output_file>]
+   ./main ../flight_instructions.txt
+   ```
 ## Contribution Guidelines
 
 We welcome contributions! If you would like to contribute to the project, follow these steps:
