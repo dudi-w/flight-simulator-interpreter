@@ -21,11 +21,6 @@ public:
 
 /*simulator functions*/
     static env::SimulatorControl& simulatorControl();
-    // static void setServerPort(uint16_t serverPort);
-    // static void setServerUpdatePerSecond(uint16_t updatePerSecond);
-    // static void setSimulatorHost(std::string const& host);
-    // static void setSimulatorPort(uint16_t port);
-    // static void setValueInSimulator(std::string variablePath ,float value);
 
 /*dataMap functions*/
     static env::DataMap& getDataMap();

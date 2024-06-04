@@ -13,7 +13,6 @@ namespace com{ // commands
 class PrintExpCommand : public Command
 {
 public:
-    // explicit PrintExpCommand(std::unique_ptr<fp::exp::Expression> expr);
     explicit PrintExpCommand(std::unique_ptr<fp::exp::Expression> && expr);
     PrintExpCommand(PrintExpCommand const& other) = delete;
     PrintExpCommand& operator=(PrintExpCommand const& other) = delete;
