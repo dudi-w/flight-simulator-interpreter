@@ -13,31 +13,6 @@ Environment& Environment::get_instance()
     return instance;
 }
 
-// void Environment::setServerPort(uint16_t serverPort)
-// {
-//     get_instance().m_simulator.set_server_port(serverPort);
-// }
-
-// void Environment::setServerUpdatePerSecond(uint16_t updatePerSecond)
-// {
-//     get_instance().m_simulator.set_server_update_per_second(updatePerSecond);
-// }
-
-// void Environment::setSimulatorHost(std::string const& host)
-// {
-//     get_instance().m_simulator.set_simulator_host(host);
-// }
-
-// void Environment::setSimulatorPort(uint16_t port)
-// {
-//     get_instance().m_simulator.set_simulator_port(port);
-// }
-
-// void Environment::setValueInSimulator(std::string variablePath ,float value)
-// {
-//     get_instance().m_simulator.setValue(variablePath ,value);
-// }
-
 env::SimulatorControl& Environment::simulatorControl()
 {
     return get_instance().m_simulator;
