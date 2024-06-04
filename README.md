@@ -66,7 +66,7 @@ Ensure the following dependencies are installed:
 6. run the process
    ```sh
    # ./main <code_file> [<output_file>]
-   ./main ../flight_instructions.txt
+   ./main ../flight_instructions.txt /dev/null
    ```
 ## Contribution Guidelines
 
