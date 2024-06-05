@@ -6,9 +6,11 @@
 
 ![Static Badge](https://img.shields.io/badge/Solution-C++17-blue.svg?style=flat&logo=c%2B%2B&logoColor=b0c0c0&labelColor=363D44)  [![Static Badge](https://img.shields.io/badge/Cmake-passing-green??style=flat&logo=cmake&logoColor=0da636&labelColor=363D44)](https://github.com/aregtech/areg-sdk/actions/workflows/cmake.yml)   ![Static Badge](https://img.shields.io/badge/OS-linux-orange??style=flat&logo=Linux&logoColor=b0c0c8&labelColor=363D44)  [![Static Badge](https://img.shields.io/badge/Docker-include-0d82a6??style=flat&logo=docker&logoColor=0d82a6&labelColor=363D44)](https://www.docker.com/)
 
-**Flight plan** project is to control a flight simulator using a code source file written in an custom language. The interpreter, written in C++, analyzes and executes the code, communicating with the FlightGear simulator via TCP and TELNET protocols.
+**Flight plan** project is to control a [FlightGear](https://www.flightgear.org/) flight simulator using a code source file written in a unique code syntax. The interpreter, developed in C++, analyzes and executes the code, communicating with the FlightGear simulator, And thus he controls his flight.
 
-The goal of this project is to control the [FlightGear](https://www.flightgear.org/) flight simulator using a custom code interpreter written in C++. The interpreter processes code written in an unfamiliar language, similar to Python, and communicates with the simulator to execute the specified operations.
+The source code is written in an unfamiliar language, similar to Python, you can have fun and try to build different programs and algorithms in this language, see an [example](https://github.com/dudi-w/flight-simulator-interpreter/blob/dev%23dudi/code_review/fib_algo.txt) of a program that calculates the Fibonacci number.
+
+<!-- The goal of this project is to control the [FlightGear](https://www.flightgear.org/) flight simulator using a custom code interpreter developed in C++. The source code written in an unfamiliar language, similar to Python, and communicates with the simulator to execute the specified operations. -->
 
 ## Technologies and Programming Languages
 
@@ -41,9 +43,9 @@ Ensure the following dependencies are installed:
 ## Installation and Setup
 
 1. Clone the repository.
-   ```bsh
+   ```bash
     git clone https://github.com/dudi-w/flight-simulator-interpreter.git
-    ```
+   ```
 2. Download and install [`FlightGear`](https://www.flightgear.org/) simulator.
    ```sh
    sudo apt-get update && apt-get install -y flightgear
@@ -70,6 +72,7 @@ Ensure the following dependencies are installed:
    # ./main <code_file> [<output_file>]
    ./main ../flight_instructions.txt /dev/null
    ```
+
 ## Contribution Guidelines
 
 We welcome contributions! If you would like to contribute to the project, follow these steps:
