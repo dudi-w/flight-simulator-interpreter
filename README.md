@@ -41,15 +41,15 @@ Ensure the following dependencies are installed:
 ## Installation and Setup
 
 1. Clone the repository.
-   ```bash
-    git clone git@github.com:dudi-w/flight-simulator-interpreter.git
+   ```bsh
+    git clone https://github.com/dudi-w/flight-simulator-interpreter.git
     ```
 2. Download and install [`FlightGear`](https://www.flightgear.org/) simulator.
-   ```bash
+   ```sh
    sudo apt-get update && apt-get install -y flightgear
    ```
 3. Ensure the availability of the necessary ports (5400, 5402).
-   ```sh
+   ```bsh
    lsof  -i :5402 -i :5400
    ```
 4. setup the simulator
