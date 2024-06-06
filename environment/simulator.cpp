@@ -54,7 +54,7 @@ void fp::env::SimulatorControl::tryRun()
 void fp::env::SimulatorControl::run()
 {
     m_server.initialize(m_serverPort);
-    std::string systemCommand = "fgfs --generic=socket,out," + std::to_string(m_updatePerSecond) + ",127.0.0.1," + std::to_string(m_serverPort) + ",tcp,generic_json_format --telnet=socket,in,10," + m_simulator_host + ',' + std::to_string(m_simulator_port) + ",tcp --httpd=8080";
+    std::string systemCommand = "fgfs --timeofday=noon --generic=socket,out," + std::to_string(m_updatePerSecond) + ",127.0.0.1," + std::to_string(m_serverPort) + ",tcp,generic_json_format --telnet=socket,in,10," + m_simulator_host + ',' + std::to_string(m_simulator_port) + ",tcp --httpd=8080";
     if(FILE* pipe = popen(systemCommand.c_str(), "r"); !pipe){
         throw; //TODO my exception;
     }
