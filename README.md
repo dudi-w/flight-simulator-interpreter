@@ -10,11 +10,6 @@
 
 The source code is written in an unfamiliar language, similar to Python, you can have fun and try to build different programs and algorithms in this language, see an [example](https://github.com/dudi-w/flight-simulator-interpreter/blob/dev%23dudi/code_review/fib_algo.txt) of a program that calculates the Fibonacci number
 
-https://github.com/dudi-w/flight-simulator-interpreter/demo1.mp4
-
-https://github.com/onuratakan/gpt-computer-assistant/assets/41792982/26ae3624-e619-44d6-9b04-f39cf1ac1f8f
-
-
 <!-- The goal of this project is to control the [FlightGear](https://www.flightgear.org/) flight simulator using a custom code interpreter developed in C++. The source code written in an unfamiliar language, similar to Python, and communicates with the simulator to execute the specified operations. -->
 
 ## Technologies and Programming Languages
