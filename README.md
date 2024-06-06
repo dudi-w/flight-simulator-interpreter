@@ -8,7 +8,9 @@
 
 **Flight plan** project is to control a [FlightGear](https://www.flightgear.org/) flight simulator using a code source file written in a unique code syntax. The interpreter, developed in C++, analyzes and executes the code, communicating with the FlightGear simulator, And thus he controls his flight.
 
-The source code is written in an unfamiliar language, similar to Python, you can have fun and try to build different programs and algorithms in this language, see an [example](https://github.com/dudi-w/flight-simulator-interpreter/blob/dev%23dudi/code_review/fib_algo.txt) of a program that calculates the Fibonacci number.
+The source code is written in an unfamiliar language, similar to Python, you can have fun and try to build different programs and algorithms in this language, see an [example](https://github.com/dudi-w/flight-simulator-interpreter/blob/dev%23dudi/code_review/fib_algo.txt) of a program that calculates the Fibonacci number
+
+![](demo1.mp4)
 
 <!-- The goal of this project is to control the [FlightGear](https://www.flightgear.org/) flight simulator using a custom code interpreter developed in C++. The source code written in an unfamiliar language, similar to Python, and communicates with the simulator to execute the specified operations. -->
 
