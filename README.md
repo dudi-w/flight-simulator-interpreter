@@ -84,7 +84,7 @@ We welcome contributions! If you would like to contribute to the project, follow
 
 ## Examples and Usage
 
-For examples and usage scenarios, refer to the [demo video](link_to_demo_video) and [screenshots](link_to_screenshots) provided in the project.
+For examples and usage scenarios, refer to the [demo video](demo1.mp4) and [screenshots](link_to_screenshots) provided in the project.
 
 ## Acknowledgments
 
