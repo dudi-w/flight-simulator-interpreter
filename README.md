@@ -82,9 +82,9 @@ We welcome contributions! If you would like to contribute to the project, follow
 3. Make your changes
 4. Submit a pull request
 
-## Examples and Usage
+## Vidoe demo
 
-For examples and usage scenarios, refer to the [demo video](demo1.mp4) and [screenshots](link_to_screenshots) provided in the project.
+[![Project Demo](https://img.youtube.com/vi/tUBaHnytV1I/maxresdefault.jpg)](https://www.youtube.com/watch?v=tUBaHnytV1I)
 
 ## Acknowledgments
 
