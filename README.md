@@ -12,6 +12,19 @@ The source code is written in an unfamiliar language, similar to Python, you can
 
 <!-- The goal of this project is to control the [FlightGear](https://www.flightgear.org/) flight simulator using a custom code interpreter developed in C++. The source code written in an unfamiliar language, similar to Python, and communicates with the simulator to execute the specified operations. -->
 
+Outline
+
+- [Flight plan](#flight-plan)
+  - [Technologies and Programming Languages](#technologies-and-programming-languages)
+  - [Dependencies and Prerequisites](#dependencies-and-prerequisites)
+- [Description of the program flow process](#description-of-the-program-flow-process)
+  - [Installation and Setup](#installation-and-setup)
+  - [Contribution Guidelines](#contribution-guidelines)
+  - [Vidoe demo](#vidoe-demo)
+  - [Acknowledgments](#acknowledgments)
+  - [UML Diagram](#uml-diagram)
+  - [Downloads](#downloads)
+
 ## Technologies and Programming Languages
 
 - C++.
@@ -88,7 +101,7 @@ We welcome contributions! If you would like to contribute to the project, follow
 
 ## Acknowledgments
 
-Special thanks to:
+Special thanks to the members of the development team:
 
 - [itzchck pintel](https://github.com/izpintel)
 - [nahum hilperin](https://github.com/nahumnahum)
