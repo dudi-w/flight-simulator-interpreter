@@ -4,7 +4,7 @@
 
 ![fligear Image](https://github.com/izpintel/flight_plan/blob/dev%23dudi/code_review/project_logo.jpeg)
 
-![Static Badge](https://img.shields.io/badge/Solution-C++17-blue.svg?style=flat&logo=c%2B%2B&logoColor=b0c0c0&labelColor=363D44)  [![Static Badge](https://img.shields.io/badge/Cmake-passing-green??style=flat&logo=cmake&logoColor=0da636&labelColor=363D44)](https://github.com/aregtech/areg-sdk/actions/workflows/cmake.yml)   ![Static Badge](https://img.shields.io/badge/OS-linux-orange??style=flat&logo=Linux&logoColor=b0c0c8&labelColor=363D44)  [![Static Badge](https://img.shields.io/badge/Docker-include-0d82a6??style=flat&logo=docker&logoColor=0d82a6&labelColor=363D44)](https://www.docker.com/)
+![Static Badge](https://img.shields.io/badge/Solution-C++17-blue.svg?style=flat&logo=c%2B%2B&logoColor=b0c0c0&labelColor=363D44)  [![Static Badge](https://img.shields.io/badge/Cmake-passing-green??style=flat&logo=cmake&logoColor=0da636&labelColor=363D44)](https://github.com/aregtech/areg-sdk/actions/workflows/cmake.yml)   ![Static Badge](https://img.shields.io/badge/OS-linux-orange??style=flat&logo=Linux&logoColor=b0c0c8&labelColor=363D44)   [![Static Badge](https://img.shields.io/badge/Docker-include-0d82a6??style=flat&logo=docker&logoColor=0d82a6&labelColor=363D44)](#run-with-docker)   [![Static Badge](https://img.shields.io/badge/demo-videoe-FEC111??style=flat&logo=screencastify&logoColor=FEC111&labelColor=363D44)](#vidoe-demo)
 
 **Flight plan** project is to control a [FlightGear](https://www.flightgear.org/) flight simulator using a code source file written in a unique code syntax. The interpreter, developed in C++, analyzes and executes the code, communicating with the FlightGear simulator, And thus he controls his flight.
 
@@ -22,8 +22,8 @@ The source code is written in an unfamiliar language, similar to Python, you can
   - [Vidoe demo](#vidoe-demo)
   - [Acknowledgments](#acknowledgments)
   - [UML Diagram](#uml-diagram)
-  - [Downloads](#downloads)
-
+  - [Run with Docker 🐳](#run-with-docker-)
+  
 ## Technologies and Programming Languages
 
 - C++.
@@ -55,21 +55,20 @@ Ensure the following dependencies are installed:
 ## Installation and Setup
 
 1. Clone the repository.
-   ```bash
-    git clone https://github.com/dudi-w/flight-simulator-interpreter.git
+   ```sh
+   git clone https://github.com/dudi-w/flight-simulator-interpreter.git
    ```
 2. Download and install [`FlightGear`](https://www.flightgear.org/) simulator.
    ```sh
    sudo apt-get update && apt-get install -y flightgear
    ```
 3. Ensure the availability of the necessary ports (5400, 5402).
-   ```bsh
+   ```sh
    lsof  -i :5402 -i :5400
    ```
 4. setup the simulator
    ```sh
    sudo cp flight-simulator-interpreter/generic_json_format.xml /usr/share/games/flightgear/Protocol/generic_json_format.xml
-
    ```
 5. Compile the files.
    ```sh
@@ -110,6 +109,15 @@ Special thanks to the members of the development team:
 
 ![UML Diagram](https://github.com/izpintel/flight_plan/blob/dev%23dudi/code_review/UAV_Diagram.png)
 
+## Run with Docker 🐳
+```sh
+git clone https://github.com/dudi-w/flight-simulator-interpreter.git
+cd flight-simulator-interpreter
+docker build -t flight-simulator-interpreter-docker .
+xhost +local:docker
+docker run --rm -it --env DISPLAY=$DISPLAY --env QT_X11_NO_MITSHM=1 --volume /tmp/.X11-unix:/tmp/.X11-unix --privileged -p 5400:5400 -p 5402:5402 -p 8080:8080 flight-simulator-interpreter-docker
+```
+<!---
 ## Downloads
 
 To download the flight simulator [`FlightGear`](https://www.flightgear.org/) , Enter the following lines into the terminal
@@ -141,3 +149,4 @@ run it with:
 xhost +si:localuser:root
 fgfs --generic=socket,out,10,127.0.0.1,5400,tcp,generic_json_format --telnet=socket,in,10,127.0.0.1,5402,tcp --httpd=8080
 ```
+--->
