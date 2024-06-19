@@ -113,9 +113,9 @@ Special thanks to the members of the development team:
 ```sh
 git clone https://github.com/dudi-w/flight-simulator-interpreter.git
 cd flight-simulator-interpreter
-docker build -t flight-simulator-interpreter-docker .
+docker build -t flight_simulator_code_interpreter .
 xhost +local:docker
-docker run --rm -it --env DISPLAY=$DISPLAY --env QT_X11_NO_MITSHM=1 --volume /tmp/.X11-unix:/tmp/.X11-unix --privileged -p 5400:5400 -p 5402:5402 -p 8080:8080 flight-simulator-interpreter-docker
+docker run --rm -it --env DISPLAY=$DISPLAY --env QT_X11_NO_MITSHM=1 --volume /tmp/.X11-unix:/tmp/.X11-unix --privileged -p 5400:5400 -p 5402:5402 -p 8080:8080 flight_simulator_code_interpreter
 ```
 <!---
 ## Downloads
