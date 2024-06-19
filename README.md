@@ -13,6 +13,7 @@ The source code is written in an unfamiliar language, similar to Python, you can
 <!-- The goal of this project is to control the [FlightGear](https://www.flightgear.org/) flight simulator using a custom code interpreter developed in C++. The source code written in an unfamiliar language, similar to Python, and communicates with the simulator to execute the specified operations. -->
 
 **___Outline___**
+
 - [Flight plan](#flight-plan)
   - [Technologies and Programming Languages](#technologies-and-programming-languages)
   - [Dependencies and Prerequisites](#dependencies-and-prerequisites)
@@ -23,7 +24,7 @@ The source code is written in an unfamiliar language, similar to Python, you can
   - [Acknowledgments](#acknowledgments)
   - [UML Diagram](#uml-diagram)
   - [Run with Docker 🐳](#run-with-docker-)
-  
+
 ## Technologies and Programming Languages
 
 - C++.
@@ -110,13 +111,15 @@ Special thanks to the members of the development team:
 ![UML Diagram](https://github.com/izpintel/flight_plan/blob/dev%23dudi/code_review/UAV_Diagram.png)
 
 ## Run with Docker 🐳
+
 ```sh
 git clone https://github.com/dudi-w/flight-simulator-interpreter.git
 cd flight-simulator-interpreter
 docker build -t flight_simulator_code_interpreter .
 xhost +local:docker
-docker run --rm -it --env DISPLAY=$DISPLAY --env QT_X11_NO_MITSHM=1 --volume /tmp/.X11-unix:/tmp/.X11-unix --privileged -p 5400:5400 -p 5402:5402 -p 8080:8080 flight_simulator_code_interpreter
+docker run --rm -it --env DISPLAY=$DISPLAY --env QT_X11_NO_MITSHM=1 --volume /tmp/.X11-unix:/tmp/.X11-unix --privileged -p 5400:5400 -p 5402:5402 -p 8080:8080 flight_simulator_code_interpreter flight_instructions.txt
 ```
+
 <!---
 ## Downloads
 
