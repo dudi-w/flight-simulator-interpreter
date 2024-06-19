@@ -29,4 +29,5 @@ RUN make -j4
 
 EXPOSE 5400 5402 8080
 
-CMD ["./main", "flight_instructions.txt"]
+ENTRYPOINT ["./main"]
+CMD ["echo", "Please provide a program file"]
